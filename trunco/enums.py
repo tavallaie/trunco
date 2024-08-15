@@ -50,6 +50,7 @@ class Attribute(Enum):
     ACTION = "action"
     TARGET = "target"
     REL = "rel"
+    FOR = "for"
     TYPE = "type"
     CHECKED = "checked"
 
