@@ -30,6 +30,36 @@ class Component:
         """Adds a CSS class to this component."""
         self.css_classes.append(class_name)
 
+    def add_style(self, property_name: str, value: str):
+        """Adds a CSS style to this component."""
+        self.styles[property_name] = value
+
+    def add_directive(self, directive: Directive, expression: str):
+        """Adds a directive (e.g., Alpine.js) to this component, with validation."""
+        if not isinstance(directive, Directive):
+            raise ValueError(
+                f"Invalid directive: {directive}. Must be a Directive enum."
+            )
+        self.directives[directive] = expression
+
+    def add_attribute(self, attribute: Attribute, value: str):
+        """Adds a custom HTML attribute to this component, with validation."""
+        if not isinstance(attribute, Attribute):
+            raise ValueError(
+                f"Invalid attribute: {attribute}. Must be an Attribute enum."
+            )
+        self.attributes[attribute] = value
+
+    def add_trigger(self, trigger: Trigger):
+        """Adds an event trigger (e.g., HTMX) to this component, with validation."""
+        if not isinstance(trigger, Trigger):
+            raise ValueError(f"Invalid trigger: {trigger}. Must be a Trigger enum.")
+        self.triggers.append(trigger)
+
+    def add_custom_script(self, script: str):
+        """Adds a custom JavaScript script to be included in the component."""
+        self.custom_scripts.append(script)
+
     def render(
         self,
         context: Optional[Dict[str, Union[str, int, float, bool, list, dict]]] = None,
@@ -54,7 +84,7 @@ class Component:
         attributes = self.to_html_attributes()
         children_html = "".join(rendered_children)
         scripts_html = self.render_custom_scripts()
-        return f"<{self.tag} {attributes}>{children_html}{scripts_html}</{self.tag}>"
+        return f"<{self.tag} {attributes}>{children_html}</{self.tag}>{scripts_html}"
 
     def to_html_attributes(self) -> str:
         """Converts the component's attributes, classes, and directives into a string of HTML attributes."""
