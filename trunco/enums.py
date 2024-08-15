@@ -50,7 +50,13 @@ class Attribute(Enum):
     ACTION = "action"
     TARGET = "target"
     REL = "rel"
+    FOR = "for"
     TYPE = "type"
+    CHECKED = "checked"
+    SELECTED = "selected"
+    MIN = "min"
+    MAX = "max"
+    STEP = "step"
 
 
 class Method(Enum):
