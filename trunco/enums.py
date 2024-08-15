@@ -53,6 +53,7 @@ class Attribute(Enum):
     FOR = "for"
     TYPE = "type"
     CHECKED = "checked"
+    SELECTED = "selected"
 
 
 class Method(Enum):
