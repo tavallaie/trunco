@@ -96,11 +96,16 @@ class Component:
             else None,
         }
 
-        for directive, expression in self.directives.items():
-            attribute_mapping[directive.value] = expression
+        # Add the "type" attribute explicitly first if it exists
+        if Attribute.TYPE in self.attributes:
+            attribute_mapping["type"] = self.attributes[Attribute.TYPE]
 
         for attribute, value in self.attributes.items():
-            attribute_mapping[attribute.value] = value
+            if attribute.value != "type":  # Skip "type" since we already handled it
+                attribute_mapping[attribute.value] = value
+
+        for directive, expression in self.directives.items():
+            attribute_mapping[directive.value] = expression
 
         if self.triggers:
             attribute_mapping["hx-trigger"] = " ".join(
