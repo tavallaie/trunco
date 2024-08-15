@@ -54,6 +54,9 @@ class Attribute(Enum):
     TYPE = "type"
     CHECKED = "checked"
     SELECTED = "selected"
+    MIN = "min"
+    MAX = "max"
+    STEP = "step"
 
 
 class Method(Enum):
