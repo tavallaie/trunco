@@ -51,6 +51,7 @@ class Attribute(Enum):
     TARGET = "target"
     REL = "rel"
     TYPE = "type"
+    CHECKED = "checked"
 
 
 class Method(Enum):
