@@ -15,15 +15,15 @@ class TestLinkComponent(unittest.TestCase):
 
     def test_link_render(self):
         link = LinkComponent(href="https://example.com", text="Example")
-        expected_html = (
-            f'<a id="{link.id}" href="https://example.com" target="_self">Example</a>'
-        )
+        expected_html = f'<a id="{link.id}" href="https://example.com">Example</a>'
         self.assertEqual(str(link), expected_html)
 
     def test_link_render_with_context(self):
         link = LinkComponent(href="https://example.com", text="{text}")
         context = {"text": "Visit our site"}
-        expected_html = f'<a id="{link.id}" href="https://example.com" target="_self">Visit our site</a>'
+        expected_html = (
+            f'<a id="{link.id}" href="https://example.com">Visit our site</a>'
+        )
         self.assertEqual(link.render(context), expected_html)
 
 

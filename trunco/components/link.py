@@ -12,5 +12,6 @@ class LinkComponent(Component):
     ):
         super().__init__(tag="a", **kwargs)
         self.add_attribute(Attribute.HREF, href)
-        self.add_attribute(Attribute.TARGET, target)
+        if target and target != "_self":
+            self.add_attribute(Attribute.TARGET, target)
         self.children.append(text)
