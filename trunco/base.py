@@ -1,26 +1,37 @@
 from dataclasses import dataclass, field
-from typing import List, Optional, Union, Dict
+from typing import List, Optional, Union, Dict, Tuple
 import uuid
-from .enums import Directive, Trigger, Attribute
+from .enums import Directive, Trigger, Attribute, HxMethod, Swap
 
 
 @dataclass
 class Component:
-    """
-    The base class for all components in the Trunco framework.
-    Provides common functionality such as HTML attribute generation,
-    context management, script handling, and validation.
-    """
-
     tag: str = "div"
     id: str = field(default_factory=lambda: uuid.uuid4().hex)
     css_classes: List[str] = field(default_factory=list)
     styles: Dict[str, str] = field(default_factory=dict)
     children: List[Union["Component", str]] = field(default_factory=list)
     directives: Dict[Directive, str] = field(default_factory=dict)
-    attributes: Dict[Attribute, str] = field(default_factory=dict)
+    attributes: Dict[Union[Attribute, str], str] = field(default_factory=dict)
     triggers: List[Trigger] = field(default_factory=list)
     custom_scripts: List[str] = field(default_factory=list)
+    hx_methods: Optional[Tuple[str, str]] = None  # Tuple for HxMethod handling
+    swap: Optional[Swap] = None
+    trigger: Optional[Trigger] = None
+
+    def __post_init__(self):
+        # Handle HxMethod if provided
+        if self.hx_methods:
+            method, url = self.hx_methods
+            self.add_attribute(method, url)  # Use the method string directly
+
+        # Handle Swap if provided
+        if self.swap:
+            self.add_attribute("hx-swap", self.swap.value)
+
+        # Handle Trigger if provided
+        if self.trigger:
+            self.add_attribute("hx-trigger", self.trigger.value)
 
     def add_child(self, child: Union["Component", str]):
         """Adds a child component or string to this component's children list."""
@@ -42,11 +53,11 @@ class Component:
             )
         self.directives[directive] = expression
 
-    def add_attribute(self, attribute: Attribute, value: str):
+    def add_attribute(self, attribute: Union[Attribute, str], value: str):
         """Adds a custom HTML attribute to this component, with validation."""
-        if not isinstance(attribute, Attribute):
+        if not isinstance(attribute, (Attribute, str)):
             raise ValueError(
-                f"Invalid attribute: {attribute}. Must be an Attribute enum."
+                f"Invalid attribute: {attribute}. Must be an Attribute enum or string."
             )
         self.attributes[attribute] = value
 
@@ -64,10 +75,7 @@ class Component:
         self,
         context: Optional[Dict[str, Union[str, int, float, bool, list, dict]]] = None,
     ) -> str:
-        """
-        Renders the component as an HTML string, substituting context variables.
-        """
-        # Substitute context variables in children strings
+        """Renders the component as an HTML string, substituting context variables."""
         if context:
             rendered_children = [
                 child.format(**context)
@@ -96,13 +104,14 @@ class Component:
             else None,
         }
 
-        # Add the "type" attribute explicitly first if it exists
         if Attribute.TYPE in self.attributes:
             attribute_mapping["type"] = self.attributes[Attribute.TYPE]
 
         for attribute, value in self.attributes.items():
-            if attribute.value != "type":  # Skip "type" since we already handled it
+            if isinstance(attribute, Attribute) and attribute.value != "type":
                 attribute_mapping[attribute.value] = value
+            elif isinstance(attribute, str):
+                attribute_mapping[attribute] = value
 
         for directive, expression in self.directives.items():
             attribute_mapping[directive.value] = expression
