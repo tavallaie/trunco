@@ -61,8 +61,7 @@ class Attribute(Enum):
 
 class Method(Enum):
     """
-    Enum for form methods (e.g., GET, POST).
-    Useful for setting method attributes in forms or requests.
+    Enum for standard HTML form methods.
     """
 
     GET = "GET"
@@ -70,3 +69,38 @@ class Method(Enum):
     PUT = "PUT"
     DELETE = "DELETE"
     PATCH = "PATCH"
+
+
+class Swap(Enum):
+    """
+    Enum for HTMX swap strategies.
+    """
+
+    INNER_HTML = "innerHTML"
+    OUTER_HTML = "outerHTML"
+    BEFORE_BEGIN = "beforebegin"
+    AFTER_BEGIN = "afterbegin"
+    BEFORE_END = "beforeend"
+    AFTER_END = "afterend"
+
+
+class HxMethod:
+    @staticmethod
+    def get(url: str):
+        return "hx-get", url
+
+    @staticmethod
+    def post(url: str):
+        return "hx-post", url
+
+    @staticmethod
+    def put(url: str):
+        return "hx-put", url
+
+    @staticmethod
+    def delete(url: str):
+        return "hx-delete", url
+
+    @staticmethod
+    def patch(url: str):
+        return "hx-patch", url

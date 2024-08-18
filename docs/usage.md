@@ -11,6 +11,7 @@
  - [Handling Events](#handling-events)
  - [Styling Components](#styling-components)
  - [Custom Directives](#custom-directives)
+ - [HTMX Integration](#htmx-integration)
  - [Advanced Usage](#advanced-usage)
  - [Integrating with Web Frameworks](#integrating-with-web-frameworks)
 
@@ -154,6 +155,28 @@
  <button id="unique-button-id" class="btn" x-data="{ count: 0 }" x-on:click="count++">Click Me</button>
  ```
 
+ ## HTMX Integration
+
+ Trunco also supports HTMX attributes for enhancing your components with AJAX capabilities. Here’s how you can use HTMX methods like `hx-get` and `hx-post`:
+
+ ```python
+ from trunco import Component, HxMethod, Trigger, Swap
+
+ component = Component(
+     hx=HxMethod.get("/load-more"),
+     target="#results",
+     trigger=Trigger.CLICK,
+     swap=Swap.OUTER_HTML
+ )
+ print(component)
+ ```
+
+ This will generate the following HTML:
+
+ ```html
+ <div id="unique-component-id" hx-get="/load-more" hx-target="#results" hx-trigger="click" hx-swap="outerHTML"></div>
+ ```
+
  ## Advanced Usage
 
  Trunco also supports more advanced usage scenarios, such as:
@@ -164,7 +187,7 @@
 
  Explore the advanced features in the [Components](components.md) documentation.
 
-  ## Integrating with Web Frameworks
+ ## Integrating with Web Frameworks
 
  Trunco can be easily integrated into Django, Flask, FastAPI, and other web frameworks. Here’s a basic example with Flask:
 
@@ -203,4 +226,3 @@
  ```
 
  This creates a simple Flask application that renders a button. Make sure to include Alpine.js and HTMX in your HTML template for full functionality. You can apply similar approaches in Django and FastAPI.
-
