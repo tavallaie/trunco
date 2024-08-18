@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List, Optional, Union, Dict, Tuple
 import uuid
-from .enums import Directive, Trigger, Attribute, HxMethod, Swap
+from .enums import Directive, Trigger, Attribute, Swap
 
 
 @dataclass
