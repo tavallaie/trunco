@@ -26,7 +26,7 @@
  Creating components with Trunco is straightforward. Here’s an example of how to create a basic button component:
 
  ```python
- from trunco.components.html import ButtonComponent
+ from trunco.components import ButtonComponent
 
  button = ButtonComponent(label="Click Me", on_click="alert('Hello World!')")
  print(button)
@@ -43,7 +43,7 @@
  Trunco is more than just simple components. It allows for complex layouts and interactions. Here’s an example of a form with multiple inputs:
 
  ```python
- from trunco.components.html import FormComponent, InputComponent, ButtonComponent
+ from trunco.components import FormComponent, InputComponent, ButtonComponent
 
  form = FormComponent(action="/submit", method="post")
  form.add_child(InputComponent(input_type="text", placeholder="Enter your name"))
