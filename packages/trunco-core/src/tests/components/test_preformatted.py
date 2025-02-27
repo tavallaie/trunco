@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.html.preformattedText import PreformattedTextComponent
+from trunco.components.preformattedText import PreformattedTextComponent
 
 
 class TestPreformattedTextComponent(unittest.TestCase):

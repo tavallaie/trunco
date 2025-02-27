@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.html.paragraph import ParagraphComponent
+from trunco.components.paragraph import ParagraphComponent
 
 
 class TestParagraphComponent(unittest.TestCase):

@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.html.code import CodeComponent
+from trunco.components.code import CodeComponent
 
 
 class TestCodeComponent(unittest.TestCase):

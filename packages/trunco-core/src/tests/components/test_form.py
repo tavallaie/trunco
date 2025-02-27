@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.html.form import FormComponent
+from trunco.components.form import FormComponent
 from trunco.enums import Attribute, Method
 
 

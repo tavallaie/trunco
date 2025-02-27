@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.html.textarea import TextAreaComponent
+from trunco.components.textarea import TextAreaComponent
 from trunco.enums import Attribute
 
 

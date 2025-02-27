@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.html.slider import SliderComponent, SliderWithLabelComponent
+from trunco.components.slider import SliderComponent, SliderWithLabelComponent
 from trunco.enums import Attribute
 
 
