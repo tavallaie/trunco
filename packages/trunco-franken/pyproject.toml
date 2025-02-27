@@ -3,25 +3,17 @@ name = "trunco-franken"
 version = "0.1.0"
 description = "Franken UI integration plugin for Trunco."
 readme = "README.md"
-license = { file = "LICENSE" }
 authors = [
     { name = "Ali Tavallaie", email = "a.tavallaie@gmail.com" }
 ]
+requires-python = ">=3.12"
 dependencies = [
-    "trunco-core>=0.3.1"
-]
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent"
+    "trunco",
 ]
 
 [build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-[tool.setuptools]
-# Share the same namespace.
-namespace_packages = ["trunco"]
-
-[tool.uv]
-# Optional uv-specific configuration for integration.
+[tool.uv.sources]
+trunco = { workspace = true }
