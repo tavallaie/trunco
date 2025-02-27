@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.checkbox import CheckboxComponent
+from trunco.components.html.checkbox import CheckboxComponent
 from trunco.enums import Attribute
 
 

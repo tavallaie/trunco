@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.table import (
+from trunco.components.html.table import (
     TableCellComponent,
     TableRowComponent,
     TableComponent,

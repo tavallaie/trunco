@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.label import LabelComponent
+from trunco.components.html.label import LabelComponent
 from trunco.enums import Attribute
 
 

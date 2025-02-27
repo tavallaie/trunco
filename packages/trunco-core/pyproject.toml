@@ -1,0 +1,15 @@
+[project]
+name = "trunco-core"
+version = "0.3.1"
+description = "An agile, powerful Python framework for creating dynamic UIs with seamless web integration."
+readme = "README.md"
+authors = [
+    { name = "Ali Tavallaie", email = "a.tavallaie@gmail.com" }
+]
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

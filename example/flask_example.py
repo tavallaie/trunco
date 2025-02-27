@@ -1,5 +1,5 @@
 from flask import Flask, render_template_string
-from trunco.components import ButtonComponent
+from trunco.components.html import ButtonComponent
 
 app = Flask(__name__)
 

@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.blockquote import BlockquoteComponent
+from trunco.components.html.blockquote import BlockquoteComponent
 
 
 class TestBlockquoteComponent(unittest.TestCase):

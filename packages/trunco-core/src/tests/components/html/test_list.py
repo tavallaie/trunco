@@ -1,5 +1,5 @@
 import unittest
-from trunco.components.list import ListComponent, ListItemComponent
+from trunco.components.html.list import ListComponent, ListItemComponent
 
 
 class TestListComponents(unittest.TestCase):
