@@ -8,6 +8,8 @@ from trunco.components import LinkComponent, LabelComponent, InputComponent
 
 
 class TestDaisyUIDropdown(unittest.TestCase):
+    maxDiff = None
+
     def test_dropdown_default(self):
         dropdown = DaisyUIDropdown(
             summary_text="Open or Close",
