@@ -12,13 +12,11 @@ authors = [
 members = [
     "packages/trunco-core",
     "packages/trunco-franken",
-    "packages/trunco"  
-]
+    "packages/pychart"]
 
 [tool.uv.sources]
 trunco-core = { workspace = true }
 trunco-franken = { workspace = true }
-trunco = { workspace = true }
 
 [build-system]
 requires = ["uv>=0.6.0"]

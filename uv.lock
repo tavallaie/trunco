@@ -1,28 +1,18 @@
 version = 1
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 
 [manifest]
 members = [
-    "trunco",
+    "pychart",
     "trunco-core",
     "trunco-franken",
     "trunco-workspace",
 ]
 
 [[package]]
-name = "trunco"
-version = "0.3.1"
-source = { editable = "packages/trunco" }
-dependencies = [
-    { name = "trunco-core" },
-    { name = "trunco-franken" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "trunco-core", editable = "packages/trunco-core" },
-    { name = "trunco-franken", editable = "packages/trunco-franken" },
-]
+name = "pychart"
+version = "0.1.0"
+source = { virtual = "packages/pychart" }
 
 [[package]]
 name = "trunco-core"

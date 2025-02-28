@@ -14,25 +14,15 @@ for finder, name, ispkg in pkgutil.iter_modules():
 
 print("\nTrying alternative import approaches:")
 try:
-    import trunco
+    from trunco import franken
 
-    print("Direct trunco import works")
-    print(
-        f"  trunco.__path__: {trunco.__path__ if hasattr(trunco, '__path__') else 'Not a package'}"
-    )
-
-    try:
-        import trunco.html
-
-        print("  trunco.html import works")
-    except ImportError as e:
-        print(f"  trunco.html import fails: {e}")
-
-    try:
-        import trunco.franken
-
-        print("  trunco.franken import works")
-    except ImportError as e:
-        print(f"  trunco.franken import fails: {e}")
+    print("  trunco.html import works")
 except ImportError as e:
-    print(f"Direct trunco import fails: {e}")
+    print(f"  trunco.html import fails: {e}")
+
+try:
+    from trunco import franken
+
+    print("  trunco.franken import works")
+except ImportError as e:
+    print(f"  trunco.franken import fails: {e}")

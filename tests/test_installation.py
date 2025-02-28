@@ -12,6 +12,5 @@ def check_module_location(module_name):
         print(f"Could not import {module_name}: {e}")
 
 
-check_module_location("trunco")
 check_module_location("trunco.html")
 check_module_location("trunco.franken")
