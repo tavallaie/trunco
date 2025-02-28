@@ -1,4 +1,4 @@
-from trunco.components import FormComponent, InputComponent, ButtonComponent
+from trunco.html import FormComponent, InputComponent, ButtonComponent
 
 # Create a nested form component with multiple input fields
 form = FormComponent(action="/submit", method="post")

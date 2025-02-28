@@ -1,18 +1,17 @@
 [project]
 name = "trunco-core"
-version = "0.3.1"
+version = "0.3.2"
 description = "An agile, powerful Python framework for creating dynamic UIs with seamless web integration."
 authors = [
     { name = "Ali Tavallaie", email = "a.tavallaie@gmail.com" }
 ]
 license = "MIT"
-requires-python = ">=3.12"
+requires-python = ">=3.8"
 
-[tool.setuptools]
-namespace_packages = ["trunco"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/trunco"]
+only-include = ["src/trunco/**"]
 
 [build-system]
 requires = ["hatchling"]

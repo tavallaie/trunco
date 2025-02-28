@@ -1,6 +1,6 @@
-from trunco.base import Component
-from trunco.enums import Attribute
-from trunco.components.label import LabelComponent
+from trunco.html.base import Component
+from trunco.html.enums import Attribute
+from trunco.html.components import Label
 
 
 class SliderComponent(Component):
@@ -36,5 +36,5 @@ class SliderWithLabelComponent(Component):
 
     def __init__(self, label_text: str = "{label_text}", **slider_kwargs):
         super().__init__(tag="div")
-        self.add_child(LabelComponent(text=label_text))
+        self.add_child(Label(text=label_text))
         self.add_child(SliderComponent(**slider_kwargs))

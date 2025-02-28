@@ -1,6 +1,6 @@
 import unittest
-from trunco.base import Component
-from trunco.enums import Directive, Attribute, Trigger
+from trunco.html.base import Component
+from trunco.html.enums import Directive, Attribute, Trigger
 
 
 class TestComponent(unittest.TestCase):

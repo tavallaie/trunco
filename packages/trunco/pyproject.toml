@@ -6,12 +6,22 @@ readme = "README.md"
 authors = [
     { name = "Ali Tavallaie", email = "a.tavallaie@gmail.com" }
 ]
-license = "MIT"
-dependencies = [
-    "trunco-core>=0.3.1"
-]
 requires-python = ">=3.8"
+dependencies = [
+    "trunco-core==0.3.2",
+    "trunco-franken",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/trunco"]
+only-include = ["src/trunco/**"]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+
+
+[tool.uv.sources]
+trunco-core = { workspace = true }
+trunco-franken = { workspace = true }

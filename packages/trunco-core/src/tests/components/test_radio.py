@@ -1,6 +1,6 @@
 import unittest
-from trunco.components.radio import RadioComponent, RadioGroupComponent
-from trunco.enums import Attribute
+from trunco.html.radio import RadioComponent, RadioGroupComponent
+from trunco.html.enums import Attribute
 
 
 class TestRadioComponents(unittest.TestCase):

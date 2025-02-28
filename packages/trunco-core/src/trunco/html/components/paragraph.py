@@ -1,4 +1,4 @@
-from trunco import Component
+from trunco.html import Component
 
 
 class ParagraphComponent(Component):

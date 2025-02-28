@@ -20,7 +20,7 @@
  Trunco makes it easy to create and render HTML components in Python. Here’s a simple example of creating a button:
 
  ```python
- from trunco.components import ButtonComponent
+ from trunco.html import ButtonComponent
 
  button = ButtonComponent(label="Click Me", on_click="alert('Button clicked!')")
  print(button)
@@ -59,7 +59,7 @@
  Context in Trunco allows you to pass dynamic data to components, making it easier to create components that adapt to changing data.
 
  ```python
- from trunco.components import ParagraphComponent
+ from trunco.html import ParagraphComponent
 
  context = {"message": "Hello, Trunco!"}
  paragraph = ParagraphComponent(text="{message}")
@@ -78,7 +78,7 @@
  Trunco supports nesting components within other components. For example, you can nest multiple input fields within a form:
 
  ```python
- from trunco.components import FormComponent, InputComponent, ButtonComponent
+ from trunco.html import FormComponent, InputComponent, ButtonComponent
 
  form = FormComponent(action="/submit", method="post")
  form.add_child(InputComponent(input_type="text", placeholder="Enter your name"))
@@ -103,7 +103,7 @@
  Trunco integrates seamlessly with Alpine.js and HTMX to handle events like clicks. Here’s how you can handle a button click:
 
  ```python
- from trunco.components import ButtonComponent
+ from trunco.html import ButtonComponent
 
  button = ButtonComponent(label="Click Me", on_click="alert('Button clicked!')")
  print(button)
@@ -120,7 +120,7 @@
  You can add custom styles to components by passing CSS classes or inline styles:
 
  ```python
- from trunco.components import ParagraphComponent
+ from trunco.html import ParagraphComponent
 
  paragraph = ParagraphComponent(text="Styled paragraph")
  paragraph.add_class("text-primary")
@@ -140,7 +140,7 @@
  Trunco allows you to add custom Alpine.js or HTMX directives to components:
 
  ```python
- from trunco.components import ButtonComponent
+ from trunco.html import ButtonComponent
 
  button = ButtonComponent(label="Click Me")
  button.add_directive("x-data", "{ count: 0 }")
@@ -160,7 +160,7 @@
  Trunco also supports HTMX attributes for enhancing your components with AJAX capabilities. Here’s how you can use HTMX methods like `hx-get` and `hx-post`:
 
  ```python
- from trunco import Component, HxMethod, Trigger, Swap
+ from trunco.html import Component, HxMethod, Trigger, Swap
 
  component = Component(
      hx=HxMethod.get("/load-more"),
@@ -193,7 +193,7 @@
 
  ```python
  from flask import Flask, render_template_string
- from trunco.components import ButtonComponent
+ from trunco.html import ButtonComponent
 
  app = Flask(__name__)
 

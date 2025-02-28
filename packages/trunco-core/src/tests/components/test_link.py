@@ -1,6 +1,6 @@
 import unittest
-from trunco.components.link import LinkComponent
-from trunco.enums import Attribute
+from trunco.html.link import LinkComponent
+from trunco.html.enums import Attribute
 
 
 class TestLinkComponent(unittest.TestCase):

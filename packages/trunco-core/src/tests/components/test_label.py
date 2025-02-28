@@ -1,6 +1,6 @@
 import unittest
-from trunco.components.label import LabelComponent
-from trunco.enums import Attribute
+from trunco.html.label import LabelComponent
+from trunco.html.enums import Attribute
 
 
 class TestLabelComponent(unittest.TestCase):

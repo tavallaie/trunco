@@ -1,6 +1,6 @@
 import unittest
-from trunco.components.image import ImageComponent
-from trunco.enums import Attribute
+from trunco.html.image import ImageComponent
+from trunco.html.enums import Attribute
 
 
 class TestImageComponent(unittest.TestCase):

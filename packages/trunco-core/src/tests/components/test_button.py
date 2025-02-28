@@ -1,6 +1,6 @@
 import unittest
-from trunco.components.button import ButtonComponent
-from trunco.enums import Directive, Attribute
+from trunco.html.button import ButtonComponent
+from trunco.html.enums import Directive, Attribute
 
 
 class TestButtonComponent(unittest.TestCase):

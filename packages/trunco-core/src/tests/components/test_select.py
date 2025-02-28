@@ -1,6 +1,6 @@
 import unittest
-from trunco.components.select import OptionComponent, SelectComponent
-from trunco.enums import Attribute
+from trunco.html.select import OptionComponent, SelectComponent
+from trunco.html.enums import Attribute
 
 
 class TestSelectComponents(unittest.TestCase):

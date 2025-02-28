@@ -1,5 +1,5 @@
-from trunco.base import Component
-from trunco.enums import Attribute
+from trunco.html.base import Component
+from trunco.html.enums import Attribute
 
 
 class ImageComponent(Component):

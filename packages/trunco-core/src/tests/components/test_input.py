@@ -1,6 +1,6 @@
 import unittest
-from trunco.components.input import InputComponent
-from trunco.enums import Attribute
+from trunco.html.input import InputComponent
+from trunco.html.enums import Attribute
 
 
 class TestInputComponent(unittest.TestCase):

@@ -1,8 +1,7 @@
-from trunco.base import Component
-from trunco.enums import Attribute, Directive
+from trunco.html import Component, Attribute, Directive
 
 
-class ButtonComponent(Component):
+class Button_golComponent(Component):
     """
     A basic button component that can be customized with a label and onClick action.
     """

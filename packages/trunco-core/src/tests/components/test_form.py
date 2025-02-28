@@ -1,6 +1,6 @@
 import unittest
-from trunco.components.form import FormComponent
-from trunco.enums import Attribute, Method
+from trunco.html.form import FormComponent
+from trunco.html.enums import Attribute, Method
 
 
 class TestFormComponent(unittest.TestCase):

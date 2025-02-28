@@ -1,4 +1,4 @@
-from trunco.base import Component
+from trunco.html.base import Component
 from dataclasses import dataclass
 
 

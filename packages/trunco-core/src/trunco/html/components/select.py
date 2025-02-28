@@ -1,4 +1,4 @@
-from trunco import Component, Attribute
+from trunco.html import Component, Attribute
 from typing import List
 
 

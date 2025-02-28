@@ -1,5 +1,5 @@
 import unittest
-from trunco import Component, Trigger, Swap, HxMethod, Attribute, Directive
+from trunco.html import Component, Trigger, Swap, HxMethod, Attribute, Directive
 
 
 class TestComponent(unittest.TestCase):

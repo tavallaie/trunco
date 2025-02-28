@@ -1,4 +1,4 @@
-from trunco.components import ParagraphComponent
+from trunco.html import ParagraphComponent
 
 # Define context with dynamic data
 context = {"message": "Hello, Trunco!"}

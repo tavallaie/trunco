@@ -1,5 +1,5 @@
 version = 1
-requires-python = ">=3.12"
+requires-python = ">=3.8"
 
 [manifest]
 members = [
@@ -15,14 +15,18 @@ version = "0.3.1"
 source = { editable = "packages/trunco" }
 dependencies = [
     { name = "trunco-core" },
+    { name = "trunco-franken" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "trunco-core", editable = "packages/trunco-core" }]
+requires-dist = [
+    { name = "trunco-core", editable = "packages/trunco-core" },
+    { name = "trunco-franken", editable = "packages/trunco-franken" },
+]
 
 [[package]]
 name = "trunco-core"
-version = "0.3.1"
+version = "0.3.2"
 source = { editable = "packages/trunco-core" }
 
 [[package]]

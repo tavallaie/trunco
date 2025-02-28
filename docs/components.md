@@ -291,7 +291,7 @@
  In addition to the built-in components, you can create custom components by extending the `Component` class. This allows you to create reusable components that fit your specific needs.
 
  ```python
- from trunco import Component
+ from trunco.html import Component
 
  class CustomComponent(Component):
      def __init__(self, content: str, **kwargs):
