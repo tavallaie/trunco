@@ -1,4 +1,4 @@
-from trunco.html.base import Component
+from trunco.html.base import Component, AttributeEntry
 from trunco.html.enums import Attribute
 from trunco.html import Label
 
@@ -17,12 +17,12 @@ class SliderComponent(Component):
         **kwargs,
     ):
         super().__init__(tag="input", **kwargs)
-        self.add_attribute(Attribute.TYPE, "range")
-        self.add_attribute(Attribute.MIN, str(min_value))
-        self.add_attribute(Attribute.MAX, str(max_value))
-        self.add_attribute(Attribute.STEP, str(step))
+        self.add(AttributeEntry(Attribute.TYPE, "range"))
+        self.add(AttributeEntry(Attribute.MIN, str(min_value)))
+        self.add(AttributeEntry(Attribute.MAX, str(max_value)))
+        self.add(AttributeEntry(Attribute.STEP, str(step)))
         if value is not None:
-            self.add_attribute(Attribute.VALUE, str(value))
+            self.add(AttributeEntry(Attribute.VALUE, str(value)))
 
     def render(self, context=None) -> str:
         # Render the input element as a self-closing tag
@@ -36,5 +36,5 @@ class SliderWithLabelComponent(Component):
 
     def __init__(self, label_text: str = "{label_text}", **slider_kwargs):
         super().__init__(tag="div")
-        self.add_child(Label(text=label_text))
-        self.add_child(SliderComponent(**slider_kwargs))
+        self.add(Label(text=label_text))
+        self.add(SliderComponent(**slider_kwargs))
