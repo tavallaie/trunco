@@ -8,4 +8,4 @@ class ParagraphComponent(Component):
 
     def __init__(self, text: str = "", **kwargs):
         super().__init__(tag="p", **kwargs)
-        self.children.append(text)
+        self.add(text)
