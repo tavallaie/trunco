@@ -10,5 +10,4 @@ class DividerComponent(Component):
         super().__init__(tag="hr", **kwargs)
 
     def render(self, context=None) -> str:
-        # Ensure the hr tag is self-closing
         return super().render(context).replace(f"</{self.tag}>", "")
