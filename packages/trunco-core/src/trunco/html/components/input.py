@@ -1,4 +1,4 @@
-from trunco.html.base import Component
+from trunco.html.base import Component, AttributeEntry
 from trunco.html.enums import Attribute
 
 
@@ -11,12 +11,11 @@ class InputComponent(Component):
         self, input_type: str = "text", placeholder: str = "", value: str = "", **kwargs
     ):
         super().__init__(tag="input", **kwargs)
-        self.add_attribute(Attribute.TYPE, input_type)
+        self.add(AttributeEntry(Attribute.TYPE, input_type))
         if placeholder:
-            self.add_attribute(Attribute.PLACEHOLDER, placeholder)
+            self.add(AttributeEntry(Attribute.PLACEHOLDER, placeholder))
         if value:
-            self.add_attribute(Attribute.VALUE, value)
+            self.add(AttributeEntry(Attribute.VALUE, value))
 
     def render(self, context=None) -> str:
-        # Ensure the input tag is self-closing
         return super().render(context).replace(f"</{self.tag}>", "")
