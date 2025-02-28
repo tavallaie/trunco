@@ -1,4 +1,4 @@
-from trunco.html.base import Component
+from trunco.html import Component
 from typing import List
 
 
@@ -10,7 +10,7 @@ class TableCellComponent(Component):
     def __init__(self, content: str = "", header: bool = False, **kwargs):
         tag = "th" if header else "td"
         super().__init__(tag=tag, **kwargs)
-        self.children.append(content)
+        self.add(content)
 
 
 class TableRowComponent(Component):
@@ -21,7 +21,8 @@ class TableRowComponent(Component):
     def __init__(self, cells: List[TableCellComponent] = None, **kwargs):
         super().__init__(tag="tr", **kwargs)
         if cells:
-            self.children.extend(cells)
+            for cell in cells:
+                self.add(cell)
 
 
 class TableComponent(Component):
@@ -40,6 +41,7 @@ class TableComponent(Component):
                     for header in headers
                 ]
             )
-            self.add_child(header_row)
+            self.add(header_row)
         if rows:
-            self.children.extend(rows)
+            for row in rows:
+                self.add(row)
