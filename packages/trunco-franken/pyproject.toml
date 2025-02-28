@@ -1,14 +1,14 @@
 [project]
 name = "trunco-franken"
 version = "0.1.0"
-description = "Franken UI integration plugin for Trunco."
+description = "Franken UI implementation built on trunco-core"
 readme = "README.md"
 authors = [
     { name = "Ali Tavallaie", email = "a.tavallaie@gmail.com" }
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 dependencies = [
-    "trunco-core==0.3.2",
+    "trunco-core>=0.1.0",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -18,4 +18,6 @@ packages = ["src"]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["trunco.*"]

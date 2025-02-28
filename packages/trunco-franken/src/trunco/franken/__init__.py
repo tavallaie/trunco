@@ -1,7 +1,4 @@
-# Auto-generated __init__.py for /home/ali/projects/trunco/packages/trunco-franken/src/trunco/franken
+from .components.button import FrankenButton as Button
 
-from . import components
 
-__all__ = [
-    'components',
-]
+__all__ = ["Button"]

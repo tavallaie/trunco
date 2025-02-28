@@ -1,0 +1,23 @@
+version = 1
+revision = 1
+requires-python = ">=3.12"
+
+[[package]]
+name = "trunco-core"
+version = "0.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/3a/d4/4aa4ebe655e3bc531419d20fd5c2efc94c3dbdcdabf87460c1073e898479/trunco_core-0.1.0.tar.gz", hash = "sha256:513a4dfcf37cf192689873df942b251dda4c2834fef08169db9ee2fb9e3cb3d9", size = 12434 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a4/d5/c85131db69e60edecd1adf0e0257b35a8db77699e30d055bdc88ae108099/trunco_core-0.1.0-py3-none-any.whl", hash = "sha256:687074e0ca094892238eafc8799b2e3f656393637123d6dee54efe17d89c7162", size = 26467 },
+]
+
+[[package]]
+name = "trunco-franken"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "trunco-core" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "trunco-core", specifier = ">=0.1.0" }]
