@@ -1,4 +1,4 @@
-from trunco.html.base import Component
+from trunco.html.base import Component, AttributeEntry
 from trunco.html.enums import Attribute
 
 
@@ -9,9 +9,8 @@ class ImageComponent(Component):
 
     def __init__(self, src: str, alt: str = "", **kwargs):
         super().__init__(tag="img", **kwargs)
-        self.add_attribute(Attribute.SRC, src)
-        self.add_attribute(Attribute.ALT, alt)
+        self.add(AttributeEntry(Attribute.SRC, src))
+        self.add(AttributeEntry(Attribute.ALT, alt))
 
     def render(self, context=None) -> str:
-        # Ensure the img tag is self-closing
         return super().render(context).replace(f"</{self.tag}>", "")

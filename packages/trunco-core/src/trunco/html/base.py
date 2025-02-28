@@ -35,7 +35,9 @@ class TriggerEntry:
     trigger: "Trigger"  # Assumes Trigger is imported from your enums.
 
 
-# In your Component class, replace your multiple add_* methods with a unified add().
+# We'll use a class-level alias to help with forward references.
+# Initially set to None; it will be updated after the class definition.
+_Component: type = None
 
 
 @dataclass
@@ -52,6 +54,9 @@ class Component:
     hx_methods: Optional[Tuple[str, str]] = None  # Tuple for HxMethod handling
     swap: Optional["Swap"] = None
     trigger: Optional["Trigger"] = None
+
+    # Create a class-level alias for Component for use in annotations.
+    _Component: type = _Component
 
     def __post_init__(self):
         if self.hx_methods:
@@ -73,7 +78,7 @@ class Component:
 
     # If a Component is provided, add it as a child.
     @add.register
-    def _(self, child: "Component"):
+    def _(self, child: _Component):  # Use the alias instead of "Component"
         self.children.append(child)
 
     # If a CssClass wrapper is provided, add it to CSS classes.
@@ -161,3 +166,7 @@ class Component:
 
     def __str__(self) -> str:
         return self.render()
+
+
+Component._Component = Component
+globals()["Component"] = Component
