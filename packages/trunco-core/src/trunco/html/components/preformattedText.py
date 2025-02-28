@@ -8,4 +8,4 @@ class PreformattedTextComponent(Component):
 
     def __init__(self, text: str = "{text}", **kwargs):
         super().__init__(tag="pre", **kwargs)
-        self.children.append(text)
+        self.add(text)
