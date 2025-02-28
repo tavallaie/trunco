@@ -71,41 +71,30 @@ class Component:
     def add(self, item):
         raise ValueError(f"Unsupported type: {type(item)}")
 
-    # If a string is provided, assume it's a child (text node)
     @add.register
     def _(self, child: str):
         self.children.append(child)
 
-    # If a Component is provided, add it as a child.
-    @add.register
-    def _(self, child: _Component):  # Use the alias instead of "Component"
-        self.children.append(child)
-
-    # If a CssClass wrapper is provided, add it to CSS classes.
     @add.register
     def _(self, css: CssClass):
         self.css_classes.append(css.value)
 
-    # If a StyleRule wrapper is provided, add it to styles.
     @add.register
     def _(self, rule: StyleRule):
         self.styles[rule.property_name] = rule.value
 
-    # If a DirectiveEntry wrapper is provided, add it to directives.
     @add.register
     def _(self, directive: DirectiveEntry):
         if not isinstance(directive.directive, Directive):
             raise ValueError(f"Invalid directive: {directive.directive}")
         self.directives[directive.directive] = directive.expression
 
-    # If an AttributeEntry wrapper is provided, add it as an attribute.
     @add.register
     def _(self, attr: AttributeEntry):
         if not isinstance(attr.attribute, (Attribute, str)):
             raise ValueError(f"Invalid attribute: {attr.attribute}")
         self.attributes[attr.attribute] = attr.value
 
-    # If a TriggerEntry wrapper is provided, add it as a trigger.
     @add.register
     def _(self, trig: TriggerEntry):
         if not isinstance(trig.trigger, Trigger):
@@ -170,3 +159,4 @@ class Component:
 
 Component._Component = Component
 globals()["Component"] = Component
+Component.add.register(Component, lambda self, child: self.children.append(child))
