@@ -9,7 +9,7 @@ class ListItemComponent(Component):
 
     def __init__(self, content: str = "{content}", **kwargs):
         super().__init__(tag="li", **kwargs)
-        self.children.append(content)
+        self.add(content)
 
 
 class ListComponent(Component):
@@ -23,4 +23,5 @@ class ListComponent(Component):
         tag = "ol" if ordered else "ul"
         super().__init__(tag=tag, **kwargs)
         if items:
-            self.children.extend(items)
+            for item in items:
+                self.add(item)
