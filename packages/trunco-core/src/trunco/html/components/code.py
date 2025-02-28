@@ -8,4 +8,5 @@ class CodeComponent(Component):
 
     def __init__(self, code: str = "{code}", **kwargs):
         super().__init__(tag="code", **kwargs)
-        self.children.append(code)
+        # Use unified add() method for adding the code string as a child.
+        self.add(code)
