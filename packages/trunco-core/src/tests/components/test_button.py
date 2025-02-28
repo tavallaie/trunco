@@ -15,7 +15,10 @@ class TestButton(unittest.TestCase):
 
     def test_button_render(self):
         button = Button(label="Click Me", on_click="alert('clicked')")
-        expected_html = f'<button id="{button.id}" type="button" x-on:click="alert(\'clicked\')">Click Me</button>'
+        expected_html = (
+            f'<button id="{button.id}" type="button" x-on:click="alert(\'clicked\')">'
+            f"Click Me</button>"
+        )
         self.assertEqual(button.render(), expected_html)
 
     def test_button_render_with_context(self):
