@@ -1,15 +1,16 @@
 import unittest
+from trunco import html
 from trunco.html.components.blockquote import BlockquoteComponent
 
 
 class TestBlockquoteComponent(unittest.TestCase):
     def test_blockquote_initialization(self):
-        blockquote = BlockquoteComponent(quote="This is a blockquote.")
+        blockquote = html.Blockquote(quote="This is a blockquote.")
         self.assertEqual(blockquote.tag, "blockquote")
         self.assertIn("This is a blockquote.", blockquote.children)
 
     def test_blockquote_render(self):
-        blockquote = BlockquoteComponent(quote="This is a blockquote.")
+        blockquote = html.Blockquote(quote="This is a blockquote.")
         expected_html = (
             f'<blockquote id="{blockquote.id}">This is a blockquote.</blockquote>'
         )
