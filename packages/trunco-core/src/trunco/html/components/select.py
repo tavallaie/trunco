@@ -1,4 +1,5 @@
-from trunco.html import Component, Attribute
+from trunco.html.base import Component, AttributeEntry
+from trunco.html.enums import Attribute
 from typing import List
 
 
@@ -11,10 +12,10 @@ class OptionComponent(Component):
         self, value: str, display_text: str = None, selected: bool = False, **kwargs
     ):
         super().__init__(tag="option", **kwargs)
-        self.add_attribute(Attribute.VALUE, value)  # Use the enum here
+        self.add(AttributeEntry(Attribute.VALUE, value))
         if selected:
-            self.add_attribute(Attribute.SELECTED, "selected")  # Use the enum here
-        self.children.append(display_text or value)
+            self.add(AttributeEntry(Attribute.SELECTED, "selected"))
+        self.add(display_text or value)
 
 
 class SelectComponent(Component):
@@ -25,4 +26,5 @@ class SelectComponent(Component):
     def __init__(self, options: List[OptionComponent] = None, **kwargs):
         super().__init__(tag="select", **kwargs)
         if options:
-            self.children.extend(options)
+            for option in options:
+                self.add(option)
