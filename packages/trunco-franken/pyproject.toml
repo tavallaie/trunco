@@ -11,15 +11,13 @@ dependencies = [
     "trunco-core==0.3.2",
 ]
 
+[tool.setuptools]
+namespace_packages = ["trunco"]
+
 [tool.hatch.build.targets.wheel]
-packages = ["src/trunco"]
-only-include = ["src/trunco/**"]
+packages = ["src"]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-
-
-[tool.uv.sources]
-trunco-core = { workspace = true }

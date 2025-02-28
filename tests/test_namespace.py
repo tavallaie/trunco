@@ -1,40 +1,41 @@
-#!/usr/bin/env python3
-import traceback
+# test_namespace_detailed.py
+import sys
+import os
+import importlib
 
+print("Python Path:")
+for path in sys.path:
+    print(f"  - {path}")
 
-def safe_import(step, code):
-    """
-    Execute an import statement (provided as a string) with a label.
-    If the import fails, print the step description and the full traceback.
-    """
-    print(f"Step: {step} - Executing: {code}")
+try:
+    import trunco
+
+    print("\nSuccessfully imported trunco namespace")
+    print(
+        f"  trunco.__path__: {trunco.__path__ if hasattr(trunco, '__path__') else 'Not a package'}"
+    )
+
     try:
-        exec(code, globals())
-    except Exception as e:
-        print(f"Error during step: {step}")
-        traceback.print_exc()
-        raise
+        import trunco.html
 
+        print("\nSuccessfully imported trunco.html")
+        print(f"  Module location: {trunco.html.__file__}")
+    except ImportError as e:
+        print(f"\nFailed to import trunco.html: {e}")
 
-def main():
     try:
-        # Import html module from the namespace.
-        safe_import("Importing 'html' from trunco", "from trunco import html")
-        # print(f"Imported html: {html}")
+        import trunco.franken
 
-        # Import franken module from the namespace.
-        safe_import("Importing 'franken' from trunco", "from trunco import franken")
-        # print(f"Imported franken: {franken}")
+        print("\nSuccessfully imported trunco.franken")
+        print(f"  Module location: {trunco.franken.__file__}")
+    except ImportError as e:
+        print(f"\nFailed to import trunco.franken: {e}")
 
-        # # Import the overall namespace.
-        # safe_import("Importing 'trunco' namespace", "import trunco")
-        # print("trunco __spec__:", trunco.__spec__)
-        # print("trunco __file__:", getattr(trunco, "__file__", None))
+except ImportError as e:
+    print(f"\nFailed to import trunco: {e}")
 
-        print("Namespace setup is correct!")
-    except Exception as e:
-        print("Namespace setup failed:", e)
-
-
-if __name__ == "__main__":
-    main()
+    # Try looking for installed modules
+    print("\nChecking for installed modules:")
+    for finder, name, ispkg in importlib.metadata.distributions():
+        if "trunco" in name.lower():
+            print(f"  Found distribution: {name}")
