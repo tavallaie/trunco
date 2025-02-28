@@ -8,4 +8,4 @@ class BlockquoteComponent(Component):
 
     def __init__(self, quote: str = "{quote}", **kwargs):
         super().__init__(tag="blockquote", **kwargs)
-        self.children.append(quote)
+        self.add(quote)
