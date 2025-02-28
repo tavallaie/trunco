@@ -1,16 +1,18 @@
 import unittest
 from trunco.html import Component, Trigger, Swap, HxMethod, Attribute, Directive
 
+from trunco.html.base import DirectiveEntry, AttributeEntry
+
 
 class TestComponent(unittest.TestCase):
     def test_add_directive(self):
         component = Component()
-        component.add_directive(Directive.X_ON_CLICK, "alert('Hello!')")
+        component.add(DirectiveEntry(Directive.X_ON_CLICK, "alert('Hello!')"))
         self.assertEqual(component.directives[Directive.X_ON_CLICK], "alert('Hello!')")
 
     def test_add_attribute(self):
         component = Component()
-        component.add_attribute(Attribute.HREF, "http://example.com")
+        component.add(AttributeEntry(Attribute.HREF, "http://example.com"))
         self.assertEqual(component.attributes[Attribute.HREF], "http://example.com")
 
     def test_render_with_hx_get(self):
