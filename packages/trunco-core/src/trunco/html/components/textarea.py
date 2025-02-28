@@ -1,6 +1,5 @@
 from __future__ import annotations
-
-from trunco.html.base import Component
+from trunco.html.base import Component, AttributeEntry
 
 
 class TextAreaComponent(Component):
@@ -10,7 +9,7 @@ class TextAreaComponent(Component):
 
     def __init__(self, rows: int = 4, cols: int = 50, placeholder: str = "", **kwargs):
         super().__init__(tag="textarea", **kwargs)
-        self.add_attribute("rows", str(rows))
-        self.add_attribute("cols", str(cols))
+        self.add(AttributeEntry("rows", str(rows)))
+        self.add(AttributeEntry("cols", str(cols)))
         if placeholder:
-            self.children.append(placeholder)
+            self.add(placeholder)
