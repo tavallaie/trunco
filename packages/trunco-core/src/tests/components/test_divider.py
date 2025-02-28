@@ -1,5 +1,5 @@
 import unittest
-from trunco.html.divider import DividerComponent
+from trunco.html.components.divider import DividerComponent
 
 
 class TestDividerComponent(unittest.TestCase):

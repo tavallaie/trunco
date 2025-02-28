@@ -1,5 +1,5 @@
 import unittest
-from trunco.html.image import ImageComponent
+from trunco.html.components.image import ImageComponent
 from trunco.html.enums import Attribute
 
 

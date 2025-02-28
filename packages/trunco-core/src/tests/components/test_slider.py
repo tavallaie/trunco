@@ -1,11 +1,11 @@
 import unittest
-from trunco.html.slider import SliderComponent, SliderWithLabelComponent
 from trunco.html.enums import Attribute
+from trunco import html
 
 
 class TestSliderComponents(unittest.TestCase):
     def test_slider_initialization(self):
-        slider = SliderComponent(min_value=0, max_value=100, step=5, value=50)
+        slider = html.Slider(min_value=0, max_value=100, step=5, value=50)
         self.assertEqual(slider.tag, "input")
         self.assertEqual(slider.attributes.get(Attribute.TYPE), "range")
         self.assertEqual(slider.attributes.get(Attribute.MIN), "0")
@@ -14,19 +14,19 @@ class TestSliderComponents(unittest.TestCase):
         self.assertEqual(slider.attributes.get(Attribute.VALUE), "50")
 
     def test_slider_render(self):
-        slider = SliderComponent(min_value=0, max_value=100, step=5, value=50)
+        slider = html.Slider(min_value=0, max_value=100, step=5, value=50)
         expected_html = f'<input id="{slider.id}" type="range" min="0" max="100" step="5" value="50">'
         self.assertEqual(str(slider), expected_html)
 
     def test_slider_with_label_initialization(self):
-        slider_with_label = SliderWithLabelComponent(
+        slider_with_label = html.SliderWithLabel(
             label_text="Volume", min_value=0, max_value=100, step=5, value=50
         )
         self.assertEqual(slider_with_label.tag, "div")
         self.assertEqual(len(slider_with_label.children), 2)
 
     def test_slider_with_label_render(self):
-        slider_with_label = SliderWithLabelComponent(
+        slider_with_label = html.SliderWithLabel(
             label_text="Volume", min_value=0, max_value=100, step=5, value=50
         )
         expected_html = (
@@ -38,7 +38,7 @@ class TestSliderComponents(unittest.TestCase):
         self.assertEqual(str(slider_with_label), expected_html)
 
     def test_slider_with_label_render_with_context(self):
-        slider_with_label = SliderWithLabelComponent(
+        slider_with_label = html.SliderWithLabel(
             label_text="{label_text}", min_value=0, max_value=100, step=5, value=50
         )
         context = {"label_text": "Adjust Volume"}

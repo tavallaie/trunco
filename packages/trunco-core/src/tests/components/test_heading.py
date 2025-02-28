@@ -1,5 +1,5 @@
 import unittest
-from trunco.html.heading import HeadingComponent
+from trunco.html.components.heading import HeadingComponent
 
 
 class TestHeadingComponent(unittest.TestCase):

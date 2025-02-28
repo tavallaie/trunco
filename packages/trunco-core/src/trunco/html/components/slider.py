@@ -1,6 +1,6 @@
 from trunco.html.base import Component
 from trunco.html.enums import Attribute
-from trunco.html.components import Label
+from trunco.html import Label
 
 
 class SliderComponent(Component):

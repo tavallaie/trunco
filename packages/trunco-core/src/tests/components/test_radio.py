@@ -1,5 +1,5 @@
 import unittest
-from trunco.html.radio import RadioComponent, RadioGroupComponent
+from trunco.html.components.radio import RadioComponent, RadioGroupComponent
 from trunco.html.enums import Attribute
 
 

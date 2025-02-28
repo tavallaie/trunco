@@ -1,11 +1,11 @@
 import unittest
-from trunco.html.button import ButtonComponent
+from trunco.html import Button
 from trunco.html.enums import Directive, Attribute
 
 
-class TestButtonComponent(unittest.TestCase):
+class TestButton(unittest.TestCase):
     def test_button_initialization(self):
-        button = ButtonComponent(label="Click Me", on_click="alert('clicked')")
+        button = Button(label="Click Me", on_click="alert('clicked')")
         self.assertEqual(button.tag, "button")
         self.assertIn("Click Me", button.children)
         self.assertEqual(button.attributes.get(Attribute.TYPE), "button")
@@ -14,12 +14,12 @@ class TestButtonComponent(unittest.TestCase):
         )
 
     def test_button_render(self):
-        button = ButtonComponent(label="Click Me", on_click="alert('clicked')")
+        button = Button(label="Click Me", on_click="alert('clicked')")
         expected_html = f'<button id="{button.id}" type="button" x-on:click="alert(\'clicked\')">Click Me</button>'
         self.assertEqual(button.render(), expected_html)
 
     def test_button_render_with_context(self):
-        button = ButtonComponent(label="{label}")
+        button = Button(label="{label}")
         context = {"label": "Dynamic Button"}
         expected_html = (
             f'<button id="{button.id}" type="button">Dynamic Button</button>'

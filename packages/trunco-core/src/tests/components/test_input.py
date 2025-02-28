@@ -1,5 +1,5 @@
 import unittest
-from trunco.html.input import InputComponent
+from trunco.html.components.input import InputComponent
 from trunco.html.enums import Attribute
 
 

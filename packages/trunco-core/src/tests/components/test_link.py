@@ -1,5 +1,5 @@
 import unittest
-from trunco.html.link import LinkComponent
+from trunco.html.components.link import LinkComponent
 from trunco.html.enums import Attribute
 
 
