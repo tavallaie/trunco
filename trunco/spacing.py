@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional, Union
-
-GapValue = Union[str, int, None]
+GapValue = str | int | None
 
 _GAP_ALIASES = {
     "none": None,
@@ -27,7 +25,7 @@ _STACK_ALIASES = {
 }
 
 
-def gap_classes(gap: GapValue) -> List[str]:
+def gap_classes(gap: GapValue) -> list[str]:
     """Resolve a gap token to Tailwind ``gap-*`` utility class names."""
     if gap is None:
         return []
@@ -41,7 +39,7 @@ def gap_classes(gap: GapValue) -> List[str]:
     return [f"gap-{gap}"]
 
 
-def stack_classes(gap: GapValue) -> List[str]:
+def stack_classes(gap: GapValue) -> list[str]:
     """Resolve a gap token to Tailwind ``space-y-*`` utility class names."""
     if gap is None:
         return []
@@ -55,6 +53,6 @@ def stack_classes(gap: GapValue) -> List[str]:
     return [f"space-y-{gap}"]
 
 
-def join_classes(*parts: Optional[str]) -> str:
+def join_classes(*parts: str | None) -> str:
     """Join class name fragments, skipping empty values."""
     return " ".join(part for part in parts if part)

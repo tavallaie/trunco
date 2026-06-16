@@ -3,8 +3,17 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 
-from trunco.zbuild import Alert, Button, Form, FormControl, Input, Page
-from trunco.zbuild import core_script_tag, kit_css_tag, zuikit_script_tag
+from trunco.zbuild import (
+    Alert,
+    Button,
+    Form,
+    FormControl,
+    Input,
+    Page,
+    core_script_tag,
+    kit_css_tag,
+    zuikit_script_tag,
+)
 
 app = FastAPI(title="Trunco + FastAPI")
 

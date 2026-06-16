@@ -1,8 +1,9 @@
 import unittest
+
 from trunco.components.table import (
     TableCellComponent,
-    TableRowComponent,
     TableComponent,
+    TableRowComponent,
 )
 
 

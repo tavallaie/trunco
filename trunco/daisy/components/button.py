@@ -1,5 +1,3 @@
-from typing import Optional
-
 from trunco.alpine.enums import Directive
 from trunco.components.button import ButtonComponent
 from trunco.kits.color import resolve_color
@@ -25,10 +23,10 @@ class DaisyButton(ButtonComponent):
     def __init__(
         self,
         label: str = "{label}",
-        on_click: Optional[str] = None,
-        color: Optional[str] = None,
+        on_click: str | None = None,
+        color: str | None = None,
         variant: str = "primary",
-        size: Optional[str] = None,
+        size: str | None = None,
         outline: bool = False,
         **kwargs,
     ):

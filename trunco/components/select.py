@@ -1,5 +1,4 @@
-from trunco import Component, Attribute
-from typing import List
+from trunco import Attribute, Component
 
 
 class OptionComponent(Component):
@@ -20,7 +19,7 @@ class SelectComponent(Component):
     A basic select component with multiple options.
     """
 
-    def __init__(self, options: List[OptionComponent] = None, **kwargs):
+    def __init__(self, options: list[OptionComponent] = None, **kwargs):
         super().__init__(tag="select", **kwargs)
         if options:
             self.children.extend(options)

@@ -1,7 +1,7 @@
 import unittest
 from pathlib import Path
 
-from trunco.components import InlineStyle, StyleSheet, Stylesheet
+from trunco.components import StyleSheet
 
 
 class TestStyleSheet(unittest.TestCase):

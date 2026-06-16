@@ -1,4 +1,5 @@
 import unittest
+
 from trunco.components.list import ListComponent, ListItemComponent
 
 

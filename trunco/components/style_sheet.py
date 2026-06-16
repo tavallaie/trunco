@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Dict, Iterator, List, Optional, Union
 
 from trunco.components.stylesheet import InlineStyle, Stylesheet
 
-PropertyValue = Union[str, int, float]
+PropertyValue = str | int | float
 
 _UNITLESS_PROPERTIES = frozenset(
     {
@@ -41,7 +41,7 @@ def _css_value(property_name: str, value: PropertyValue) -> str:
     return str(value)
 
 
-def _format_rule(selector: str, properties: Dict[str, PropertyValue]) -> str:
+def _format_rule(selector: str, properties: dict[str, PropertyValue]) -> str:
     if not properties:
         return ""
     lines = [f"{selector} {{"]
@@ -65,7 +65,7 @@ class StyleSheet:
     """
 
     def __init__(self) -> None:
-        self._chunks: List[str] = []
+        self._chunks: list[str] = []
 
     def variables(
         self,
@@ -106,7 +106,7 @@ class StyleSheet:
         """Return the full CSS document."""
         return "\n\n".join(self._chunks)
 
-    def write(self, path: Union[str, Path]) -> Path:
+    def write(self, path: str | Path) -> Path:
         """Write CSS to ``style.css`` (or any path) and return the resolved path."""
         target = Path(path)
         target.parent.mkdir(parents=True, exist_ok=True)

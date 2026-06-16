@@ -1,6 +1,5 @@
-from trunco.daisy import Badge
-
 from docs.src.components import Callout, CodePanel, DocArticle, NextSteps, Section, paragraph
+from trunco.daisy import Badge
 
 
 def build():

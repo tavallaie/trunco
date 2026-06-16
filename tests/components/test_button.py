@@ -1,4 +1,5 @@
 import unittest
+
 from trunco.components.button import ButtonComponent
 from trunco.enums import Attribute
 
@@ -13,7 +14,10 @@ class TestButtonComponent(unittest.TestCase):
 
     def test_button_render(self):
         button = ButtonComponent(label="Click Me", on_click="alert('clicked')")
-        expected_html = f'<button id="{button.id}" type="button" x-on:click="alert(\'clicked\')">Click Me</button>'
+        expected_html = (
+            f'<button id="{button.id}" type="button" '
+            f"x-on:click=\"alert('clicked')\">Click Me</button>"
+        )
         self.assertEqual(button.render(), expected_html)
 
     def test_button_render_with_context(self):

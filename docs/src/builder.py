@@ -1,6 +1,6 @@
 import shutil
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable, Dict
 
 from .layout import doc_page
 
@@ -10,7 +10,7 @@ class SiteBuilder:
 
     def __init__(self, output_dir: Path):
         self.output_dir = output_dir
-        self.pages: Dict[str, Dict] = {}
+        self.pages: dict[str, dict] = {}
 
     def add_page(
         self,

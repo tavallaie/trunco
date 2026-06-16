@@ -1,3 +1,5 @@
+from trunco.kits.scheme import PaletteScheme
+
 from .assets import (
     chart_css_tag,
     chart_script_tag,
@@ -42,7 +44,6 @@ from .theme import (
     set_theme,
     theme,
 )
-from trunco.kits.scheme import PaletteScheme
 from .ui import (
     ZbuildAccordion,
     ZbuildAccordionGroup,

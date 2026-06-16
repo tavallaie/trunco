@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass, field
-from typing import Dict, Iterable, List, Optional
 
 
 def _slug(name: str) -> str:
@@ -22,8 +22,8 @@ def _normalize_var_name(key: str, *, prefix: str) -> str:
     return f"--{prefix}-{normalized}"
 
 
-def _format_declarations(variables: Dict[str, str], color_scheme: Optional[str] = None) -> str:
-    lines: List[str] = []
+def _format_declarations(variables: dict[str, str], color_scheme: str | None = None) -> str:
+    lines: list[str] = []
     if color_scheme is not None:
         lines.append(f"  color-scheme: {color_scheme};")
     for name in sorted(variables):
@@ -36,18 +36,18 @@ class ColorScheme:
     """User-defined color tokens, similar to daisyUI ``@plugin \"daisyui/theme\"``."""
 
     name: str
-    colors: Dict[str, str] = field(default_factory=dict)
+    colors: dict[str, str] = field(default_factory=dict)
     color_scheme: str = "light"
     default: bool = False
     prefers_dark: bool = False
-    extends: Optional[str] = None
-    tokens: Dict[str, str] = field(default_factory=dict)
+    extends: str | None = None
+    tokens: dict[str, str] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         self.name = _slug(self.name)
 
-    def variables(self, *, prefix: str = "color") -> Dict[str, str]:
-        variables: Dict[str, str] = {}
+    def variables(self, *, prefix: str = "color") -> dict[str, str]:
+        variables: dict[str, str] = {}
         for key, value in self.colors.items():
             variables[_normalize_var_name(key, prefix=prefix)] = value
         for key, value in self.tokens.items():
@@ -85,15 +85,15 @@ class PaletteScheme:
     """User-defined 0build palette with optional light/dark token sets."""
 
     name: str
-    light: Dict[str, str] = field(default_factory=dict)
-    dark: Dict[str, str] = field(default_factory=dict)
-    layout: Optional[str] = None
+    light: dict[str, str] = field(default_factory=dict)
+    dark: dict[str, str] = field(default_factory=dict)
+    layout: str | None = None
 
     def __post_init__(self) -> None:
         self.name = _slug(self.name)
 
-    def _z_variables(self, mapping: Dict[str, str]) -> Dict[str, str]:
-        variables: Dict[str, str] = {}
+    def _z_variables(self, mapping: dict[str, str]) -> dict[str, str]:
+        variables: dict[str, str] = {}
         for key, value in mapping.items():
             normalized = key.strip().replace("_", "-")
             if normalized.startswith("--"):
@@ -105,7 +105,7 @@ class PaletteScheme:
         return variables
 
     def to_zbuild_css(self) -> str:
-        blocks: List[str] = []
+        blocks: list[str] = []
         if self.light:
             declarations = _format_declarations(self._z_variables(self.light))
             blocks.append(f".z-theme-{self.name} {{\n{declarations}\n}}")
@@ -125,7 +125,7 @@ class SchemeRegistry:
     """In-memory registry for custom color schemes."""
 
     def __init__(self) -> None:
-        self._schemes: Dict[str, ColorScheme] = {}
+        self._schemes: dict[str, ColorScheme] = {}
 
     def register(self, scheme: ColorScheme) -> ColorScheme:
         self._schemes[scheme.name] = scheme
@@ -134,10 +134,10 @@ class SchemeRegistry:
     def register_colors(
         self,
         name: str,
-        colors: Optional[Dict[str, str]] = None,
+        colors: dict[str, str] | None = None,
         *,
         color_scheme: str = "light",
-        extends: Optional[str] = None,
+        extends: str | None = None,
         **tokens: str,
     ) -> ColorScheme:
         scheme = ColorScheme(
@@ -149,13 +149,13 @@ class SchemeRegistry:
         )
         return self.register(scheme)
 
-    def get(self, name: str) -> Optional[ColorScheme]:
+    def get(self, name: str) -> ColorScheme | None:
         return self._schemes.get(_slug(name))
 
     def has(self, name: str) -> bool:
         return _slug(name) in self._schemes
 
-    def names(self) -> List[str]:
+    def names(self) -> list[str]:
         return sorted(self._schemes)
 
     def css(self) -> str:
@@ -172,7 +172,7 @@ class PaletteRegistry:
     """In-memory registry for custom 0build palettes."""
 
     def __init__(self) -> None:
-        self._palettes: Dict[str, PaletteScheme] = {}
+        self._palettes: dict[str, PaletteScheme] = {}
 
     def register(self, palette: PaletteScheme) -> PaletteScheme:
         self._palettes[palette.name] = palette
@@ -182,8 +182,8 @@ class PaletteRegistry:
         self,
         name: str,
         *,
-        light: Optional[Dict[str, str]] = None,
-        dark: Optional[Dict[str, str]] = None,
+        light: dict[str, str] | None = None,
+        dark: dict[str, str] | None = None,
         **light_tokens: str,
     ) -> PaletteScheme:
         palette = PaletteScheme(
@@ -193,13 +193,13 @@ class PaletteRegistry:
         )
         return self.register(palette)
 
-    def get(self, name: str) -> Optional[PaletteScheme]:
+    def get(self, name: str) -> PaletteScheme | None:
         return self._palettes.get(_slug(name))
 
     def has(self, name: str) -> bool:
         return _slug(name) in self._palettes
 
-    def names(self) -> List[str]:
+    def names(self) -> list[str]:
         return sorted(self._palettes)
 
     def css(self) -> str:
@@ -220,8 +220,8 @@ def merge_enabled(
     built_in: Iterable[str],
     custom: Iterable[str],
     *,
-    enabled: Optional[Iterable[str]] = None,
-) -> List[str]:
+    enabled: Iterable[str] | None = None,
+) -> list[str]:
     """Merge built-in and custom theme names, optionally filtering enabled set."""
     names = list(dict.fromkeys([*built_in, *custom]))
     if enabled is None:

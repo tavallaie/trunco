@@ -1,5 +1,6 @@
 import unittest
 
+from trunco.components.table import TableCellComponent, TableRowComponent
 from trunco.daisy import DaisyButton
 from trunco.daisy.ui import (
     DaisyAccordion,
@@ -23,7 +24,6 @@ from trunco.daisy.ui import (
     DaisyTabs,
     DaisyTooltip,
 )
-from trunco.components.table import TableCellComponent, TableRowComponent
 
 
 class TestDaisyUI(unittest.TestCase):

@@ -1,5 +1,3 @@
-from typing import Optional, Union
-
 from trunco.base import Component
 
 
@@ -18,9 +16,9 @@ class ZbuildCard(Component):
 
     def __init__(
         self,
-        title: Optional[str] = None,
-        body: Optional[Union[str, Component]] = None,
-        badge: Optional[str] = None,
+        title: str | None = None,
+        body: str | Component | None = None,
+        badge: str | None = None,
         style: str = "default",
         **kwargs,
     ):

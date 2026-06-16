@@ -1,4 +1,5 @@
 import unittest
+
 from trunco.components.image import ImageComponent
 from trunco.enums import Attribute
 

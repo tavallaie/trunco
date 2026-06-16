@@ -1,5 +1,3 @@
-from typing import Optional
-
 from trunco.components.input import InputComponent
 
 
@@ -13,7 +11,7 @@ class ZbuildInput(InputComponent):
         input_type: str = "text",
         placeholder: str = "",
         value: str = "",
-        size: Optional[str] = None,
+        size: str | None = None,
         **kwargs,
     ):
         super().__init__(

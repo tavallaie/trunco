@@ -1,5 +1,6 @@
-from trunco.base import Component
 from dataclasses import dataclass
+
+from trunco.base import Component
 
 
 @dataclass

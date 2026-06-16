@@ -1,5 +1,3 @@
-from typing import Optional
-
 from trunco.components.input import InputComponent
 from trunco.kits.color import resolve_color
 
@@ -15,9 +13,9 @@ class DaisyInput(InputComponent):
         input_type: str = "text",
         placeholder: str = "",
         value: str = "",
-        color: Optional[str] = None,
+        color: str | None = None,
         variant: str = "bordered",
-        size: Optional[str] = None,
+        size: str | None = None,
         **kwargs,
     ):
         super().__init__(

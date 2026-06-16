@@ -1,4 +1,5 @@
 import unittest
+
 from trunco.components.code import CodeComponent
 
 

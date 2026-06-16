@@ -6,11 +6,9 @@ Use ``display-flex`` / ``flex-row`` / ``flex-col`` with inline ``gap`` styles.
 
 from __future__ import annotations
 
-from typing import List, Optional, Union
-
 from trunco.base import Component
 
-GapValue = Union[str, int, None]
+GapValue = str | int | None
 
 _GAP_REM = {
     "none": None,
@@ -23,7 +21,7 @@ _GAP_REM = {
 }
 
 
-def resolve_gap(gap: GapValue) -> Optional[str]:
+def resolve_gap(gap: GapValue) -> str | None:
     """Resolve a gap token to a CSS length for inline ``gap`` styles."""
     if gap is None:
         return None
@@ -47,7 +45,7 @@ def apply_gap(component: Component, gap: GapValue) -> None:
         component.add_style("gap", value)
 
 
-def layout_classes(direction: str) -> List[str]:
+def layout_classes(direction: str) -> list[str]:
     """Return kit flex classes for vertical or horizontal stacks."""
     if direction == "horizontal":
         return ["display-flex", "flex-row", "flex-wrap", "items-center", "justify-center"]

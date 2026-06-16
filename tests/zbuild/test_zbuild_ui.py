@@ -1,5 +1,6 @@
 import unittest
 
+from trunco.components.table import TableCellComponent, TableRowComponent
 from trunco.zbuild import ZbuildButton
 from trunco.zbuild.ui import (
     ZbuildAccordion,
@@ -18,7 +19,6 @@ from trunco.zbuild.ui import (
     ZbuildTable,
     ZbuildTooltip,
 )
-from trunco.components.table import TableCellComponent, TableRowComponent
 
 
 class TestZbuildUI(unittest.TestCase):

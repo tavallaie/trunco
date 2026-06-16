@@ -1,8 +1,7 @@
-from trunco.base import Component
-from trunco.daisy import Table
-from trunco.components.table import TableCellComponent, TableRowComponent
-
 from docs.src.components import CodePanel, DocArticle, Section, paragraph
+from trunco.base import Component
+from trunco.components.table import TableCellComponent, TableRowComponent
+from trunco.daisy import Table
 
 
 def build():

@@ -1,8 +1,11 @@
 import unittest
 import warnings
 
-from trunco.daisy import Button as DaisyBtn, Card, Input
-from trunco.zbuild import Button as ZBtn, Card as ZCard, Input as ZInput
+from trunco.daisy import Button as DaisyBtn
+from trunco.daisy import Card, Input
+from trunco.zbuild import Button as ZBtn
+from trunco.zbuild import Card as ZCard
+from trunco.zbuild import Input as ZInput
 from trunco.zbuild import kit_css_tag, zuikit_script_tag
 
 

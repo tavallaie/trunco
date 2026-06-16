@@ -1,5 +1,3 @@
-from typing import Union
-
 from trunco.base import Component
 from trunco.enums import Attribute
 from trunco.spacing import gap_classes, join_classes
@@ -14,7 +12,7 @@ class CheckboxComponent(Component):
         self,
         label: str = "{label}",
         checked: bool = False,
-        gap: Union[str, int] = "sm",
+        gap: str | int = "sm",
         **kwargs,
     ):
         super().__init__(tag="input", **kwargs)

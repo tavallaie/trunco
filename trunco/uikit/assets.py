@@ -2,7 +2,8 @@
 
 import warnings
 
-from trunco.zbuild.assets import ZUIKIT_JS_URL, zuikit_script_tag as _zuikit_script_tag
+from trunco.zbuild.assets import ZUIKIT_JS_URL
+from trunco.zbuild.assets import zuikit_script_tag as _zuikit_script_tag
 
 # Legacy npm UIKit 3 URLs (pre-0build migration).
 UIKIT_CSS_URL = "https://cdn.jsdelivr.net/npm/uikit@3/dist/css/uikit.min.css"

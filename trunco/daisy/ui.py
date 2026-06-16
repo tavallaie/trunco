@@ -1,10 +1,8 @@
-from typing import List, Optional, Union
-
 from trunco.base import Component
-from trunco.kits.color import resolve_color
 from trunco.components.link import LinkComponent
-from trunco.components.table import TableCellComponent, TableComponent, TableRowComponent
+from trunco.components.table import TableComponent, TableRowComponent
 from trunco.enums import Attribute
+from trunco.kits.color import resolve_color
 
 
 class DaisyLink(LinkComponent):
@@ -26,7 +24,7 @@ class DaisyLink(LinkComponent):
         href: str,
         text: str = "{text}",
         target: str = "_self",
-        color: Optional[str] = None,
+        color: str | None = None,
         variant: str = "primary",
         **kwargs,
     ):
@@ -40,7 +38,7 @@ class DaisyLink(LinkComponent):
 class DaisyDivider(Component):
     """DaisyUI divider — use ``horizontal=False`` for a vertical rule in flex rows."""
 
-    def __init__(self, text: Optional[str] = None, horizontal: bool = True, **kwargs):
+    def __init__(self, text: str | None = None, horizontal: bool = True, **kwargs):
         super().__init__(tag="div", **kwargs)
         self.add_class("divider")
         if not horizontal:
@@ -69,9 +67,9 @@ class DaisyBadge(Component):
     def __init__(
         self,
         text: str,
-        color: Optional[str] = None,
+        color: str | None = None,
         variant: str = "primary",
-        size: Optional[str] = None,
+        size: str | None = None,
         outline: bool = False,
         **kwargs,
     ):
@@ -95,9 +93,9 @@ class DaisyAlert(Component):
     def __init__(
         self,
         message: str,
-        color: Optional[str] = None,
+        color: str | None = None,
         variant: str = "info",
-        title: Optional[str] = None,
+        title: str | None = None,
         **kwargs,
     ):
         super().__init__(tag="div", **kwargs)
@@ -133,7 +131,7 @@ class DaisyProgress(Component):
         self,
         value: int = 0,
         max_value: int = 100,
-        color: Optional[str] = None,
+        color: str | None = None,
         variant: str = "primary",
         **kwargs,
     ):
@@ -180,7 +178,7 @@ class DaisyAvatar(Component):
 class DaisyBreadcrumbs(Component):
     """DaisyUI breadcrumbs navigation."""
 
-    def __init__(self, items: List[Union[str, DaisyLink]], **kwargs):
+    def __init__(self, items: list[str | DaisyLink], **kwargs):
         super().__init__(tag="div", **kwargs)
         self.add_class("breadcrumbs")
         list_el = Component(tag="ul")
@@ -201,10 +199,10 @@ class DaisyTable(TableComponent):
 
     def __init__(
         self,
-        headers: Optional[List[str]] = None,
-        rows: Optional[List[TableRowComponent]] = None,
+        headers: list[str] | None = None,
+        rows: list[TableRowComponent] | None = None,
         zebra: bool = False,
-        size: Optional[str] = None,
+        size: str | None = None,
         **kwargs,
     ):
         super().__init__(headers=headers, rows=rows, **kwargs)
@@ -262,8 +260,8 @@ class DaisyModal(Component):
         self,
         modal_id: str,
         title: str,
-        body: Union[str, Component],
-        actions: Optional[List[Component]] = None,
+        body: str | Component,
+        actions: list[Component] | None = None,
         **kwargs,
     ):
         super().__init__(tag="dialog", **kwargs)
@@ -308,9 +306,9 @@ class DaisyNavbar(Component):
 
     def __init__(
         self,
-        start: Optional[List[Union[Component, str]]] = None,
-        center: Optional[List[Union[Component, str]]] = None,
-        end: Optional[List[Union[Component, str]]] = None,
+        start: list[Component | str] | None = None,
+        center: list[Component | str] | None = None,
+        end: list[Component | str] | None = None,
         **kwargs,
     ):
         super().__init__(tag="div", **kwargs)
@@ -337,8 +335,8 @@ class DaisyTabs(Component):
 
     def __init__(
         self,
-        tabs: List[tuple],
-        style: Optional[str] = None,
+        tabs: list[tuple],
+        style: str | None = None,
         **kwargs,
     ):
         super().__init__(tag="div", **kwargs)
@@ -359,7 +357,7 @@ class DaisyTabs(Component):
 class DaisyMenu(Component):
     """DaisyUI vertical menu."""
 
-    def __init__(self, items: List[Union[str, DaisyLink, Component]], **kwargs):
+    def __init__(self, items: list[str | DaisyLink | Component], **kwargs):
         super().__init__(tag="ul", **kwargs)
         self.add_class("menu")
         self.add_class("bg-base-200")
@@ -374,7 +372,7 @@ class DaisyMenu(Component):
 class DaisyList(Component):
     """DaisyUI list."""
 
-    def __init__(self, items: List[str], **kwargs):
+    def __init__(self, items: list[str], **kwargs):
         super().__init__(tag="ul", **kwargs)
         self.add_class("list")
         self.add_class("bg-base-100")
@@ -395,8 +393,8 @@ class DaisyHero(Component):
     def __init__(
         self,
         title: str,
-        subtitle: Optional[str] = None,
-        actions: Optional[List[Component]] = None,
+        subtitle: str | None = None,
+        actions: list[Component] | None = None,
         **kwargs,
     ):
         super().__init__(tag="div", **kwargs)
@@ -437,7 +435,7 @@ class DaisyStat(Component):
         self,
         title: str,
         value: str,
-        description: Optional[str] = None,
+        description: str | None = None,
         **kwargs,
     ):
         super().__init__(tag="div", **kwargs)
@@ -468,7 +466,7 @@ class DaisyStat(Component):
 class DaisyPagination(Component):
     """DaisyUI pagination using join."""
 
-    def __init__(self, pages: List[Union[str, int]], active: Optional[int] = None, **kwargs):
+    def __init__(self, pages: list[str | int], active: int | None = None, **kwargs):
         super().__init__(tag="div", **kwargs)
         self.add_class("join")
         for page in pages:
@@ -487,9 +485,9 @@ class DaisyAccordion(Component):
     def __init__(
         self,
         title: str,
-        content: Union[str, Component],
+        content: str | Component,
         open: bool = False,
-        radio_name: Optional[str] = None,
+        radio_name: str | None = None,
         **kwargs,
     ):
         super().__init__(tag="div", **kwargs)
@@ -527,7 +525,7 @@ class DaisyDropdown(Component):
     def __init__(
         self,
         trigger: Component,
-        items: List[Union[str, DaisyLink]],
+        items: list[str | DaisyLink],
         align: str = "end",
         **kwargs,
     ):

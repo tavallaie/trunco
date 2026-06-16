@@ -1,7 +1,4 @@
-from typing import List, Optional, Union
-
 from trunco.base import Component
-from trunco.spacing import gap_classes, join_classes, stack_classes
 from trunco.components.checkbox import CheckboxComponent
 from trunco.components.form import FormComponent
 from trunco.components.input import InputComponent
@@ -11,6 +8,7 @@ from trunco.components.select import OptionComponent, SelectComponent
 from trunco.components.slider import SliderComponent
 from trunco.components.textarea import TextAreaComponent
 from trunco.enums import Attribute, Method
+from trunco.spacing import gap_classes, join_classes, stack_classes
 
 
 class DaisyForm(FormComponent):
@@ -20,7 +18,7 @@ class DaisyForm(FormComponent):
         self,
         action: str = "",
         method: Method = Method.POST,
-        gap: Union[str, int] = "md",
+        gap: str | int = "md",
         **kwargs,
     ):
         super().__init__(action=action, method=method, **kwargs)
@@ -35,11 +33,11 @@ class DaisyFormControl(Component):
 
     def __init__(
         self,
-        label: Optional[str] = None,
-        field: Optional[Component] = None,
-        help_text: Optional[str] = None,
+        label: str | None = None,
+        field: Component | None = None,
+        help_text: str | None = None,
         required: bool = False,
-        gap: Union[str, int] = "sm",
+        gap: str | int = "sm",
         **kwargs,
     ):
         super().__init__(tag="label", **kwargs)
@@ -85,7 +83,7 @@ class DaisyTextarea(TextAreaComponent):
         cols: int = 50,
         placeholder: str = "",
         variant: str = "bordered",
-        size: Optional[str] = None,
+        size: str | None = None,
         **kwargs,
     ):
         super().__init__(rows=rows, cols=cols, placeholder=placeholder, **kwargs)
@@ -108,9 +106,9 @@ class DaisySelect(SelectComponent):
 
     def __init__(
         self,
-        options: Optional[List[DaisyOption]] = None,
+        options: list[DaisyOption] | None = None,
         variant: str = "bordered",
-        size: Optional[str] = None,
+        size: str | None = None,
         **kwargs,
     ):
         super().__init__(options=options, **kwargs)
@@ -140,7 +138,7 @@ class DaisyCheckbox(CheckboxComponent):
         label: str = "{label}",
         checked: bool = False,
         variant: str = "primary",
-        gap: Union[str, int] = "sm",
+        gap: str | int = "sm",
         **kwargs,
     ):
         super().__init__(label=label, checked=checked, gap=gap, **kwargs)
@@ -187,7 +185,7 @@ class DaisyRadio(RadioComponent):
         label: str = "{label}",
         checked: bool = False,
         variant: str = "primary",
-        gap: Union[str, int] = "sm",
+        gap: str | int = "sm",
         **kwargs,
     ):
         super().__init__(
@@ -226,8 +224,8 @@ class DaisyRadioGroup(RadioGroupComponent):
     def __init__(
         self,
         name: str,
-        options: Optional[List[DaisyRadio]] = None,
-        gap: Union[str, int] = "md",
+        options: list[DaisyRadio] | None = None,
+        gap: str | int = "md",
         direction: str = "vertical",
         **kwargs,
     ):
@@ -266,7 +264,7 @@ class DaisyRange(SliderComponent):
         min_value: int = 0,
         max_value: int = 100,
         step: int = 1,
-        value: Optional[int] = None,
+        value: int | None = None,
         variant: str = "primary",
         **kwargs,
     ):
@@ -299,11 +297,11 @@ class DaisyToggle(InputComponent):
 
     def __init__(
         self,
-        label: Optional[str] = None,
+        label: str | None = None,
         checked: bool = False,
         variant: str = "primary",
-        size: Optional[str] = None,
-        gap: Union[str, int] = "sm",
+        size: str | None = None,
+        gap: str | int = "sm",
         **kwargs,
     ):
         super().__init__(input_type="checkbox", **kwargs)
@@ -344,7 +342,7 @@ class DaisyFileInput(InputComponent):
     def __init__(
         self,
         variant: str = "bordered",
-        size: Optional[str] = None,
+        size: str | None = None,
         **kwargs,
     ):
         super().__init__(input_type="file", **kwargs)
@@ -360,8 +358,8 @@ class DaisyFieldset(Component):
 
     def __init__(
         self,
-        legend: Optional[str] = None,
-        children: Optional[List[Union[Component, str]]] = None,
+        legend: str | None = None,
+        children: list[Component | str] | None = None,
         **kwargs,
     ):
         super().__init__(tag="fieldset", **kwargs)

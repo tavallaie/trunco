@@ -1,13 +1,11 @@
 from html import escape
-from typing import List, Optional, Tuple, Union
-
-from trunco.alpine.enums import Directive
-from trunco.base import Component
-from trunco.daisy import Badge, Link, Table
-from trunco.components.table import TableCellComponent, TableRowComponent
 
 from docs.src.catalog import CATALOG, CatalogEntry
 from docs.src.highlight import highlight_code
+from trunco.alpine.enums import Directive
+from trunco.base import Component
+from trunco.components.table import TableCellComponent, TableRowComponent
+from trunco.daisy import Badge, Link, Table
 
 
 def paragraph(text: str) -> Component:
@@ -20,7 +18,7 @@ def _slug(text: str) -> str:
     return text.lower().replace(" ", "-")
 
 
-def htmx_link(href: str, label: str, *, extra_classes: Optional[List[str]] = None) -> Component:
+def htmx_link(href: str, label: str, *, extra_classes: list[str] | None = None) -> Component:
     link = Component(tag="a")
     link.add_attribute("href", href)
     link.add_child(label)
@@ -67,7 +65,7 @@ class CodePanel(Component):
         self,
         code: str,
         language: str = "python",
-        filename: Optional[str] = None,
+        filename: str | None = None,
     ):
         super().__init__(tag="div")
         self.add_class("code-panel")
@@ -88,7 +86,7 @@ class CodePanel(Component):
 
 
 class Breadcrumb(Component):
-    def __init__(self, crumbs: List[Tuple[str, Optional[str]]]):
+    def __init__(self, crumbs: list[tuple[str, str | None]]):
         super().__init__(tag="nav")
         self.add_class("doc-breadcrumb")
         self.add_attribute("aria-label", "Breadcrumb")
@@ -114,7 +112,7 @@ class Breadcrumb(Component):
 
 
 class Toc(Component):
-    def __init__(self, items: List[Tuple[str, str]]):
+    def __init__(self, items: list[tuple[str, str]]):
         super().__init__(tag="aside")
         self.add_class("doc-toc")
         self.add_attribute("aria-label", "Table of contents")
@@ -142,11 +140,11 @@ class DocArticle(Component):
     def __init__(
         self,
         title: str,
-        *blocks: Union[Component, str],
-        lead: Optional[str] = None,
-        breadcrumb: Optional[List[Tuple[str, Optional[str]]]] = None,
-        toc: Optional[List[Tuple[str, str]]] = None,
-        header_extra: Optional[Component] = None,
+        *blocks: Component | str,
+        lead: str | None = None,
+        breadcrumb: list[tuple[str, str | None]] | None = None,
+        toc: list[tuple[str, str]] | None = None,
+        header_extra: Component | None = None,
     ):
         super().__init__(tag="div")
         self.add_class("doc-page")
@@ -190,7 +188,7 @@ class DocArticle(Component):
 class DocLanding(Component):
     """Home / landing layout without breadcrumb."""
 
-    def __init__(self, *blocks: Union[Component, str]):
+    def __init__(self, *blocks: Component | str):
         super().__init__(tag="div")
         self.add_class("doc-landing")
         stack = Component(tag="div")
@@ -204,9 +202,9 @@ class Section(Component):
     def __init__(
         self,
         title: str,
-        *blocks: Union[Component, str],
-        anchor: Optional[str] = None,
-        badge: Optional[Component] = None,
+        *blocks: Component | str,
+        anchor: str | None = None,
+        badge: Component | None = None,
     ):
         super().__init__(tag="section")
         self.add_class("doc-section")
@@ -231,7 +229,7 @@ class Callout(Component):
 
 
 class NextSteps(Component):
-    def __init__(self, links: List[Tuple[str, str, str]]):
+    def __init__(self, links: list[tuple[str, str, str]]):
         """links: (direction, title, href)"""
         super().__init__(tag="nav")
         self.add_class("doc-next-steps")
@@ -281,8 +279,8 @@ class PairHeader(Component):
         title: str,
         description: str,
         *,
-        anchor: Optional[str] = None,
-        badge: Optional[Component] = None,
+        anchor: str | None = None,
+        badge: Component | None = None,
     ):
         super().__init__(tag="div")
         self.add_class("doc-pair-header")
@@ -422,7 +420,7 @@ def _showcase_code(
     code: str,
     filename: str,
     *,
-    code_min_height: Optional[str] = None,
+    code_min_height: str | None = None,
 ) -> Component:
     body = Component(tag="div")
     body.add_class("showcase-code")
@@ -501,8 +499,8 @@ def _kit_tab_panel(
     overlay: bool = False,
     full_width: bool = False,
     portal_html: str = "",
-    code_min_height: Optional[str] = None,
-) -> Tuple[Component, Component]:
+    code_min_height: str | None = None,
+) -> tuple[Component, Component]:
     radio = Component(tag="input")
     radio.add_attribute("type", "radio")
     radio.add_attribute("name", name)
@@ -567,9 +565,7 @@ def _single_kit_panel(
 class CatalogShowcase(Component):
     """Radio-tabbed kit demo — preview + code switch together."""
 
-    def __init__(
-        self, entry: CatalogEntry, *, tab_name: Optional[str] = None, in_grid: bool = True
-    ):
+    def __init__(self, entry: CatalogEntry, *, tab_name: str | None = None, in_grid: bool = True):
         demo = entry.demo()
         super().__init__(tag="article")
         self.add_class("showcase-card")
@@ -790,7 +786,7 @@ class HomeButtonDemo(Component):
 
 
 class AvailabilityTable(Component):
-    def __init__(self, entries: Optional[List[CatalogEntry]] = None):
+    def __init__(self, entries: list[CatalogEntry] | None = None):
         super().__init__(tag="div")
         self.add_class("overflow-x-auto")
         self.add_class("rounded-lg")
@@ -862,7 +858,7 @@ class ShowcaseGrid(Component):
 
 
 class FeatureGrid(Component):
-    def __init__(self, items: List[Tuple[str, str, str]]):
+    def __init__(self, items: list[tuple[str, str, str]]):
         """(badge_label, title, body)"""
         super().__init__(tag="div")
         self.add_class("feature-grid")
@@ -892,7 +888,7 @@ class FeatureGrid(Component):
 
 
 class StatRow(Component):
-    def __init__(self, stats: List[Tuple[str, str, str]]):
+    def __init__(self, stats: list[tuple[str, str, str]]):
         super().__init__(tag="div")
         self.add_class("stats")
         self.add_class("stats-vertical")
@@ -921,7 +917,7 @@ class StatRow(Component):
 
 
 class LinkList(Component):
-    def __init__(self, items: List[tuple]):
+    def __init__(self, items: list[tuple]):
         super().__init__(tag="ul")
         self.add_class("menu")
         self.add_class("bg-base-100")

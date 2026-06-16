@@ -1,6 +1,6 @@
-from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple, Union
 import uuid
+from dataclasses import dataclass, field
+from typing import Union
 
 from .enums import Attribute
 
@@ -28,16 +28,16 @@ VOID_TAGS = frozenset(
 class Component:
     tag: str = "div"
     id: str = field(default_factory=lambda: uuid.uuid4().hex)
-    css_classes: List[str] = field(default_factory=list)
-    styles: Dict[str, str] = field(default_factory=dict)
-    children: List[Union["Component", str]] = field(default_factory=list)
-    directives: Dict[str, str] = field(default_factory=dict)
-    attributes: Dict[Union[Attribute, str], str] = field(default_factory=dict)
-    triggers: List[str] = field(default_factory=list)
-    custom_scripts: List[str] = field(default_factory=list)
-    hx_methods: Optional[Tuple[str, str]] = None
-    swap: Optional[str] = None
-    trigger: Optional[str] = None
+    css_classes: list[str] = field(default_factory=list)
+    styles: dict[str, str] = field(default_factory=dict)
+    children: list[Union["Component", str]] = field(default_factory=list)
+    directives: dict[str, str] = field(default_factory=dict)
+    attributes: dict[Attribute | str, str] = field(default_factory=dict)
+    triggers: list[str] = field(default_factory=list)
+    custom_scripts: list[str] = field(default_factory=list)
+    hx_methods: tuple[str, str] | None = None
+    swap: str | None = None
+    trigger: str | None = None
 
     def __post_init__(self):
         if self.hx_methods:
@@ -64,12 +64,12 @@ class Component:
         """Adds a CSS style to this component."""
         self.styles[property_name] = value
 
-    def add_directive(self, directive: Union[str, object], expression: str):
+    def add_directive(self, directive: str | object, expression: str):
         """Adds a directive attribute (e.g. Alpine.js x-on:click) to this component."""
         key = directive.value if hasattr(directive, "value") else str(directive)
         self.directives[key] = expression
 
-    def add_attribute(self, attribute: Union[Attribute, str], value: str):
+    def add_attribute(self, attribute: Attribute | str, value: str):
         """Adds a custom HTML attribute to this component."""
         if not isinstance(attribute, (Attribute, str)):
             raise ValueError(
@@ -77,7 +77,7 @@ class Component:
             )
         self.attributes[attribute] = value
 
-    def add_trigger(self, trigger: Union[str, object]):
+    def add_trigger(self, trigger: str | object):
         """Adds an HTMX event trigger to this component."""
         value = trigger.value if hasattr(trigger, "value") else str(trigger)
         self.triggers.append(value)
@@ -88,7 +88,7 @@ class Component:
 
     def render(
         self,
-        context: Optional[Dict[str, Union[str, int, float, bool, list, dict]]] = None,
+        context: dict[str, str | int | float | bool | list | dict] | None = None,
     ) -> str:
         """Renders the component as an HTML string, substituting context variables."""
         if context:

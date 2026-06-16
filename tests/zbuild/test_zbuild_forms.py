@@ -1,5 +1,6 @@
 import unittest
 
+from trunco.enums import Method
 from trunco.zbuild.forms import (
     ZbuildCheckbox,
     ZbuildFieldset,
@@ -14,7 +15,6 @@ from trunco.zbuild.forms import (
     ZbuildTextarea,
     ZbuildToggleSwitch,
 )
-from trunco.enums import Method
 
 
 class TestZbuildForms(unittest.TestCase):

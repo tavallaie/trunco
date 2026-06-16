@@ -1,4 +1,5 @@
 import unittest
+
 from trunco.components.input import InputComponent
 from trunco.enums import Attribute
 
@@ -17,7 +18,10 @@ class TestInputComponent(unittest.TestCase):
         input_component = InputComponent(
             input_type="email", placeholder="Enter email", value="user@example.com"
         )
-        expected_html = f'<input id="{input_component.id}" type="email" placeholder="Enter email" value="user@example.com">'
+        expected_html = (
+            f'<input id="{input_component.id}" type="email" '
+            f'placeholder="Enter email" value="user@example.com">'
+        )
         self.assertEqual(str(input_component), expected_html)
 
     def test_input_render_without_value(self):

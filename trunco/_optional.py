@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import os
-from typing import FrozenSet
 
 _EXTRA_ALIASES = {
     "alpine": "alpine",
@@ -17,7 +16,7 @@ _EXTRA_ALIASES = {
     "all": "all",
 }
 
-_KIT_REQUIRES: dict[str, FrozenSet[str]] = {
+_KIT_REQUIRES: dict[str, frozenset[str]] = {
     "daisy": frozenset({"alpine"}),
     "zbuild": frozenset({"uikit"}),
     "franken": frozenset({"zbuild", "uikit"}),
@@ -31,7 +30,7 @@ def _normalize_extra(name: str) -> str:
     return normalized
 
 
-def _enabled_extras() -> FrozenSet[str]:
+def _enabled_extras() -> frozenset[str]:
     configured = os.environ.get("TRUNCO_EXTRAS", "")
     if not configured:
         return frozenset()

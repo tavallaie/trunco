@@ -1,6 +1,3 @@
-from trunco.base import Component
-from trunco.daisy import Alert, Button
-
 from docs.src.components import (
     CodePanel,
     DocLanding,
@@ -11,6 +8,8 @@ from docs.src.components import (
     StatRow,
     htmx_link,
 )
+from trunco.base import Component
+from trunco.daisy import Alert, Button
 
 
 def build():
@@ -36,7 +35,10 @@ def build():
     return DocLanding(
         HeroHome(
             'Build the web<br><span class="text-primary">in Python</span>',
-            "Trunco is a component framework for Python backends. Swap UI kits with one import — ship HTML from composable objects.",
+            (
+                "Trunco is a component framework for Python backends. "
+                "Swap UI kits with one import — ship HTML from composable objects."
+            ),
             "Python · DaisyUI · 0build",
             actions,
         ),

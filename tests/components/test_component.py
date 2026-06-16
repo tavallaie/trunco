@@ -1,6 +1,7 @@
 import unittest
-from trunco.base import Component
+
 from trunco import Directive, Trigger
+from trunco.base import Component
 from trunco.enums import Attribute
 
 

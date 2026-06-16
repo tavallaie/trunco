@@ -1,5 +1,3 @@
-from typing import Optional, Union
-
 from trunco.base import Component
 from trunco.enums import Attribute
 
@@ -12,7 +10,7 @@ class ButtonComponent(Component):
     def __init__(
         self,
         label: str = "{label}",
-        on_click: Optional[str] = None,
+        on_click: str | None = None,
         **kwargs,
     ):
         super().__init__(tag="button", **kwargs)
@@ -21,6 +19,6 @@ class ButtonComponent(Component):
         if on_click:
             self.add_directive("x-on:click", on_click)
 
-    def add_alpine_directive(self, directive: Union[str, object], expression: str):
+    def add_alpine_directive(self, directive: str | object, expression: str):
         """Add an Alpine.js directive with typed helpers."""
         self.add_directive(directive, expression)

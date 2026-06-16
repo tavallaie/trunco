@@ -1,11 +1,8 @@
-from typing import Optional
-
-
 def resolve_color(
-    color: Optional[str] = None,
-    variant: Optional[str] = None,
-    default: Optional[str] = None,
-) -> Optional[str]:
+    color: str | None = None,
+    variant: str | None = None,
+    default: str | None = None,
+) -> str | None:
     """Resolve unified ``color`` API over kit-specific ``variant``/``style`` names."""
     if color is not None:
         return color

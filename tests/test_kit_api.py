@@ -14,7 +14,7 @@ class TestShortImports(unittest.TestCase):
         self.assertIs(daisy.FormControl, FormControl)
 
     def test_zbuild_short_names(self):
-        from trunco.zbuild import Alert, Form, FormControl, Input
+        from trunco.zbuild import Form, FormControl
 
         self.assertIs(zbuild.Form, Form)
         self.assertIs(zbuild.FormControl, FormControl)

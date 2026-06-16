@@ -2,8 +2,8 @@
 
 from trunco.components.button import ButtonComponent
 from trunco.components.form import FormComponent
-from trunco.components.input import InputComponent
 from trunco.components.heading import HeadingComponent
+from trunco.components.input import InputComponent
 from trunco.enums import Method
 
 

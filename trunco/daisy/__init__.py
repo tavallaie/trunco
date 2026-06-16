@@ -1,4 +1,5 @@
 from trunco.alpine import alpine_script_tag
+from trunco.kits.scheme import ColorScheme
 
 from .components import DaisyButton, DaisyCard, DaisyInput
 from .forms import (
@@ -32,7 +33,6 @@ from .theme import (
     theme_css,
     theme_style_tag,
 )
-from trunco.kits.scheme import ColorScheme
 from .ui import (
     DaisyAccordion,
     DaisyAlert,

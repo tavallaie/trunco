@@ -8,7 +8,7 @@ help:
 	@echo "  make install       sync + editable install"
 	@echo "  make test          Run pytest"
 	@echo "  make lint          Run ruff linter"
-	@echo "  make format        Format code with ruff"
+	@echo "  make format        Auto-fix lint issues and format with ruff"
 	@echo "  make format-check  Check formatting without writing"
 	@echo "  make check         lint + test"
 	@echo "  make pre-commit-install  Install pre-push hook (ruff)"
@@ -28,6 +28,7 @@ lint:
 	$(UV) run ruff check .
 
 format:
+	$(UV) run ruff check --fix .
 	$(UV) run ruff format .
 
 format-check:

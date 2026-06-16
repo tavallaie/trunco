@@ -1,5 +1,3 @@
-from typing import Optional
-
 from trunco.base import Component
 
 
@@ -9,8 +7,8 @@ class ScriptBlock(Component):
     def __init__(
         self,
         *,
-        src: Optional[str] = None,
-        content: Optional[str] = None,
+        src: str | None = None,
+        content: str | None = None,
         defer: bool = False,
         module: bool = False,
         **kwargs,

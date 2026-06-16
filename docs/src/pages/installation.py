@@ -20,7 +20,9 @@ def build():
                 ("Browse", "Kit Reference →", "kits.html"),
             ]
         ),
-        lead="Zero required runtime dependencies. UI kits and integrations ship in the core package.",
+        lead=(
+            "Zero required runtime dependencies. UI kits and integrations ship in the core package."
+        ),
         breadcrumb=[
             ("Documentation", "index.html"),
             ("Guide", None),

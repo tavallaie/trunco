@@ -1,5 +1,3 @@
-from typing import Optional
-
 from trunco.base import Component
 
 
@@ -10,8 +8,8 @@ class Stylesheet(Component):
         self,
         href: str,
         *,
-        media: Optional[str] = None,
-        crossorigin: Optional[str] = None,
+        media: str | None = None,
+        crossorigin: str | None = None,
         **kwargs,
     ):
         super().__init__(tag="link", **kwargs)

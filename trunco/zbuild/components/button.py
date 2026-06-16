@@ -1,5 +1,3 @@
-from typing import Optional
-
 from trunco.base import Component
 from trunco.enums import Attribute
 from trunco.kits.color import resolve_color
@@ -24,9 +22,9 @@ class ZbuildButton(Component):
     def __init__(
         self,
         label: str = "{label}",
-        color: Optional[str] = None,
+        color: str | None = None,
         style: str = "default",
-        size: Optional[str] = None,
+        size: str | None = None,
         **kwargs,
     ):
         super().__init__(tag="button", **kwargs)

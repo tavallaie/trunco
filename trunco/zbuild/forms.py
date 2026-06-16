@@ -1,5 +1,3 @@
-from typing import List, Optional, Union
-
 from trunco.base import Component
 from trunco.components.checkbox import CheckboxComponent
 from trunco.components.form import FormComponent
@@ -27,7 +25,7 @@ class ZbuildForm(FormComponent):
         action: str = "",
         method: Method = Method.POST,
         stacked: bool = True,
-        gap: Union[str, int] = "md",
+        gap: str | int = "md",
         **kwargs,
     ):
         super().__init__(action=action, method=method, **kwargs)
@@ -35,7 +33,7 @@ class ZbuildForm(FormComponent):
             self.add_class("z-form-stacked")
         self._field_gap = gap
 
-    def add_child(self, child: Union[Component, str]):
+    def add_child(self, child: Component | str):
         if isinstance(child, ZbuildFormField):
             child.styles.pop("margin-bottom", None)
             apply_margin_bottom(child, self._field_gap)
@@ -47,11 +45,11 @@ class ZbuildFormField(Component):
 
     def __init__(
         self,
-        label: Optional[str] = None,
-        field: Optional[Component] = None,
-        help_text: Optional[str] = None,
+        label: str | None = None,
+        field: Component | None = None,
+        help_text: str | None = None,
         required: bool = False,
-        gap: Union[str, int] = "sm",
+        gap: str | int = "sm",
         **kwargs,
     ):
         super().__init__(tag="div", **kwargs)
@@ -85,7 +83,7 @@ class ZbuildTextarea(TextAreaComponent):
         rows: int = 4,
         cols: int = 50,
         placeholder: str = "",
-        size: Optional[str] = None,
+        size: str | None = None,
         danger: bool = False,
         **kwargs,
     ):
@@ -108,8 +106,8 @@ class ZbuildSelect(SelectComponent):
 
     def __init__(
         self,
-        options: Optional[List[ZbuildOption]] = None,
-        size: Optional[str] = None,
+        options: list[ZbuildOption] | None = None,
+        size: str | None = None,
         danger: bool = False,
         **kwargs,
     ):
@@ -128,7 +126,7 @@ class ZbuildCheckbox(CheckboxComponent):
         self,
         label: str = "{label}",
         checked: bool = False,
-        gap: Union[str, int] = "sm",
+        gap: str | int = "sm",
         **kwargs,
     ):
         super().__init__(label=label, checked=checked, gap=gap, **kwargs)
@@ -151,7 +149,7 @@ class ZbuildRadio(RadioComponent):
         value: str,
         label: str = "{label}",
         checked: bool = False,
-        gap: Union[str, int] = "sm",
+        gap: str | int = "sm",
         **kwargs,
     ):
         super().__init__(
@@ -178,8 +176,8 @@ class ZbuildRadioGroup(RadioGroupComponent):
     def __init__(
         self,
         name: str,
-        options: Optional[List[ZbuildRadio]] = None,
-        gap: Union[str, int] = "md",
+        options: list[ZbuildRadio] | None = None,
+        gap: str | int = "md",
         direction: str = "vertical",
         **kwargs,
     ):
@@ -220,8 +218,8 @@ class ZbuildRange(SliderComponent):
         min_value: int = 0,
         max_value: int = 100,
         step: int = 1,
-        value: Optional[int] = None,
-        size: Optional[str] = None,
+        value: int | None = None,
+        size: str | None = None,
         **kwargs,
     ):
         super().__init__(
@@ -243,11 +241,11 @@ class ZbuildToggleSwitch(InputComponent):
 
     def __init__(
         self,
-        label: Optional[str] = None,
+        label: str | None = None,
         checked: bool = False,
         color: str = "primary",
         danger: bool = False,
-        gap: Union[str, int] = "sm",
+        gap: str | int = "sm",
         **kwargs,
     ):
         super().__init__(input_type="checkbox", **kwargs)
@@ -280,9 +278,9 @@ class ZbuildFieldset(Component):
 
     def __init__(
         self,
-        legend: Optional[str] = None,
-        children: Optional[List[Union[Component, str]]] = None,
-        gap: Union[str, int] = "md",
+        legend: str | None = None,
+        children: list[Component | str] | None = None,
+        gap: str | int = "md",
         **kwargs,
     ):
         super().__init__(tag="fieldset", **kwargs)

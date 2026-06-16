@@ -1,4 +1,5 @@
 import unittest
+
 from trunco.components.link import LinkComponent
 from trunco.enums import Attribute
 

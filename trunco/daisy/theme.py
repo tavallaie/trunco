@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Union
 
 from trunco.base import Component
 from trunco.kits.scheme import ColorScheme, SchemeRegistry, merge_enabled
@@ -54,7 +53,7 @@ class Theme:
     def apply(self, component: Component) -> None:
         component.add_attribute("data-theme", self.name)
 
-    def copy(self, name: Optional[str] = None) -> "Theme":
+    def copy(self, name: str | None = None) -> "Theme":
         return Theme(name=name or self.name)
 
     @property
@@ -66,12 +65,12 @@ theme = Theme()
 
 
 def register_theme(
-    scheme: Optional[ColorScheme] = None,
-    name: Optional[str] = None,
-    colors: Optional[Dict[str, str]] = None,
+    scheme: ColorScheme | None = None,
+    name: str | None = None,
+    colors: dict[str, str] | None = None,
     *,
     color_scheme: str = "light",
-    extends: Optional[str] = None,
+    extends: str | None = None,
     set_active: bool = False,
     **tokens: str,
 ) -> ColorScheme:
@@ -104,7 +103,7 @@ def register_theme(
     return registered
 
 
-def get_custom_theme(name: str) -> Optional[ColorScheme]:
+def get_custom_theme(name: str) -> ColorScheme | None:
     return _registry.get(name)
 
 
@@ -112,11 +111,11 @@ def is_custom_theme(name: str) -> bool:
     return _registry.has(name)
 
 
-def custom_theme_names() -> List[str]:
+def custom_theme_names() -> list[str]:
     return _registry.names()
 
 
-def available_themes(*, enabled: Optional[List[str]] = None) -> List[str]:
+def available_themes(*, enabled: list[str] | None = None) -> list[str]:
     return merge_enabled(THEME_NAMES, _registry.names(), enabled=enabled)
 
 
@@ -152,9 +151,9 @@ class Page(Component):
 
     def __init__(
         self,
-        *children: Union[Component, str],
-        theme_name: Optional[str] = None,
-        extra_classes: Optional[List[str]] = None,
+        *children: Component | str,
+        theme_name: str | None = None,
+        extra_classes: list[str] | None = None,
         include_styles: bool = False,
         **kwargs,
     ):

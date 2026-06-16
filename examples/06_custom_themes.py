@@ -1,7 +1,7 @@
 """Register custom color schemes for DaisyUI and 0build."""
 
 from trunco.daisy import Button, Page, register_theme, theme_style_tag
-from trunco.zbuild import register_palette, palette_style_tag
+from trunco.zbuild import palette_style_tag, register_palette
 
 
 def main():

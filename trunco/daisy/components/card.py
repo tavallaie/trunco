@@ -1,5 +1,3 @@
-from typing import List, Optional, Union
-
 from trunco.base import Component
 
 
@@ -8,9 +6,9 @@ class DaisyCard(Component):
 
     def __init__(
         self,
-        title: Optional[str] = None,
-        body: Optional[Union[str, Component]] = None,
-        image_src: Optional[str] = None,
+        title: str | None = None,
+        body: str | Component | None = None,
+        image_src: str | None = None,
         compact: bool = False,
         **kwargs,
     ):

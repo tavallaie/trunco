@@ -1,5 +1,3 @@
-from typing import List, Optional, Union
-
 from trunco.base import Component
 from trunco.enums import Attribute
 from trunco.spacing import gap_classes, join_classes
@@ -16,7 +14,7 @@ class RadioComponent(Component):
         value: str,
         label: str = "{label}",
         checked: bool = False,
-        gap: Union[str, int] = "sm",
+        gap: str | int = "sm",
         **kwargs,
     ):
         super().__init__(tag="input", **kwargs)
@@ -50,8 +48,8 @@ class RadioGroupComponent(Component):
     def __init__(
         self,
         name: str,
-        options: Optional[List["RadioComponent"]] = None,
-        gap: Union[str, int] = "md",
+        options: list["RadioComponent"] | None = None,
+        gap: str | int = "md",
         direction: str = "vertical",
         **kwargs,
     ):

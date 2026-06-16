@@ -1,10 +1,8 @@
-from typing import List, Optional, Union
-
 from trunco.base import Component
-from trunco.kits.color import resolve_color
 from trunco.components.link import LinkComponent
-from trunco.components.table import TableCellComponent, TableComponent, TableRowComponent
+from trunco.components.table import TableComponent, TableRowComponent
 from trunco.enums import Attribute
+from trunco.kits.color import resolve_color
 
 
 class ZbuildLink(LinkComponent):
@@ -17,8 +15,8 @@ class ZbuildLink(LinkComponent):
         href: str,
         text: str = "{text}",
         target: str = "_self",
-        color: Optional[str] = None,
-        style: Optional[str] = None,
+        color: str | None = None,
+        style: str | None = None,
         **kwargs,
     ):
         super().__init__(href=href, text=text, target=target, **kwargs)
@@ -36,8 +34,8 @@ class ZbuildBadge(Component):
     def __init__(
         self,
         text: str,
-        color: Optional[str] = None,
-        style: Optional[str] = None,
+        color: str | None = None,
+        style: str | None = None,
         **kwargs,
     ):
         super().__init__(tag="span", **kwargs)
@@ -56,8 +54,8 @@ class ZbuildAlert(Component):
     def __init__(
         self,
         message: str,
-        color: Optional[str] = None,
-        style: Optional[str] = None,
+        color: str | None = None,
+        style: str | None = None,
         closable: bool = False,
         **kwargs,
     ):
@@ -105,7 +103,7 @@ class ZbuildAvatar(Component):
 class ZbuildBreadcrumb(Component):
     """0build breadcrumb navigation."""
 
-    def __init__(self, items: List[Union[str, ZbuildLink]], **kwargs):
+    def __init__(self, items: list[str | ZbuildLink], **kwargs):
         super().__init__(tag="ul", **kwargs)
         self.add_class("z-breadcrumb")
         for item in items:
@@ -124,8 +122,8 @@ class ZbuildTable(TableComponent):
 
     def __init__(
         self,
-        headers: Optional[List[str]] = None,
-        rows: Optional[List[TableRowComponent]] = None,
+        headers: list[str] | None = None,
+        rows: list[TableRowComponent] | None = None,
         striped: bool = False,
         hover: bool = False,
         small: bool = False,
@@ -163,7 +161,7 @@ class ZbuildTooltip(Component):
         tip: str,
         child: Component,
         position: str = "top",
-        delay: Optional[int] = None,
+        delay: int | None = None,
         **kwargs,
     ):
         super().__init__(tag="div", **kwargs)
@@ -199,8 +197,8 @@ class ZbuildModal(Component):
         self,
         modal_id: str,
         title: str,
-        body: Union[str, Component],
-        footer: Optional[List[Component]] = None,
+        body: str | Component,
+        footer: list[Component] | None = None,
         **kwargs,
     ):
         super().__init__(tag="div", **kwargs)
@@ -269,7 +267,7 @@ class ZbuildModal(Component):
 class ZbuildNav(Component):
     """0build navigation."""
 
-    def __init__(self, items: List[Union[str, ZbuildLink, Component]], **kwargs):
+    def __init__(self, items: list[str | ZbuildLink | Component], **kwargs):
         super().__init__(tag="ul", **kwargs)
         self.add_class("z-nav")
         for item in items:
@@ -285,7 +283,7 @@ class ZbuildNav(Component):
 class ZbuildTab(Component):
     """0build tab navigation."""
 
-    def __init__(self, tabs: List[tuple], **kwargs):
+    def __init__(self, tabs: list[tuple], **kwargs):
         super().__init__(tag="ul", **kwargs)
         self.add_class("z-tab")
         for label, target, active in tabs:
@@ -305,7 +303,7 @@ class ZbuildAccordion(Component):
     def __init__(
         self,
         title: str,
-        content: Union[str, Component],
+        content: str | Component,
         open: bool = False,
         **kwargs,
     ):
@@ -350,7 +348,7 @@ class ZbuildDivider(Component):
 
     def __init__(
         self,
-        text: Optional[str] = None,
+        text: str | None = None,
         horizontal: bool = True,
         **kwargs,
     ):

@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable, List, Literal
+from typing import Literal
 
 from docs.src.demos import DemoResult
 
@@ -25,7 +26,7 @@ class CatalogEntry:
         return self.anchor or self.name.lower().replace(" ", "-")
 
 
-def _entries() -> List[CatalogEntry]:
+def _entries() -> list[CatalogEntry]:
     from docs.src import demos as d
 
     return [
@@ -93,16 +94,16 @@ def _entries() -> List[CatalogEntry]:
     ]
 
 
-CATALOG: List[CatalogEntry] = _entries()
+CATALOG: list[CatalogEntry] = _entries()
 
 
-def shared_entries() -> List[CatalogEntry]:
+def shared_entries() -> list[CatalogEntry]:
     return [e for e in CATALOG if e.availability == "both"]
 
 
-def daisy_only_entries() -> List[CatalogEntry]:
+def daisy_only_entries() -> list[CatalogEntry]:
     return [e for e in CATALOG if e.availability == "daisy"]
 
 
-def zbuild_only_entries() -> List[CatalogEntry]:
+def zbuild_only_entries() -> list[CatalogEntry]:
     return [e for e in CATALOG if e.availability == "zbuild"]

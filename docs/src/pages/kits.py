@@ -1,6 +1,3 @@
-from trunco.base import Component
-from trunco.daisy import Badge
-
 from docs.src.catalog import daisy_only_entries, shared_entries, zbuild_only_entries
 from docs.src.components import (
     AvailabilityTable,
@@ -11,6 +8,8 @@ from docs.src.components import (
     ShowcaseGrid,
     paragraph,
 )
+from trunco.base import Component
+from trunco.daisy import Badge
 
 
 def _unique_showcases(entries):
@@ -47,7 +46,10 @@ def build():
             anchor="shared",
         ),
         ShowcaseGrid(*shared, *daisy, *zbuild),
-        lead="Live previews, source snippets, and availability — shared components use the same Python names in both kits.",
+        lead=(
+            "Live previews, source snippets, and availability — "
+            "shared components use the same Python names in both kits."
+        ),
         breadcrumb=[
             ("Documentation", "index.html"),
             ("Reference", None),

@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Union
 
 from trunco.base import Component
 from trunco.kits.scheme import PaletteRegistry, PaletteScheme, merge_enabled
@@ -41,7 +40,7 @@ class Theme:
     layout: str = "z-layout-small"
     mode: str = "light"
 
-    def classes(self, palette: Optional[str] = None) -> List[str]:
+    def classes(self, palette: str | None = None) -> list[str]:
         active_palette = palette or self.palette
         classes = [self.layout]
         if self.mode == "dark":
@@ -55,9 +54,9 @@ class Theme:
 
     def copy(
         self,
-        palette: Optional[str] = None,
-        layout: Optional[str] = None,
-        mode: Optional[str] = None,
+        palette: str | None = None,
+        layout: str | None = None,
+        mode: str | None = None,
     ) -> "Theme":
         return Theme(
             palette=palette or self.palette,
@@ -74,11 +73,11 @@ theme = Theme()
 
 
 def register_palette(
-    palette: Optional[PaletteScheme] = None,
-    name: Optional[str] = None,
+    palette: PaletteScheme | None = None,
+    name: str | None = None,
     *,
-    light: Optional[Dict[str, str]] = None,
-    dark: Optional[Dict[str, str]] = None,
+    light: dict[str, str] | None = None,
+    dark: dict[str, str] | None = None,
     set_active: bool = False,
     **light_tokens: str,
 ) -> PaletteScheme:
@@ -103,7 +102,7 @@ def register_palette(
     return registered
 
 
-def get_custom_palette(name: str) -> Optional[PaletteScheme]:
+def get_custom_palette(name: str) -> PaletteScheme | None:
     return _registry.get(name)
 
 
@@ -111,11 +110,11 @@ def is_custom_palette(name: str) -> bool:
     return _registry.has(name)
 
 
-def custom_palette_names() -> List[str]:
+def custom_palette_names() -> list[str]:
     return _registry.names()
 
 
-def available_palettes(*, enabled: Optional[List[str]] = None) -> List[str]:
+def available_palettes(*, enabled: list[str] | None = None) -> list[str]:
     return merge_enabled(PALETTES, _registry.names(), enabled=enabled)
 
 
@@ -130,9 +129,9 @@ def palette_style_tag() -> str:
 
 
 def set_theme(
-    palette: Optional[str] = None,
-    layout: Optional[str] = None,
-    mode: Optional[str] = None,
+    palette: str | None = None,
+    layout: str | None = None,
+    mode: str | None = None,
 ) -> Theme:
     """Set the active 0build theme for new ``Page`` wrappers."""
     if palette is not None:
@@ -160,11 +159,11 @@ class Page(Component):
 
     def __init__(
         self,
-        *children: Union[Component, str],
-        palette: Optional[str] = None,
-        layout: Optional[str] = None,
-        mode: Optional[str] = None,
-        extra_classes: Optional[List[str]] = None,
+        *children: Component | str,
+        palette: str | None = None,
+        layout: str | None = None,
+        mode: str | None = None,
+        extra_classes: list[str] | None = None,
         include_styles: bool = False,
         **kwargs,
     ):

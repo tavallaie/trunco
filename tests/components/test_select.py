@@ -1,4 +1,5 @@
 import unittest
+
 from trunco.components.select import OptionComponent, SelectComponent
 from trunco.enums import Attribute
 
