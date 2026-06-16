@@ -1,4 +1,4 @@
-.PHONY: help sync install test lint format format-check check docs serve
+.PHONY: help sync install test lint format format-check check docs serve pre-commit-install
 
 UV ?= uv
 
@@ -11,6 +11,7 @@ help:
 	@echo "  make format        Format code with ruff"
 	@echo "  make format-check  Check formatting without writing"
 	@echo "  make check         lint + test"
+	@echo "  make pre-commit-install  Install pre-push hook (ruff)"
 	@echo "  make docs          Build docs site → docs/_site/"
 	@echo "  make serve         Preview docs at http://127.0.0.1:8000"
 
@@ -39,3 +40,6 @@ docs:
 
 serve:
 	$(UV) run python docs/serve.py
+
+pre-commit-install: sync
+	$(UV) run pre-commit install --hook-type pre-push
