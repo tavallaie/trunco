@@ -1,0 +1,47 @@
+<div class="doc-page">
+  <div class="doc-page-inner">
+    <div class="doc-page-main">
+      <nav class="doc-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" hx-get="fragments/index.html" hx-target="#main-content" hx-swap="innerHTML show:window:top" hx-push-url="index.html" hx-indicator="#htmx-progress">Documentation</a>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span>Guide</span>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span class="doc-breadcrumb-current">Quickstart</span>
+      </nav>
+      <header class="doc-page-header">
+        <div>
+          <h1>Quickstart</h1>
+          <p class="doc-page-lead">From zero to rendered HTML in under a minute.</p>
+        </div>
+      </header>
+      <div class="doc-prose doc-stack">
+        <section class="doc-section">
+          <h2 id="daisyui-kit">DaisyUI kit</h2>
+          <div class="code-panel">
+            <div class="code-panel-header"><span>python</span></div>
+            <pre><code><span class="kw">from</span> trunco.daisy <span class="kw">import</span> <span class="mod">Button</span>, <span class="mod">Page</span>
+
+btn = <span class="mod">Button</span>(label=<span class="str">"Hello"</span>, color=<span class="str">"primary"</span>)
+page = <span class="mod">Page</span>(btn, theme_name=<span class="str">"light"</span>)
+<span class="kw">print</span>(page.render())</code></pre>
+          </div>
+        </section>
+        <section class="doc-section">
+          <h2 id="swap-kits">Swap kits</h2>
+          <div class="doc-callout">
+            <p>Change <code>trunco.daisy</code> to <code>trunco.zbuild</code> — same component names.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <aside class="doc-toc" aria-label="Table of contents">
+      <div class="doc-toc-inner">
+        <p class="doc-toc-title">On this page</p>
+        <ul>
+          <li><a href="#daisyui-kit">DaisyUI kit</a></li>
+          <li><a href="#swap-kits">Swap kits</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>

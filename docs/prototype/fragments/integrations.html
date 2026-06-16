@@ -1,0 +1,59 @@
+<div class="doc-page">
+  <div class="doc-page-inner">
+    <div class="doc-page-main">
+      <nav class="doc-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" hx-get="fragments/index.html" hx-target="#main-content" hx-swap="innerHTML show:window:top" hx-push-url="index.html" hx-indicator="#htmx-progress">Documentation</a>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span>Guide</span>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span class="doc-breadcrumb-current">Integrations</span>
+      </nav>
+      <header class="doc-page-header">
+        <div>
+          <h1>Integrations</h1>
+          <p class="doc-page-lead">This prototype site uses HTMX for navigation. Alpine &amp; HTMX ship as Trunco extras.</p>
+        </div>
+      </header>
+      <div class="doc-prose doc-stack">
+        <div class="doc-pair-grid">
+          <div class="doc-pair-header">
+            <span class="badge badge-primary badge-sm w-fit">HTMX</span>
+            <h2 id="htmx">Partial page loads</h2>
+            <p>Sidebar links fetch <code>fragments/*.html</code> into <code>#main-content</code>.</p>
+          </div>
+          <div class="doc-pair-header">
+            <span class="badge badge-ghost badge-sm w-fit">Alpine.js</span>
+            <h2 id="alpine">Client interactivity</h2>
+            <p>Trunco adds <code>x-data</code>, <code>x-show</code> via <code>add_directive()</code>.</p>
+          </div>
+          <div class="doc-pair-code">
+            <div class="code-panel">
+              <div class="code-panel-header"><span>html</span></div>
+              <pre><code>hx-get=<span class="str">"fragments/kits.html"</span>
+hx-target=<span class="str">"#main-content"</span>
+hx-swap=<span class="str">"innerHTML"</span>
+hx-push-url=<span class="str">"kits.html"</span></code></pre>
+            </div>
+          </div>
+          <div class="doc-pair-code">
+            <div class="code-panel">
+              <div class="code-panel-header"><span>python</span></div>
+              <pre><code>panel.add_directive(
+    Directive.X_DATA,
+    <span class="str">"{ open: false }"</span>)</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="doc-toc" aria-label="Table of contents">
+      <div class="doc-toc-inner">
+        <p class="doc-toc-title">On this page</p>
+        <ul>
+          <li><a href="#htmx">HTMX</a></li>
+          <li><a href="#alpine">Alpine.js</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>

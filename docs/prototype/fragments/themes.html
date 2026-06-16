@@ -1,0 +1,57 @@
+<div class="doc-page">
+  <div class="doc-page-inner">
+    <div class="doc-page-main">
+      <nav class="doc-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" hx-get="fragments/index.html" hx-target="#main-content" hx-swap="innerHTML show:window:top" hx-push-url="index.html" hx-indicator="#htmx-progress">Documentation</a>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span>Reference</span>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span class="doc-breadcrumb-current">Themes</span>
+      </nav>
+      <header class="doc-page-header">
+        <div>
+          <h1>Custom Themes</h1>
+          <p class="doc-page-lead">Register DaisyUI CSS-variable themes or 0build palettes at runtime.</p>
+        </div>
+      </header>
+      <div class="doc-prose doc-stack">
+        <div class="doc-pair-grid">
+          <div class="doc-pair-header">
+            <h2 id="daisyui">DaisyUI</h2>
+            <p>Register a custom DaisyUI theme with CSS variables.</p>
+          </div>
+          <div class="doc-pair-header">
+            <h2 id="zbuild">0build</h2>
+            <p>Register a custom 0build color palette at runtime.</p>
+          </div>
+          <div class="doc-pair-code">
+            <div class="code-panel">
+              <div class="code-panel-header"><span>python</span></div>
+              <pre><code><span class="kw">from</span> trunco.daisy <span class="kw">import</span> register_theme
+
+register_theme(name=<span class="str">"brand"</span>,
+    colors={<span class="str">"primary"</span>: <span class="str">"#1EA1F1"</span>})</code></pre>
+            </div>
+          </div>
+          <div class="doc-pair-code">
+            <div class="code-panel">
+              <div class="code-panel-header"><span>python</span></div>
+              <pre><code><span class="kw">from</span> trunco.zbuild <span class="kw">import</span> register_palette
+
+register_palette(name=<span class="str">"brand"</span>, ...)</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="doc-toc" aria-label="Table of contents">
+      <div class="doc-toc-inner">
+        <p class="doc-toc-title">On this page</p>
+        <ul>
+          <li><a href="#daisyui">DaisyUI</a></li>
+          <li><a href="#zbuild">0build</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>

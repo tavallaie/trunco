@@ -1,0 +1,42 @@
+<div class="doc-page">
+  <div class="doc-page-inner">
+    <div class="doc-page-main">
+      <nav class="doc-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" hx-get="fragments/index.html" hx-target="#main-content" hx-swap="innerHTML show:window:top" hx-push-url="index.html" hx-indicator="#htmx-progress">Documentation</a>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span>Guide</span>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span class="doc-breadcrumb-current">Examples</span>
+      </nav>
+      <header class="doc-page-header">
+        <div>
+          <h1>Examples</h1>
+          <p class="doc-page-lead">Runnable scripts in the <code>examples/</code> directory.</p>
+        </div>
+      </header>
+      <div class="doc-prose doc-stack">
+        <ul class="menu bg-base-100 rounded-lg border border-base-300">
+          <li><a href="https://github.com/alitavakoli/trunco/blob/main/examples/01_core_basics.py" target="_blank" rel="noopener">01_core_basics.py</a></li>
+          <li><a href="https://github.com/alitavakoli/trunco/blob/main/examples/04_daisy_kit.py" target="_blank" rel="noopener">04_daisy_kit.py</a></li>
+          <li><a href="https://github.com/alitavakoli/trunco/blob/main/examples/05_zbuild_kit.py" target="_blank" rel="noopener">05_zbuild_kit.py</a></li>
+          <li><a href="https://github.com/alitavakoli/trunco/blob/main/examples/flask_app.py" target="_blank" rel="noopener">flask_app.py</a></li>
+        </ul>
+        <section class="doc-section">
+          <h2 id="run">Run locally</h2>
+          <div class="code-panel">
+            <div class="code-panel-header"><span>bash</span></div>
+            <pre><code>uv run python examples/01_core_basics.py</code></pre>
+          </div>
+        </section>
+      </div>
+    </div>
+    <aside class="doc-toc" aria-label="Table of contents">
+      <div class="doc-toc-inner">
+        <p class="doc-toc-title">On this page</p>
+        <ul>
+          <li><a href="#run">Run locally</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
