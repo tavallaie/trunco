@@ -1,0 +1,237 @@
+<div class="doc-page">
+  <div class="doc-page-inner">
+    <div class="doc-page-main">
+      <nav class="doc-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" hx-get="fragments/index.html" hx-target="#main-content" hx-swap="innerHTML show:window:top" hx-push-url="index.html" hx-indicator="#htmx-progress">Documentation</a>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span>Reference</span>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span class="doc-breadcrumb-current">Kit Reference</span>
+      </nav>
+      <header class="doc-page-header">
+        <div>
+          <h1>Every kit component</h1>
+          <p class="doc-page-lead">Live previews, source snippets, and availability — shared components use the same Python names in both kits.</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <span class="badge badge-ghost">26 shared</span>
+            <span class="badge badge-kit-daisy">11 DaisyUI only</span>
+            <span class="badge badge-kit-zbuild">4 0build only</span>
+          </div>
+        </div>
+      </header>
+      <div class="doc-prose doc-stack">
+
+  <div class="overflow-x-auto rounded-lg border border-base-300">
+    <table class="table table-zebra">
+      <thead>
+        <tr><th>Component</th><th>Category</th><th>DaisyUI</th><th>0build</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="#button" class="link">Button</a></td><td>ui</td><td>yes</td><td>yes</td></tr>
+        <tr><td><a href="#form" class="link">Form</a></td><td>form</td><td>yes</td><td>yes</td></tr>
+        <tr><td><a href="#alert" class="link">Alert</a></td><td>ui</td><td>yes</td><td>yes</td></tr>
+        <tr><td><a href="#input" class="link">Input</a></td><td>ui</td><td>yes</td><td>yes</td></tr>
+        <tr><td><a href="#hero" class="link">Hero</a></td><td>layout</td><td>yes</td><td>—</td></tr>
+        <tr><td><a href="#spinner" class="link">Spinner</a></td><td>ui</td><td>—</td><td>yes</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="doc-section">
+    <h2 id="shared">Shared components</h2>
+    <p>Switch <code>trunco.daisy</code> ↔ <code>trunco.zbuild</code> — the API stays the same.</p>
+  </section>
+
+  <article class="showcase-card" id="button">
+    <div class="card-head">
+      <h3 class="card-title">Button</h3>
+      <p class="card-desc">Primary action control with color and size variants.</p>
+      <div class="flex gap-2 mt-2"><span class="badge badge-info badge-sm">Both kits</span><span class="badge badge-ghost badge-sm">ui</span></div>
+    </div>
+    <div role="tablist" class="tabs tabs-lifted px-6 mt-3">
+      <input type="radio" name="tabs-btn" role="tab" class="tab" aria-label="DaisyUI" checked="checked" />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-0 pt-6">
+        <div class="preview-box border-0 mx-6"><button class="btn btn-kit-daisy btn-sm" type="button">Save changes</button></div>
+        <div class="card-body pt-4">
+          <div class="code-panel">
+            <div class="code-panel-header"><span>daisy.py</span></div>
+            <pre><code><span class="kw">from</span> trunco.daisy <span class="kw">import</span> <span class="mod">Button</span>
+
+<span class="mod">Button</span>(label=<span class="str">"Save changes"</span>, color=<span class="str">"primary"</span>, size=<span class="str">"sm"</span>)</code></pre>
+          </div>
+        </div>
+      </div>
+      <input type="radio" name="tabs-btn" role="tab" class="tab" aria-label="0build" />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-0 pt-6">
+        <div class="preview-box border-0 mx-6"><button class="btn btn-kit-zbuild btn-sm" type="button">Save changes</button></div>
+        <div class="card-body pt-4">
+          <div class="code-panel">
+            <div class="code-panel-header"><span>zbuild.py</span></div>
+            <pre><code><span class="kw">from</span> trunco.zbuild <span class="kw">import</span> <span class="mod">Button</span>
+
+<span class="mod">Button</span>(label=<span class="str">"Save changes"</span>, color=<span class="str">"primary"</span>, size=<span class="str">"small"</span>)</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="showcase-card" id="alert">
+    <div class="card-head">
+      <h3 class="card-title">Alert</h3>
+      <p class="card-desc">Inline status and feedback messages.</p>
+      <div class="flex gap-2 mt-2"><span class="badge badge-info badge-sm">Both kits</span></div>
+    </div>
+    <div role="tablist" class="tabs tabs-lifted px-6 mt-3">
+      <input type="radio" name="tabs-alert" role="tab" class="tab" aria-label="DaisyUI" checked="checked" />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-0 pt-6">
+        <div class="preview-box border-0 mx-6 w-auto">
+          <div role="alert" class="alert alert-success"><span>Saved successfully.</span></div>
+        </div>
+        <div class="card-body pt-4">
+          <div class="code-panel">
+            <div class="code-panel-header"><span>daisy.py</span></div>
+            <pre><code><span class="mod">Alert</span>(message=<span class="str">"Saved successfully."</span>, color=<span class="str">"success"</span>)</code></pre>
+          </div>
+        </div>
+      </div>
+      <input type="radio" name="tabs-alert" role="tab" class="tab" aria-label="0build" />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-0 pt-6">
+        <div class="preview-box border-0 mx-6 w-auto">
+          <div role="alert" class="alert alert-info"><span>Saved successfully.</span></div>
+        </div>
+        <div class="card-body pt-4">
+          <div class="code-panel">
+            <div class="code-panel-header"><span>zbuild.py</span></div>
+            <pre><code><span class="mod">Alert</span>(message=<span class="str">"Saved successfully."</span>, color=<span class="str">"success"</span>)</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <article class="showcase-card" id="form">
+    <div class="card-head">
+      <h3 class="card-title">Form</h3>
+      <p class="card-desc">Composable forms with labeled fields.</p>
+      <div class="flex gap-2 mt-2"><span class="badge badge-info badge-sm">Both kits</span><span class="badge badge-ghost badge-sm">form</span></div>
+    </div>
+    <div role="tablist" class="tabs tabs-lifted px-6 mt-3">
+      <input type="radio" name="tabs-form" role="tab" class="tab" aria-label="DaisyUI" checked="checked" />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-0 pt-6">
+        <div class="preview-box border-0 mx-6 items-stretch justify-stretch">
+          <form class="w-full max-w-xs space-y-3">
+            <label class="form-control w-full">
+              <div class="label"><span class="label-text">Email</span></div>
+              <input type="email" placeholder="you@example.com" class="input input-bordered w-full" />
+            </label>
+            <button class="btn btn-kit-daisy btn-sm" type="button">Subscribe</button>
+          </form>
+        </div>
+        <div class="card-body pt-4">
+          <div class="code-panel">
+            <div class="code-panel-header"><span>daisy.py</span></div>
+            <pre><code>form = <span class="mod">Form</span>(action=<span class="str">"/save"</span>)
+form.add_child(<span class="mod">FormControl</span>(
+    label=<span class="str">"Email"</span>,
+    field=<span class="mod">Input</span>(placeholder=<span class="str">"you@example.com"</span>),
+))
+form.add_child(<span class="mod">Button</span>(label=<span class="str">"Subscribe"</span>))</code></pre>
+          </div>
+        </div>
+      </div>
+      <input type="radio" name="tabs-form" role="tab" class="tab" aria-label="0build" />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-0 pt-6">
+        <div class="preview-box border-0 mx-6 items-stretch justify-stretch">
+          <form class="w-full max-w-xs space-y-3">
+            <label class="form-control w-full">
+              <div class="label"><span class="label-text">Email</span></div>
+              <input type="email" placeholder="you@example.com" class="input input-bordered w-full" />
+            </label>
+            <button class="btn btn-kit-zbuild btn-sm" type="button">Subscribe</button>
+          </form>
+        </div>
+        <div class="card-body pt-4">
+          <div class="code-panel">
+            <div class="code-panel-header"><span>zbuild.py</span></div>
+            <pre><code><span class="cm"># Same API — import trunco.zbuild instead</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <section class="doc-section">
+    <h2 id="daisy-only">DaisyUI only</h2>
+  </section>
+
+  <article class="showcase-card" id="hero">
+    <div class="card-head">
+      <h3 class="card-title">Hero</h3>
+      <p class="card-desc">Large banner section — DaisyUI layout component.</p>
+      <span class="badge badge-kit-daisy badge-sm mt-2">DaisyUI only</span>
+    </div>
+    <div class="preview-box mx-6 mt-4 p-0 overflow-hidden rounded-xl">
+      <div class="hero bg-base-200 w-full min-h-48">
+        <div class="hero-content text-center">
+          <div>
+            <h2 class="text-3xl font-bold">Ship faster</h2>
+            <p class="py-3 opacity-70">Python components for the web.</p>
+            <button class="btn btn-kit-daisy btn-sm" type="button">Launch</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="code-panel">
+        <div class="code-panel-header"><span>daisy.py</span></div>
+        <pre><code><span class="kw">from</span> trunco.daisy <span class="kw">import</span> <span class="mod">Hero</span>, <span class="mod">Button</span>
+
+<span class="mod">Hero</span>(title=<span class="str">"Ship faster"</span>, subtitle=<span class="str">"..."</span>,
+     actions=[<span class="mod">Button</span>(label=<span class="str">"Launch"</span>)])</code></pre>
+      </div>
+    </div>
+  </article>
+
+  <section class="doc-section">
+    <h2 id="zbuild-only">0build only</h2>
+  </section>
+
+  <article class="showcase-card" id="spinner">
+    <div class="card-head">
+      <h3 class="card-title">Spinner</h3>
+      <p class="card-desc">Loading indicator — 0build exclusive.</p>
+      <span class="badge badge-kit-zbuild badge-sm mt-2">0build only</span>
+    </div>
+    <div class="preview-box mx-6 mt-4">
+      <span class="loading loading-spinner loading-md kit-text-zbuild"></span>
+    </div>
+    <div class="card-body">
+      <div class="code-panel">
+        <div class="code-panel-header"><span>zbuild.py</span></div>
+        <pre><code><span class="kw">from</span> trunco.zbuild <span class="kw">import</span> <span class="mod">Spinner</span>
+
+<span class="mod">Spinner</span>()</code></pre>
+      </div>
+    </div>
+  </article>
+
+      </div>
+    </div>
+    <aside class="doc-toc" aria-label="Table of contents">
+      <div class="doc-toc-inner">
+        <p class="doc-toc-title">On this page</p>
+        <ul>
+          <li><a href="#shared">Shared components</a></li>
+          <li><a href="#button">Button</a></li>
+          <li><a href="#alert">Alert</a></li>
+          <li><a href="#form">Form</a></li>
+          <li><a href="#daisy-only">DaisyUI only</a></li>
+          <li><a href="#hero">Hero</a></li>
+          <li><a href="#zbuild-only">0build only</a></li>
+          <li><a href="#spinner">Spinner</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>

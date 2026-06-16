@@ -1,5 +1,4 @@
 from trunco import Component
-from typing import List
 
 
 class ListItemComponent(Component):
@@ -17,9 +16,7 @@ class ListComponent(Component):
     A basic list component, which can be either ordered (ol) or unordered (ul).
     """
 
-    def __init__(
-        self, ordered: bool = False, items: List[ListItemComponent] = None, **kwargs
-    ):
+    def __init__(self, ordered: bool = False, items: list[ListItemComponent] = None, **kwargs):
         tag = "ol" if ordered else "ul"
         super().__init__(tag=tag, **kwargs)
         if items:

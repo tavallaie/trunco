@@ -1,4 +1,5 @@
 import unittest
+
 from trunco.components.slider import SliderComponent, SliderWithLabelComponent
 from trunco.enums import Attribute
 
@@ -15,7 +16,9 @@ class TestSliderComponents(unittest.TestCase):
 
     def test_slider_render(self):
         slider = SliderComponent(min_value=0, max_value=100, step=5, value=50)
-        expected_html = f'<input id="{slider.id}" type="range" min="0" max="100" step="5" value="50">'
+        expected_html = (
+            f'<input id="{slider.id}" type="range" min="0" max="100" step="5" value="50">'
+        )
         self.assertEqual(str(slider), expected_html)
 
     def test_slider_with_label_initialization(self):
@@ -32,7 +35,8 @@ class TestSliderComponents(unittest.TestCase):
         expected_html = (
             f'<div id="{slider_with_label.id}">'
             f'<label id="{slider_with_label.children[0].id}">Volume</label>'
-            f'<input id="{slider_with_label.children[1].id}" type="range" min="0" max="100" step="5" value="50">'
+            f'<input id="{slider_with_label.children[1].id}" type="range" '
+            f'min="0" max="100" step="5" value="50">'
             f"</div>"
         )
         self.assertEqual(str(slider_with_label), expected_html)
@@ -45,7 +49,8 @@ class TestSliderComponents(unittest.TestCase):
         expected_html = (
             f'<div id="{slider_with_label.id}">'
             f'<label id="{slider_with_label.children[0].id}">Adjust Volume</label>'
-            f'<input id="{slider_with_label.children[1].id}" type="range" min="0" max="100" step="5" value="50">'
+            f'<input id="{slider_with_label.children[1].id}" type="range" '
+            f'min="0" max="100" step="5" value="50">'
             f"</div>"
         )
         self.assertEqual(slider_with_label.render(context), expected_html)

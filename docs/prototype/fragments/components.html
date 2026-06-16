@@ -1,0 +1,51 @@
+<div class="doc-page">
+  <div class="doc-page-inner">
+    <div class="doc-page-main">
+      <nav class="doc-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" hx-get="fragments/index.html" hx-target="#main-content" hx-swap="innerHTML show:window:top" hx-push-url="index.html" hx-indicator="#htmx-progress">Documentation</a>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span>Reference</span>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span class="doc-breadcrumb-current">Components</span>
+      </nav>
+      <header class="doc-page-header">
+        <div>
+          <h1>Core Components</h1>
+          <p class="doc-page-lead">Framework-agnostic HTML primitives — no UI kit required.</p>
+        </div>
+      </header>
+      <div class="doc-prose doc-stack">
+        <div class="overflow-x-auto rounded-lg border border-base-300">
+          <table class="table table-zebra">
+            <thead><tr><th>Component</th><th>Tag</th><th>Module</th></tr></thead>
+            <tbody>
+              <tr><td>ButtonComponent</td><td>button</td><td>trunco.components.button</td></tr>
+              <tr><td>InputComponent</td><td>input</td><td>trunco.components.input</td></tr>
+              <tr><td>FormComponent</td><td>form</td><td>trunco.components.form</td></tr>
+              <tr><td>SelectComponent</td><td>select</td><td>trunco.components.select</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <section class="doc-section">
+          <h2 id="base-component">Base component</h2>
+          <div class="code-panel">
+            <div class="code-panel-header"><span>python</span></div>
+            <pre><code><span class="kw">from</span> trunco <span class="kw">import</span> <span class="mod">Component</span>
+
+card = <span class="mod">Component</span>(tag=<span class="str">"div"</span>)
+card.add_class(<span class="str">"card"</span>)
+card.add_child(<span class="str">"Hello"</span>)</code></pre>
+          </div>
+        </section>
+      </div>
+    </div>
+    <aside class="doc-toc" aria-label="Table of contents">
+      <div class="doc-toc-inner">
+        <p class="doc-toc-title">On this page</p>
+        <ul>
+          <li><a href="#base-component">Base component</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>

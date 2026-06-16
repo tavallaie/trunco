@@ -1,6 +1,8 @@
 import unittest
+
+from trunco import Directive, Trigger
 from trunco.base import Component
-from trunco.enums import Directive, Attribute, Trigger
+from trunco.enums import Attribute
 
 
 class TestComponent(unittest.TestCase):
@@ -29,7 +31,7 @@ class TestComponent(unittest.TestCase):
     def test_add_directive(self):
         component = Component()
         component.add_directive(Directive.X_ON_CLICK, "alert('clicked')")
-        self.assertEqual(component.directives[Directive.X_ON_CLICK], "alert('clicked')")
+        self.assertEqual(component.directives["x-on:click"], "alert('clicked')")
 
     def test_add_attribute(self):
         component = Component()
@@ -39,7 +41,7 @@ class TestComponent(unittest.TestCase):
     def test_add_trigger(self):
         component = Component()
         component.add_trigger(Trigger.CLICK)
-        self.assertIn(Trigger.CLICK, component.triggers)
+        self.assertIn(Trigger.CLICK.value, component.triggers)
 
     def test_add_child(self):
         component = Component()
@@ -64,7 +66,9 @@ class TestComponent(unittest.TestCase):
     def test_render_custom_scripts(self):
         component = Component()
         component.add_custom_script("console.log('Hello, World!');")
-        expected_html = f"<div id=\"{component.id}\"></div><script>console.log('Hello, World!');</script>"
+        expected_html = (
+            f"<div id=\"{component.id}\"></div><script>console.log('Hello, World!');</script>"
+        )
         self.assertEqual(component.render(), expected_html)
 
 

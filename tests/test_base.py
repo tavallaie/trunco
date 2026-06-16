@@ -1,12 +1,13 @@
 import unittest
-from trunco import Component, Trigger, Swap, HxMethod, Attribute, Directive
+
+from trunco import Attribute, Component, Directive, HxMethod, Swap, Trigger
 
 
 class TestComponent(unittest.TestCase):
     def test_add_directive(self):
         component = Component()
         component.add_directive(Directive.X_ON_CLICK, "alert('Hello!')")
-        self.assertEqual(component.directives[Directive.X_ON_CLICK], "alert('Hello!')")
+        self.assertEqual(component.directives["x-on:click"], "alert('Hello!')")
 
     def test_add_attribute(self):
         component = Component()
@@ -24,30 +25,18 @@ class TestComponent(unittest.TestCase):
         self.assertEqual(str(component), expected_html)
 
     def test_render_with_hx_swap(self):
-        component = Component(
-            hx_methods=HxMethod.get("/load-more"), swap=Swap.OUTER_HTML
-        )
-        expected_html = (
-            f'<div id="{component.id}" hx-get="/load-more" hx-swap="outerHTML"></div>'
-        )
+        component = Component(hx_methods=HxMethod.get("/load-more"), swap=Swap.OUTER_HTML)
+        expected_html = f'<div id="{component.id}" hx-get="/load-more" hx-swap="outerHTML"></div>'
         self.assertEqual(str(component), expected_html)
 
     def test_render_with_swap(self):
-        component = Component(
-            hx_methods=HxMethod.get("/load-more"), swap=Swap.OUTER_HTML
-        )
-        expected_html = (
-            f'<div id="{component.id}" hx-get="/load-more" hx-swap="outerHTML"></div>'
-        )
+        component = Component(hx_methods=HxMethod.get("/load-more"), swap=Swap.OUTER_HTML)
+        expected_html = f'<div id="{component.id}" hx-get="/load-more" hx-swap="outerHTML"></div>'
         self.assertEqual(str(component), expected_html)
 
     def test_render_with_trigger(self):
-        component = Component(
-            hx_methods=HxMethod.get("/load-more"), trigger=Trigger.CLICK
-        )
-        expected_html = (
-            f'<div id="{component.id}" hx-get="/load-more" hx-trigger="click"></div>'
-        )
+        component = Component(hx_methods=HxMethod.get("/load-more"), trigger=Trigger.CLICK)
+        expected_html = f'<div id="{component.id}" hx-get="/load-more" hx-trigger="click"></div>'
         self.assertEqual(str(component), expected_html)
 
 

@@ -1,15 +1,29 @@
-from trunco.base import Component
+import unittest
+
+from trunco.components.textarea import TextAreaComponent
 from trunco.enums import Attribute
 
 
-class TextAreaComponent(Component):
-    """
-    A basic text area component for multi-line text input.
-    """
+class TestTextAreaComponent(unittest.TestCase):
+    def test_textarea_initialization(self):
+        textarea = TextAreaComponent(rows=5, cols=40, placeholder="Enter your comments")
+        self.assertEqual(textarea.tag, "textarea")
+        self.assertEqual(textarea.attributes.get(Attribute.ROWS), "5")
+        self.assertEqual(textarea.attributes.get(Attribute.COLS), "40")
+        self.assertIn("Enter your comments", textarea.children)
 
-    def __init__(self, rows: int = 4, cols: int = 50, placeholder: str = "", **kwargs):
-        super().__init__(tag="textarea", **kwargs)
-        self.add_attribute(Attribute.ROWS, str(rows))
-        self.add_attribute(Attribute.COLS, str(cols))
-        if placeholder:
-            self.children.append(placeholder)
+    def test_textarea_render(self):
+        textarea = TextAreaComponent(rows=5, cols=40, placeholder="Enter your comments")
+        expected_html = (
+            f'<textarea id="{textarea.id}" rows="5" cols="40">Enter your comments</textarea>'
+        )
+        self.assertEqual(str(textarea), expected_html)
+
+    def test_textarea_render_without_placeholder(self):
+        textarea = TextAreaComponent(rows=3, cols=30)
+        expected_html = f'<textarea id="{textarea.id}" rows="3" cols="30"></textarea>'
+        self.assertEqual(str(textarea), expected_html)
+
+
+if __name__ == "__main__":
+    unittest.main()

@@ -1,15 +1,83 @@
-[tool.poetry]
+[project]
 name = "trunco"
-version = "0.3.1"
+version = "1.0.0"
 description = "An agile, powerful Python framework for creating dynamic UIs with seamless web integration."
-authors = ["Ali Tavallaie <a.tavallaie@gmail.com>"]
-license = "MIT"
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "Ali Tavallaie", email = "a.tavallaie@gmail.com" }]
+keywords = [
+    "alpine",
+    "components",
+    "daisyui",
+    "fastapi",
+    "flask",
+    "htmx",
+    "html",
+    "tailwind",
+    "ui",
+    "web",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: FastAPI",
+    "Framework :: Flask",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Topic :: Software Development :: User Interfaces",
+    "Typing :: Typed",
+]
 
-[tool.poetry.dependencies]
-python = "^3.8"
-
+[project.urls]
+Homepage = "https://github.com/tavallaie/trunco"
+Documentation = "https://tavallaie.github.io/trunco/"
+Repository = "https://github.com/tavallaie/trunco"
+Issues = "https://github.com/tavallaie/trunco/issues"
+Changelog = "https://github.com/tavallaie/trunco/releases"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.8.15,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.0",
+    "pytest>=8.0",
+    "ruff>=0.8",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+exclude = ["docs/prototype"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"docs/build.py" = ["E402"]
+"docs/serve.py" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"

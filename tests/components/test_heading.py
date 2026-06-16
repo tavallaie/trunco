@@ -1,4 +1,5 @@
 import unittest
+
 from trunco.components.heading import HeadingComponent
 
 

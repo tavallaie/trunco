@@ -7,9 +7,7 @@ class InputComponent(Component):
     A basic input component for capturing user input.
     """
 
-    def __init__(
-        self, input_type: str = "text", placeholder: str = "", value: str = "", **kwargs
-    ):
+    def __init__(self, input_type: str = "text", placeholder: str = "", value: str = "", **kwargs):
         super().__init__(tag="input", **kwargs)
         self.add_attribute(Attribute.TYPE, input_type)
         if placeholder:

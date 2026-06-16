@@ -1,0 +1,116 @@
+<div class="doc-landing">
+  <div class="doc-stack">
+    <header class="doc-hero text-center">
+      <div class="badge badge-primary badge-outline mb-4">Python · DaisyUI · 0build</div>
+      <h1>Build the web<br><span class="text-primary">in Python</span></h1>
+      <p class="lead mx-auto">Trunco is a component framework for Python backends. Swap UI kits with one import — ship HTML from composable objects.</p>
+      <div class="actions justify-center">
+        <a href="quickstart.html" class="btn btn-primary btn-lg"
+           hx-get="fragments/quickstart.html" hx-target="#main-content"
+           hx-swap="innerHTML show:window:top" hx-push-url="quickstart.html"
+           hx-indicator="#htmx-progress">Get started</a>
+        <a href="kits.html" class="btn btn-outline btn-lg"
+           hx-get="fragments/kits.html" hx-target="#main-content"
+           hx-swap="innerHTML show:window:top" hx-push-url="kits.html"
+           hx-indicator="#htmx-progress">Browse components</a>
+      </div>
+    </header>
+
+    <div class="stats stats-vertical lg:stats-horizontal hero-stats w-full bg-base-100">
+      <div class="stat">
+        <div class="stat-title">UI Kits</div>
+        <div class="stat-value text-primary">2</div>
+        <div class="stat-desc">DaisyUI + 0build</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Components</div>
+        <div class="stat-value">40+</div>
+        <div class="stat-desc">Forms &amp; UI</div>
+      </div>
+      <div class="stat">
+        <div class="stat-title">Runtime deps</div>
+        <div class="stat-value">0</div>
+        <div class="stat-desc">Core library</div>
+      </div>
+    </div>
+
+    <div class="feature-grid">
+      <div class="card feature-card bg-base-100">
+        <div class="card-body">
+          <div class="badge badge-secondary badge-sm mb-2">Kits</div>
+          <h2 class="card-title text-lg">Swap with one import</h2>
+          <p class="text-sm opacity-70">Same names — <code class="text-xs">Button</code>, <code class="text-xs">Form</code>, <code class="text-xs">Alert</code> — across DaisyUI and 0build.</p>
+        </div>
+      </div>
+      <div class="card feature-card bg-base-100">
+        <div class="card-body">
+          <div class="badge badge-accent badge-sm mb-2">HTMX</div>
+          <h2 class="card-title text-lg">Hypermedia-ready</h2>
+          <p class="text-sm opacity-70">First-class <code class="text-xs">hx-*</code> attributes on every component.</p>
+        </div>
+      </div>
+      <div class="card feature-card bg-base-100">
+        <div class="card-body">
+          <div class="badge badge-info badge-sm mb-2">Themes</div>
+          <h2 class="card-title text-lg">Custom palettes</h2>
+          <p class="text-sm opacity-70">Register DaisyUI themes or 0build palettes at runtime.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="showcase-card">
+      <div class="card-head">
+        <h3 class="card-title">Button</h3>
+        <p class="card-desc">Same API — different CSS kits.</p>
+        <div class="flex gap-2 mt-2">
+          <span class="badge badge-kit-daisy badge-sm">DaisyUI</span>
+          <span class="badge badge-kit-zbuild badge-sm">0build</span>
+        </div>
+      </div>
+      <div role="tablist" class="tabs tabs-lifted px-6 mt-3">
+        <input type="radio" name="demo-btn" role="tab" class="tab" aria-label="DaisyUI" checked="checked" />
+        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-0 pt-6">
+          <div class="preview-box border-0 mx-6">
+            <button class="btn btn-kit-daisy btn-sm" type="button">Get started</button>
+          </div>
+          <div class="card-body pt-4">
+            <div class="code-panel">
+              <div class="code-panel-header"><span>daisy.py</span></div>
+              <pre><code><span class="kw">from</span> trunco.daisy <span class="kw">import</span> <span class="mod">Button</span>
+
+<span class="mod">Button</span>(label=<span class="str">"Get started"</span>, color=<span class="str">"primary"</span>)</code></pre>
+            </div>
+          </div>
+        </div>
+        <input type="radio" name="demo-btn" role="tab" class="tab" aria-label="0build" />
+        <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-0 pt-6">
+          <div class="preview-box border-0 mx-6">
+            <button class="btn btn-kit-zbuild btn-sm" type="button">Get started</button>
+          </div>
+          <div class="card-body pt-4">
+            <div class="code-panel">
+              <div class="code-panel-header"><span>zbuild.py</span></div>
+              <pre><code><span class="kw">from</span> trunco.zbuild <span class="kw">import</span> <span class="mod">Button</span>
+
+<span class="mod">Button</span>(label=<span class="str">"Get started"</span>, color=<span class="str">"primary"</span>)</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section">
+      <h2>Install</h2>
+      <div class="code-panel">
+        <div class="code-panel-header"><span>bash</span></div>
+        <pre><code>uv pip install trunco
+uv pip install <span class="str">"trunco[daisy,htmx,alpine,zbuild]"</span></code></pre>
+      </div>
+    </section>
+
+    <div class="alert alert-success">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span>This documentation prototype is pure DaisyUI + HTMX — Trunco build comes next.</span>
+    </div>
+  </div>
+</div>

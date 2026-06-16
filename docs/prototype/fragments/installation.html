@@ -1,0 +1,64 @@
+<div class="doc-page">
+  <div class="doc-page-inner">
+    <div class="doc-page-main">
+      <nav class="doc-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" hx-get="fragments/index.html" hx-target="#main-content" hx-swap="innerHTML show:window:top" hx-push-url="index.html" hx-indicator="#htmx-progress">Documentation</a>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span>Guide</span>
+        <svg class="doc-breadcrumb-sep" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <span class="doc-breadcrumb-current">Installation</span>
+      </nav>
+      <header class="doc-page-header">
+        <div>
+          <h1>Installation</h1>
+          <p class="doc-page-lead">Zero required runtime dependencies. Install only the extras you need.</p>
+        </div>
+      </header>
+      <div class="doc-prose doc-stack">
+        <section class="doc-section">
+          <h2 id="core">Core</h2>
+          <div class="code-panel">
+            <div class="code-panel-header"><span>bash</span></div>
+            <pre><code>uv pip install trunco</code></pre>
+          </div>
+        </section>
+        <section class="doc-section">
+          <h2 id="with-extras">With extras</h2>
+          <div class="code-panel">
+            <div class="code-panel-header"><span>bash</span></div>
+            <pre><code>uv pip install <span class="str">"trunco[daisy]"</span>
+uv pip install <span class="str">"trunco[zbuild,alpine,htmx]"</span></code></pre>
+          </div>
+        </section>
+        <nav class="doc-next-steps" aria-label="Next steps">
+          <p class="doc-next-steps-label">Next steps</p>
+          <div class="doc-next-steps-grid">
+            <a href="quickstart.html" class="doc-next-link"
+               hx-get="fragments/quickstart.html" hx-target="#main-content"
+               hx-swap="innerHTML show:window:top" hx-push-url="quickstart.html"
+               hx-indicator="#htmx-progress">
+              <span class="doc-next-link-dir">Continue</span>
+              <span class="doc-next-link-title">Quickstart →</span>
+            </a>
+            <a href="kits.html" class="doc-next-link"
+               hx-get="fragments/kits.html" hx-target="#main-content"
+               hx-swap="innerHTML show:window:top" hx-push-url="kits.html"
+               hx-indicator="#htmx-progress">
+              <span class="doc-next-link-dir">Browse</span>
+              <span class="doc-next-link-title">Kit Reference →</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <aside class="doc-toc" aria-label="Table of contents">
+      <div class="doc-toc-inner">
+        <p class="doc-toc-title">On this page</p>
+        <ul>
+          <li><a href="#core">Core</a></li>
+          <li><a href="#with-extras">With extras</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>

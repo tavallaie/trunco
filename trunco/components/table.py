@@ -1,5 +1,4 @@
 from trunco.base import Component
-from typing import List
 
 
 class TableCellComponent(Component):
@@ -18,7 +17,7 @@ class TableRowComponent(Component):
     A basic table row component.
     """
 
-    def __init__(self, cells: List[TableCellComponent] = None, **kwargs):
+    def __init__(self, cells: list[TableCellComponent] = None, **kwargs):
         super().__init__(tag="tr", **kwargs)
         if cells:
             self.children.extend(cells)
@@ -29,16 +28,11 @@ class TableComponent(Component):
     A basic table component with rows and cells.
     """
 
-    def __init__(
-        self, headers: List[str] = None, rows: List[TableRowComponent] = None, **kwargs
-    ):
+    def __init__(self, headers: list[str] = None, rows: list[TableRowComponent] = None, **kwargs):
         super().__init__(tag="table", **kwargs)
         if headers:
             header_row = TableRowComponent(
-                cells=[
-                    TableCellComponent(content=header, header=True)
-                    for header in headers
-                ]
+                cells=[TableCellComponent(content=header, header=True) for header in headers]
             )
             self.add_child(header_row)
         if rows:
