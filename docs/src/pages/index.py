@@ -28,7 +28,9 @@ def build():
     start.add_attribute("hx-indicator", "#htmx-progress")
     actions.add_child(start)
 
-    browse = htmx_link("kits.html", "Browse components", extra_classes=["btn", "btn-outline", "btn-lg"])
+    browse = htmx_link(
+        "kits.html", "Browse components", extra_classes=["btn", "btn-outline", "btn-lg"]
+    )
     actions.add_child(browse)
 
     return DocLanding(
@@ -47,9 +49,17 @@ def build():
         ),
         FeatureGrid(
             [
-                ("Kits", "Swap with one import", "Same names — Button, Form, Alert — across DaisyUI and 0build."),
+                (
+                    "Kits",
+                    "Swap with one import",
+                    "Same names — Button, Form, Alert — across DaisyUI and 0build.",
+                ),
                 ("HTMX", "Hypermedia-ready", "First-class hx-* attributes on every component."),
-                ("Themes", "Custom palettes", "Register DaisyUI themes or 0build palettes at runtime."),
+                (
+                    "Themes",
+                    "Custom palettes",
+                    "Register DaisyUI themes or 0build palettes at runtime.",
+                ),
             ]
         ),
         HomeButtonDemo(),

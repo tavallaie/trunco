@@ -135,17 +135,11 @@ class ZbuildCheckbox(CheckboxComponent):
         self.add_class("z-checkbox")
 
     def render(self, context=None) -> str:
-        input_html = super(CheckboxComponent, self).render(context).replace(
-            f"</{self.tag}>", ""
-        )
+        input_html = super(CheckboxComponent, self).render(context).replace(f"</{self.tag}>", "")
         if not self.label:
             return input_html
         text = self.label.format(**context) if context else self.label
-        return (
-            f"{control_wrapper_open(self.gap)}"
-            f"{input_html}<label>{text}</label>"
-            f"</div>"
-        )
+        return f"{control_wrapper_open(self.gap)}{input_html}<label>{text}</label></div>"
 
 
 class ZbuildRadio(RadioComponent):
@@ -171,17 +165,11 @@ class ZbuildRadio(RadioComponent):
         self.add_class("z-radio")
 
     def render(self, context=None) -> str:
-        input_html = super(RadioComponent, self).render(context).replace(
-            f"</{self.tag}>", ""
-        )
+        input_html = super(RadioComponent, self).render(context).replace(f"</{self.tag}>", "")
         if not self.label:
             return input_html
         text = self.label.format(**context) if context else self.label
-        return (
-            f"{control_wrapper_open(self.gap)}"
-            f"{input_html}<label>{text}</label>"
-            f"</div>"
-        )
+        return f"{control_wrapper_open(self.gap)}{input_html}<label>{text}</label></div>"
 
 
 class ZbuildRadioGroup(RadioGroupComponent):
@@ -279,7 +267,9 @@ class ZbuildToggleSwitch(InputComponent):
         text = self.label.format(**context) if context else self.label
         gap_value = resolve_gap(self.gap)
         if gap_value:
-            label_open = f'<label class="display-inline-flex items-center" style="gap: {gap_value};">'
+            label_open = (
+                f'<label class="display-inline-flex items-center" style="gap: {gap_value};">'
+            )
         else:
             label_open = '<label class="display-inline-flex items-center">'
         return f"{label_open}{input_html}<span>{text}</span></label>"

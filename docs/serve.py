@@ -71,7 +71,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Preview Trunco docs locally")
     parser.add_argument("--host", default="127.0.0.1", help="Host to bind (default: 127.0.0.1)")
     parser.add_argument("--port", type=int, default=8000, help="Port (default: 8000)")
-    parser.add_argument("--no-build", action="store_true", help="Serve existing _site without rebuilding")
+    parser.add_argument(
+        "--no-build", action="store_true", help="Serve existing _site without rebuilding"
+    )
     parser.add_argument("--no-open", action="store_true", help="Do not open a browser tab")
     parser.add_argument(
         "--watch",

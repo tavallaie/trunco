@@ -149,9 +149,7 @@ class DaisyCheckbox(CheckboxComponent):
             self.add_class(f"checkbox-{variant}")
 
     def render(self, context=None) -> str:
-        input_html = super(CheckboxComponent, self).render(context).replace(
-            f"</{self.tag}>", ""
-        )
+        input_html = super(CheckboxComponent, self).render(context).replace(f"</{self.tag}>", "")
         if not self.label:
             return input_html
         text = self.label.format(**context) if context else self.label
@@ -205,9 +203,7 @@ class DaisyRadio(RadioComponent):
             self.add_class(f"radio-{variant}")
 
     def render(self, context=None) -> str:
-        input_html = super(RadioComponent, self).render(context).replace(
-            f"</{self.tag}>", ""
-        )
+        input_html = super(RadioComponent, self).render(context).replace(f"</{self.tag}>", "")
         if not self.label:
             return input_html
         text = self.label.format(**context) if context else self.label

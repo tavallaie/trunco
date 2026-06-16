@@ -15,8 +15,7 @@ class TestTextAreaComponent(unittest.TestCase):
     def test_textarea_render(self):
         textarea = TextAreaComponent(rows=5, cols=40, placeholder="Enter your comments")
         expected_html = (
-            f'<textarea id="{textarea.id}" rows="5" cols="40">'
-            f"Enter your comments</textarea>"
+            f'<textarea id="{textarea.id}" rows="5" cols="40">Enter your comments</textarea>'
         )
         self.assertEqual(str(textarea), expected_html)
 

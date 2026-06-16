@@ -29,16 +29,11 @@ class TableComponent(Component):
     A basic table component with rows and cells.
     """
 
-    def __init__(
-        self, headers: List[str] = None, rows: List[TableRowComponent] = None, **kwargs
-    ):
+    def __init__(self, headers: List[str] = None, rows: List[TableRowComponent] = None, **kwargs):
         super().__init__(tag="table", **kwargs)
         if headers:
             header_row = TableRowComponent(
-                cells=[
-                    TableCellComponent(content=header, header=True)
-                    for header in headers
-                ]
+                cells=[TableCellComponent(content=header, header=True) for header in headers]
             )
             self.add_child(header_row)
         if rows:

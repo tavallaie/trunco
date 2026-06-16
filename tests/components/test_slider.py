@@ -15,7 +15,9 @@ class TestSliderComponents(unittest.TestCase):
 
     def test_slider_render(self):
         slider = SliderComponent(min_value=0, max_value=100, step=5, value=50)
-        expected_html = f'<input id="{slider.id}" type="range" min="0" max="100" step="5" value="50">'
+        expected_html = (
+            f'<input id="{slider.id}" type="range" min="0" max="100" step="5" value="50">'
+        )
         self.assertEqual(str(slider), expected_html)
 
     def test_slider_with_label_initialization(self):

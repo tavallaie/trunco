@@ -42,13 +42,24 @@ def _entries() -> List[CatalogEntry]:
         CatalogEntry("Tooltip", "Hover hint on a child element.", "ui", "both", d.tooltip_demo),
         CatalogEntry("Modal", "Dialog overlay with title and actions.", "ui", "both", d.modal_demo),
         CatalogEntry("Accordion", "Expandable content section.", "ui", "both", d.accordion_demo),
-        CatalogEntry("Divider", "Visual separator with optional label.", "ui", "both", d.divider_demo),
+        CatalogEntry(
+            "Divider", "Visual separator with optional label.", "ui", "both", d.divider_demo
+        ),
         # Shared forms
         CatalogEntry("Form", "Form container with action and method.", "form", "both", d.form_demo),
-        CatalogEntry("FormControl", "One labeled field with optional help text.", "form", "both", d.formcontrol_demo, anchor="formcontrol"),
+        CatalogEntry(
+            "FormControl",
+            "One labeled field with optional help text.",
+            "form",
+            "both",
+            d.formcontrol_demo,
+            anchor="formcontrol",
+        ),
         CatalogEntry("Textarea", "Multi-line text input.", "form", "both", d.textarea_demo),
         CatalogEntry("Select", "Dropdown selection.", "form", "both", d.select_demo),
-        CatalogEntry("Option", "Select option element.", "form", "both", d.select_demo, anchor="option"),
+        CatalogEntry(
+            "Option", "Select option element.", "form", "both", d.select_demo, anchor="option"
+        ),
         CatalogEntry("Checkbox", "Boolean checkbox input.", "form", "both", d.checkbox_demo),
         CatalogEntry("Radio", "Single radio input.", "form", "both", d.radio_demo, anchor="radio"),
         CatalogEntry("RadioGroup", "Grouped radio inputs.", "form", "both", d.radio_demo),
@@ -58,7 +69,9 @@ def _entries() -> List[CatalogEntry]:
         CatalogEntry("Label", "Standalone form label.", "form", "both", d.label_demo),
         # DaisyUI only
         CatalogEntry("FileInput", "File upload input.", "form", "daisy", d.file_input_demo),
-        CatalogEntry("Breadcrumbs", "Hierarchical navigation trail.", "layout", "daisy", d.breadcrumbs_demo),
+        CatalogEntry(
+            "Breadcrumbs", "Hierarchical navigation trail.", "layout", "daisy", d.breadcrumbs_demo
+        ),
         CatalogEntry("Loading", "Animated loading indicator.", "ui", "daisy", d.loading_demo),
         CatalogEntry("Navbar", "Top navigation bar.", "layout", "daisy", d.navbar_demo),
         CatalogEntry("Tabs", "Tab navigation links.", "layout", "daisy", d.tabs_demo),
@@ -67,12 +80,16 @@ def _entries() -> List[CatalogEntry]:
         CatalogEntry("Hero", "Large hero banner section.", "layout", "daisy", d.hero_demo),
         CatalogEntry("Stat", "Statistic highlight block.", "ui", "daisy", d.stat_demo),
         CatalogEntry("Pagination", "Page number controls.", "ui", "daisy", d.pagination_demo),
-        CatalogEntry("Dropdown", "Dropdown menu triggered by a button.", "ui", "daisy", d.dropdown_demo),
+        CatalogEntry(
+            "Dropdown", "Dropdown menu triggered by a button.", "ui", "daisy", d.dropdown_demo
+        ),
         # 0build only
         CatalogEntry("Spinner", "Loading spinner.", "ui", "zbuild", d.spinner_demo),
         CatalogEntry("Nav", "Horizontal navigation list.", "layout", "zbuild", d.nav_demo),
         CatalogEntry("Tab", "Tab navigation (0build).", "layout", "zbuild", d.tab_demo),
-        CatalogEntry("Breadcrumb", "Breadcrumb trail (singular API).", "layout", "zbuild", d.breadcrumb_demo),
+        CatalogEntry(
+            "Breadcrumb", "Breadcrumb trail (singular API).", "layout", "zbuild", d.breadcrumb_demo
+        ),
     ]
 
 

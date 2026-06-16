@@ -200,7 +200,7 @@ def progress_demo() -> DemoResult:
     return DemoResult(
         daisy_code='from trunco.daisy import Progress\n\nProgress(value=65, color="primary")',
         daisy_preview=daisy.Progress(value=65, color="primary").render(),
-        zbuild_code='from trunco.zbuild import Progress\n\nProgress(value=65)',
+        zbuild_code="from trunco.zbuild import Progress\n\nProgress(value=65)",
         zbuild_preview=zbuild.Progress(value=65).render(),
         preview_height=90,
     )
@@ -325,8 +325,12 @@ AccordionGroup(
         daisy.Accordion(
             title="Shipping", content="Ships in 2–3 days.", open=True, radio_name="faq"
         ).render()
-        + daisy.Accordion(title="Returns", content="30-day return policy.", radio_name="faq").render()
-        + daisy.Accordion(title="Support", content="Email support@example.com", radio_name="faq").render()
+        + daisy.Accordion(
+            title="Returns", content="30-day return policy.", radio_name="faq"
+        ).render()
+        + daisy.Accordion(
+            title="Support", content="Email support@example.com", radio_name="faq"
+        ).render()
     )
     z_preview = zbuild.AccordionGroup(
         zbuild.Accordion(title="Shipping", content="Ships in 2–3 days.", open=True),
@@ -393,9 +397,7 @@ form.add_child(Button(label="Subscribe", color="primary"))"""
     )
     d_form.add_child(daisy.Button(label="Subscribe", color="primary"))
     z_form = zbuild.Form(action="/save", gap="xl")
-    z_form.add_child(
-        zbuild.FormControl(label="Name", field=zbuild.Input(placeholder="Jane Doe"))
-    )
+    z_form.add_child(zbuild.FormControl(label="Name", field=zbuild.Input(placeholder="Jane Doe")))
     z_form.add_child(
         zbuild.FormControl(label="Email", field=zbuild.Input(placeholder="you@example.com"))
     )
@@ -460,8 +462,14 @@ def textarea_demo() -> DemoResult:
 
 
 def select_demo() -> DemoResult:
-    d_opts = [daisy.Option(value="a", display_text="Option A"), daisy.Option(value="b", display_text="Option B")]
-    z_opts = [zbuild.Option(value="a", display_text="Option A"), zbuild.Option(value="b", display_text="Option B")]
+    d_opts = [
+        daisy.Option(value="a", display_text="Option A"),
+        daisy.Option(value="b", display_text="Option B"),
+    ]
+    z_opts = [
+        zbuild.Option(value="a", display_text="Option A"),
+        zbuild.Option(value="b", display_text="Option B"),
+    ]
     return DemoResult(
         daisy_code="from trunco.daisy import Select, Option\n\nSelect(options=[Option(value='a', display_text='A')])",
         daisy_preview=daisy.Select(options=d_opts, variant="bordered").render(),
@@ -545,9 +553,13 @@ def range_demo() -> DemoResult:
 def toggle_demo() -> DemoResult:
     return DemoResult(
         daisy_code='from trunco.daisy import Toggle\n\nToggle(label="Notifications", checked=False, variant="primary")',
-        daisy_preview=daisy.Toggle(label="Notifications", checked=False, variant="primary").render(),
+        daisy_preview=daisy.Toggle(
+            label="Notifications", checked=False, variant="primary"
+        ).render(),
         zbuild_code='from trunco.zbuild import Toggle\n\nToggle(label="Notifications", checked=False, color="primary")',
-        zbuild_preview=zbuild.Toggle(label="Notifications", checked=False, color="primary").render(),
+        zbuild_preview=zbuild.Toggle(
+            label="Notifications", checked=False, color="primary"
+        ).render(),
         preview_height=90,
     )
 
@@ -619,7 +631,9 @@ def file_input_demo() -> DemoResult:
 def breadcrumbs_demo() -> DemoResult:
     return DemoResult(
         daisy_code='from trunco.daisy import Breadcrumbs, Link\n\nBreadcrumbs(items=[Link(href="/", text="Home"), "Settings"])',
-        daisy_preview=daisy.Breadcrumbs(items=[daisy.Link(href="/", text="Home"), "Settings"]).render(),
+        daisy_preview=daisy.Breadcrumbs(
+            items=[daisy.Link(href="/", text="Home"), "Settings"]
+        ).render(),
         preview_height=90,
     )
 
@@ -635,7 +649,9 @@ def loading_demo() -> DemoResult:
 def navbar_demo() -> DemoResult:
     return DemoResult(
         daisy_code='from trunco.daisy import Navbar, Link\n\nNavbar(start=["Trunco"], end=[Link(href="/", text="Home")])',
-        daisy_preview=daisy.Navbar(start=["Trunco"], end=[daisy.Link(href="/", text="Home")]).render(),
+        daisy_preview=daisy.Navbar(
+            start=["Trunco"], end=[daisy.Link(href="/", text="Home")]
+        ).render(),
         preview_height=110,
     )
 
@@ -709,7 +725,7 @@ def dropdown_demo() -> DemoResult:
 
 def spinner_demo() -> DemoResult:
     return DemoResult(
-        zbuild_code='from trunco.zbuild import Spinner\n\nSpinner()',
+        zbuild_code="from trunco.zbuild import Spinner\n\nSpinner()",
         zbuild_preview=zbuild.Spinner().render(),
         preview_height=100,
     )
@@ -734,6 +750,8 @@ def tab_demo() -> DemoResult:
 def breadcrumb_demo() -> DemoResult:
     return DemoResult(
         zbuild_code='from trunco.zbuild import Breadcrumb, Link\n\nBreadcrumb(items=[Link(href="/", text="Home"), "Settings"])',
-        zbuild_preview=zbuild.Breadcrumb(items=[zbuild.Link(href="/", text="Home"), "Settings"]).render(),
+        zbuild_preview=zbuild.Breadcrumb(
+            items=[zbuild.Link(href="/", text="Home"), "Settings"]
+        ).render(),
         preview_height=90,
     )

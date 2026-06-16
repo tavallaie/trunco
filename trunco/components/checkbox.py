@@ -35,8 +35,4 @@ class CheckboxComponent(Component):
             "items-center",
             *gap_classes(self.gap),
         )
-        return (
-            f'<div class="{wrapper_class}">'
-            f"{input_html}<label>{text}</label>"
-            f"</div>"
-        )
+        return f'<div class="{wrapper_class}">{input_html}<label>{text}</label></div>'

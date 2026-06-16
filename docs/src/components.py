@@ -276,7 +276,14 @@ class PairGrid(Component):
 
 
 class PairHeader(Component):
-    def __init__(self, title: str, description: str, *, anchor: Optional[str] = None, badge: Optional[Component] = None):
+    def __init__(
+        self,
+        title: str,
+        description: str,
+        *,
+        anchor: Optional[str] = None,
+        badge: Optional[Component] = None,
+    ):
         super().__init__(tag="div")
         self.add_class("doc-pair-header")
         if badge:
@@ -427,7 +434,9 @@ def _showcase_code(
 
 def _normalize_preview(html: str, kit: str) -> str:
     if kit == "daisy":
-        return html.replace("btn-secondary", "btn-kit-daisy").replace("btn-primary", "btn-kit-daisy")
+        return html.replace("btn-secondary", "btn-kit-daisy").replace(
+            "btn-primary", "btn-kit-daisy"
+        )
     return html.replace("btn-primary", "btn-kit-zbuild").replace("btn-secondary", "btn-kit-zbuild")
 
 
@@ -551,16 +560,16 @@ def _single_kit_panel(
             portal_html=portal_html,
         )
     )
-    panel.add_child(
-        _showcase_code(code, filename, code_min_height=_code_section_min_height(code))
-    )
+    panel.add_child(_showcase_code(code, filename, code_min_height=_code_section_min_height(code)))
     return panel
 
 
 class CatalogShowcase(Component):
     """Radio-tabbed kit demo — preview + code switch together."""
 
-    def __init__(self, entry: CatalogEntry, *, tab_name: Optional[str] = None, in_grid: bool = True):
+    def __init__(
+        self, entry: CatalogEntry, *, tab_name: Optional[str] = None, in_grid: bool = True
+    ):
         demo = entry.demo()
         super().__init__(tag="article")
         self.add_class("showcase-card")
@@ -609,7 +618,8 @@ class CatalogShowcase(Component):
             stretch = (
                 demo.preview_full_width
                 or demo.preview_height >= 160
-                or entry.slug in ("table", "menu", "navbar", "dropdown", "form", "formcontrol", "fieldset")
+                or entry.slug
+                in ("table", "menu", "navbar", "dropdown", "form", "formcontrol", "fieldset")
             )
             flush = entry.slug in ("hero", "navbar")
             overlay = demo.preview_overlay
@@ -654,7 +664,12 @@ class CatalogShowcase(Component):
                 tabs.add_child(r)
                 tabs.add_child(p)
         elif entry.availability == "daisy" and demo.daisy_code:
-            stretch = demo.preview_height >= 160 or entry.slug in ("menu", "navbar", "dropdown", "list")
+            stretch = demo.preview_height >= 160 or entry.slug in (
+                "menu",
+                "navbar",
+                "dropdown",
+                "list",
+            )
             flush = entry.slug in ("hero", "navbar")
             self.add_child(
                 _single_kit_panel(
@@ -738,8 +753,12 @@ class HomeButtonDemo(Component):
 
         daisy_preview = daisy.Button(label="Get started", color="primary", size="sm").render()
         zbuild_preview = zbuild.Button(label="Get started", color="primary", size="small").render()
-        daisy_code = 'from trunco.daisy import Button\n\nButton(label="Get started", color="primary")'
-        zbuild_code = 'from trunco.zbuild import Button\n\nButton(label="Get started", color="primary")'
+        daisy_code = (
+            'from trunco.daisy import Button\n\nButton(label="Get started", color="primary")'
+        )
+        zbuild_code = (
+            'from trunco.zbuild import Button\n\nButton(label="Get started", color="primary")'
+        )
 
         code_min_height = _code_section_min_height(daisy_code, zbuild_code)
         r1, p1 = _kit_tab_panel(
@@ -785,14 +804,18 @@ class AvailabilityTable(Component):
             rows.append(
                 TableRowComponent(
                     cells=[
-                        TableCellComponent(content=f'<a href="#{entry.slug}" class="link">{entry.name}</a>'),
+                        TableCellComponent(
+                            content=f'<a href="#{entry.slug}" class="link">{entry.name}</a>'
+                        ),
                         TableCellComponent(content=entry.category),
                         TableCellComponent(content=d),
                         TableCellComponent(content=z),
                     ]
                 )
             )
-        self.add_child(Table(headers=["Component", "Category", "DaisyUI", "0build"], rows=rows, zebra=True))
+        self.add_child(
+            Table(headers=["Component", "Category", "DaisyUI", "0build"], rows=rows, zebra=True)
+        )
 
 
 class KitFilterBar(Component):

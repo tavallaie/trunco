@@ -58,7 +58,10 @@ build-backend = "uv_build"
 module-root = ""
 
 [dependency-groups]
-dev = ["pytest>=8.0", "ruff>=0.8"]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.8",
+]
 
 [tool.uv]
 default-groups = ["dev"]

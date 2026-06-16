@@ -3,8 +3,7 @@ import warnings
 import trunco.zbuild as _zbuild
 
 warnings.warn(
-    "trunco.franken is deprecated; Franken UI has rebranded to 0build. "
-    "Use trunco.zbuild instead.",
+    "trunco.franken is deprecated; Franken UI has rebranded to 0build. Use trunco.zbuild instead.",
     DeprecationWarning,
     stacklevel=2,
 )

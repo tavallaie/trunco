@@ -49,9 +49,7 @@ class Component:
             self.add_attribute("hx-swap", swap_value)
 
         if self.trigger:
-            trigger_value = (
-                self.trigger.value if hasattr(self.trigger, "value") else self.trigger
-            )
+            trigger_value = self.trigger.value if hasattr(self.trigger, "value") else self.trigger
             self.add_attribute("hx-trigger", trigger_value)
 
     def add_child(self, child: Union["Component", str]):
@@ -95,15 +93,12 @@ class Component:
         """Renders the component as an HTML string, substituting context variables."""
         if context:
             rendered_children = [
-                child.format(**context)
-                if isinstance(child, str)
-                else child.render(context)
+                child.format(**context) if isinstance(child, str) else child.render(context)
                 for child in self.children
             ]
         else:
             rendered_children = [
-                child.render() if isinstance(child, Component) else child
-                for child in self.children
+                child.render() if isinstance(child, Component) else child for child in self.children
             ]
 
         attributes = self.to_html_attributes()
@@ -139,9 +134,7 @@ class Component:
             attribute_mapping["hx-trigger"] = " ".join(self.triggers)
 
         attributes = [
-            f'{attr}="{value}"'
-            for attr, value in attribute_mapping.items()
-            if value is not None
+            f'{attr}="{value}"' for attr, value in attribute_mapping.items() if value is not None
         ]
         return " ".join(attributes)
 

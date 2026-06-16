@@ -10,9 +10,7 @@ class TestInputComponent(unittest.TestCase):
         )
         self.assertEqual(input_component.tag, "input")
         self.assertEqual(input_component.attributes.get(Attribute.TYPE), "text")
-        self.assertEqual(
-            input_component.attributes.get(Attribute.PLACEHOLDER), "Enter text"
-        )
+        self.assertEqual(input_component.attributes.get(Attribute.PLACEHOLDER), "Enter text")
         self.assertEqual(input_component.attributes.get(Attribute.VALUE), "Sample text")
 
     def test_input_render(self):
@@ -24,9 +22,7 @@ class TestInputComponent(unittest.TestCase):
 
     def test_input_render_without_value(self):
         input_component = InputComponent(placeholder="Enter text")
-        expected_html = (
-            f'<input id="{input_component.id}" type="text" placeholder="Enter text">'
-        )
+        expected_html = f'<input id="{input_component.id}" type="text" placeholder="Enter text">'
         self.assertEqual(str(input_component), expected_html)
 
 

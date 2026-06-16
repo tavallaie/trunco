@@ -65,7 +65,9 @@ class TestComponent(unittest.TestCase):
     def test_render_custom_scripts(self):
         component = Component()
         component.add_custom_script("console.log('Hello, World!');")
-        expected_html = f"<div id=\"{component.id}\"></div><script>console.log('Hello, World!');</script>"
+        expected_html = (
+            f"<div id=\"{component.id}\"></div><script>console.log('Hello, World!');</script>"
+        )
         self.assertEqual(component.render(), expected_html)
 
 

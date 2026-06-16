@@ -36,9 +36,7 @@ def _enabled_extras() -> FrozenSet[str]:
     if not configured:
         return frozenset()
     return frozenset(
-        _normalize_extra(item.strip())
-        for item in configured.split(",")
-        if item.strip()
+        _normalize_extra(item.strip()) for item in configured.split(",") if item.strip()
     )
 
 

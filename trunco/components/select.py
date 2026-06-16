@@ -7,9 +7,7 @@ class OptionComponent(Component):
     A basic option component for the select dropdown.
     """
 
-    def __init__(
-        self, value: str, display_text: str = None, selected: bool = False, **kwargs
-    ):
+    def __init__(self, value: str, display_text: str = None, selected: bool = False, **kwargs):
         super().__init__(tag="option", **kwargs)
         self.add_attribute(Attribute.VALUE, value)  # Use the enum here
         if selected:

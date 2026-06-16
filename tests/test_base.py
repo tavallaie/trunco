@@ -24,30 +24,18 @@ class TestComponent(unittest.TestCase):
         self.assertEqual(str(component), expected_html)
 
     def test_render_with_hx_swap(self):
-        component = Component(
-            hx_methods=HxMethod.get("/load-more"), swap=Swap.OUTER_HTML
-        )
-        expected_html = (
-            f'<div id="{component.id}" hx-get="/load-more" hx-swap="outerHTML"></div>'
-        )
+        component = Component(hx_methods=HxMethod.get("/load-more"), swap=Swap.OUTER_HTML)
+        expected_html = f'<div id="{component.id}" hx-get="/load-more" hx-swap="outerHTML"></div>'
         self.assertEqual(str(component), expected_html)
 
     def test_render_with_swap(self):
-        component = Component(
-            hx_methods=HxMethod.get("/load-more"), swap=Swap.OUTER_HTML
-        )
-        expected_html = (
-            f'<div id="{component.id}" hx-get="/load-more" hx-swap="outerHTML"></div>'
-        )
+        component = Component(hx_methods=HxMethod.get("/load-more"), swap=Swap.OUTER_HTML)
+        expected_html = f'<div id="{component.id}" hx-get="/load-more" hx-swap="outerHTML"></div>'
         self.assertEqual(str(component), expected_html)
 
     def test_render_with_trigger(self):
-        component = Component(
-            hx_methods=HxMethod.get("/load-more"), trigger=Trigger.CLICK
-        )
-        expected_html = (
-            f'<div id="{component.id}" hx-get="/load-more" hx-trigger="click"></div>'
-        )
+        component = Component(hx_methods=HxMethod.get("/load-more"), trigger=Trigger.CLICK)
+        expected_html = f'<div id="{component.id}" hx-get="/load-more" hx-trigger="click"></div>'
         self.assertEqual(str(component), expected_html)
 
 
