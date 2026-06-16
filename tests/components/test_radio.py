@@ -16,8 +16,10 @@ class TestRadioComponents(unittest.TestCase):
     def test_radio_render(self):
         radio = RadioComponent(name="option", value="1", label="Option 1", checked=True)
         expected_html = (
+            f'<div class="inline-flex items-center gap-2">'
             f'<input id="{radio.id}" type="radio" name="option" value="1" checked="checked">'
             f"<label>Option 1</label>"
+            f"</div>"
         )
         self.assertEqual(str(radio), expected_html)
 
@@ -25,10 +27,16 @@ class TestRadioComponents(unittest.TestCase):
         radio = RadioComponent(name="option", value="1", label="{label}")
         context = {"label": "Dynamic Option"}
         expected_html = (
+            f'<div class="inline-flex items-center gap-2">'
             f'<input id="{radio.id}" type="radio" name="option" value="1">'
             f"<label>Dynamic Option</label>"
+            f"</div>"
         )
         self.assertEqual(radio.render(context), expected_html)
+
+    def test_radio_render_with_custom_gap(self):
+        radio = RadioComponent(name="option", value="1", label="Option 1", gap="lg")
+        self.assertIn("gap-4", str(radio))
 
     def test_radio_group_initialization(self):
         radio1 = RadioComponent(name="group1", value="1", label="Option 1")
@@ -44,9 +52,13 @@ class TestRadioComponents(unittest.TestCase):
         radio2 = RadioComponent(name="group1", value="2", label="Option 2")
         radio_group = RadioGroupComponent(name="group1", options=[radio1, radio2])
         expected_html = (
-            f'<div id="{radio_group.id}">'
+            f'<div id="{radio_group.id}" class="flex flex-col gap-3">'
+            f'<div class="inline-flex items-center gap-2">'
             f'<input id="{radio1.id}" type="radio" name="group1" value="1"><label>Option 1</label>'
+            f"</div>"
+            f'<div class="inline-flex items-center gap-2">'
             f'<input id="{radio2.id}" type="radio" name="group1" value="2"><label>Option 2</label>'
+            f"</div>"
             f"</div>"
         )
         self.assertEqual(str(radio_group), expected_html)

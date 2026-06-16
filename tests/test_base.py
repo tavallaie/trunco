@@ -6,7 +6,7 @@ class TestComponent(unittest.TestCase):
     def test_add_directive(self):
         component = Component()
         component.add_directive(Directive.X_ON_CLICK, "alert('Hello!')")
-        self.assertEqual(component.directives[Directive.X_ON_CLICK], "alert('Hello!')")
+        self.assertEqual(component.directives["x-on:click"], "alert('Hello!')")
 
     def test_add_attribute(self):
         component = Component()

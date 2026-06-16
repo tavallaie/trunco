@@ -1,6 +1,6 @@
 import unittest
 from trunco.components.button import ButtonComponent
-from trunco.enums import Directive, Attribute
+from trunco.enums import Attribute
 
 
 class TestButtonComponent(unittest.TestCase):
@@ -10,7 +10,7 @@ class TestButtonComponent(unittest.TestCase):
         self.assertIn("Click Me", button.children)
         self.assertEqual(button.attributes.get(Attribute.TYPE), "button")
         self.assertEqual(
-            button.directives.get(Directive.X_ON_CLICK), "alert('clicked')"
+            button.directives.get("x-on:click"), "alert('clicked')"
         )
 
     def test_button_render(self):

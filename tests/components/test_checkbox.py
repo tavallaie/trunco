@@ -14,8 +14,10 @@ class TestCheckboxComponent(unittest.TestCase):
     def test_checkbox_render(self):
         checkbox = CheckboxComponent(label="Accept Terms", checked=True)
         expected_html = (
+            f'<div class="inline-flex items-center gap-2">'
             f'<input id="{checkbox.id}" type="checkbox" checked="checked">'
             f"<label>Accept Terms</label>"
+            f"</div>"
         )
         self.assertEqual(checkbox.render(), expected_html)
 
@@ -23,8 +25,10 @@ class TestCheckboxComponent(unittest.TestCase):
         checkbox = CheckboxComponent(label="{label}")
         context = {"label": "Subscribe to newsletter"}
         expected_html = (
+            f'<div class="inline-flex items-center gap-2">'
             f'<input id="{checkbox.id}" type="checkbox">'
             f"<label>Subscribe to newsletter</label>"
+            f"</div>"
         )
         self.assertEqual(checkbox.render(context), expected_html)
 

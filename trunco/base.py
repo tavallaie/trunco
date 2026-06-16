@@ -1,7 +1,27 @@
 from dataclasses import dataclass, field
-from typing import List, Optional, Union, Dict, Tuple
+from typing import Dict, List, Optional, Tuple, Union
 import uuid
-from .enums import Directive, Trigger, Attribute, Swap
+
+from .enums import Attribute
+
+VOID_TAGS = frozenset(
+    {
+        "area",
+        "base",
+        "br",
+        "col",
+        "embed",
+        "hr",
+        "img",
+        "input",
+        "link",
+        "meta",
+        "param",
+        "source",
+        "track",
+        "wbr",
+    }
+)
 
 
 @dataclass
@@ -11,27 +31,28 @@ class Component:
     css_classes: List[str] = field(default_factory=list)
     styles: Dict[str, str] = field(default_factory=dict)
     children: List[Union["Component", str]] = field(default_factory=list)
-    directives: Dict[Directive, str] = field(default_factory=dict)
+    directives: Dict[str, str] = field(default_factory=dict)
     attributes: Dict[Union[Attribute, str], str] = field(default_factory=dict)
-    triggers: List[Trigger] = field(default_factory=list)
+    triggers: List[str] = field(default_factory=list)
     custom_scripts: List[str] = field(default_factory=list)
-    hx_methods: Optional[Tuple[str, str]] = None  # Tuple for HxMethod handling
-    swap: Optional[Swap] = None
-    trigger: Optional[Trigger] = None
+    hx_methods: Optional[Tuple[str, str]] = None
+    swap: Optional[str] = None
+    trigger: Optional[str] = None
 
     def __post_init__(self):
-        # Handle HxMethod if provided
         if self.hx_methods:
             method, url = self.hx_methods
-            self.add_attribute(method, url)  # Use the method string directly
+            self.add_attribute(method, url)
 
-        # Handle Swap if provided
         if self.swap:
-            self.add_attribute("hx-swap", self.swap.value)
+            swap_value = self.swap.value if hasattr(self.swap, "value") else self.swap
+            self.add_attribute("hx-swap", swap_value)
 
-        # Handle Trigger if provided
         if self.trigger:
-            self.add_attribute("hx-trigger", self.trigger.value)
+            trigger_value = (
+                self.trigger.value if hasattr(self.trigger, "value") else self.trigger
+            )
+            self.add_attribute("hx-trigger", trigger_value)
 
     def add_child(self, child: Union["Component", str]):
         """Adds a child component or string to this component's children list."""
@@ -45,27 +66,23 @@ class Component:
         """Adds a CSS style to this component."""
         self.styles[property_name] = value
 
-    def add_directive(self, directive: Directive, expression: str):
-        """Adds a directive (e.g., Alpine.js) to this component, with validation."""
-        if not isinstance(directive, Directive):
-            raise ValueError(
-                f"Invalid directive: {directive}. Must be a Directive enum."
-            )
-        self.directives[directive] = expression
+    def add_directive(self, directive: Union[str, object], expression: str):
+        """Adds a directive attribute (e.g. Alpine.js x-on:click) to this component."""
+        key = directive.value if hasattr(directive, "value") else str(directive)
+        self.directives[key] = expression
 
     def add_attribute(self, attribute: Union[Attribute, str], value: str):
-        """Adds a custom HTML attribute to this component, with validation."""
+        """Adds a custom HTML attribute to this component."""
         if not isinstance(attribute, (Attribute, str)):
             raise ValueError(
                 f"Invalid attribute: {attribute}. Must be an Attribute enum or string."
             )
         self.attributes[attribute] = value
 
-    def add_trigger(self, trigger: Trigger):
-        """Adds an event trigger (e.g., HTMX) to this component, with validation."""
-        if not isinstance(trigger, Trigger):
-            raise ValueError(f"Invalid trigger: {trigger}. Must be a Trigger enum.")
-        self.triggers.append(trigger)
+    def add_trigger(self, trigger: Union[str, object]):
+        """Adds an HTMX event trigger to this component."""
+        value = trigger.value if hasattr(trigger, "value") else str(trigger)
+        self.triggers.append(value)
 
     def add_custom_script(self, script: str):
         """Adds a custom JavaScript script to be included in the component."""
@@ -90,12 +107,14 @@ class Component:
             ]
 
         attributes = self.to_html_attributes()
-        children_html = "".join(rendered_children)
         scripts_html = self.render_custom_scripts()
+        if self.tag in VOID_TAGS:
+            return f"<{self.tag} {attributes}>{scripts_html}"
+        children_html = "".join(rendered_children)
         return f"<{self.tag} {attributes}>{children_html}</{self.tag}>{scripts_html}"
 
     def to_html_attributes(self) -> str:
-        """Converts the component's attributes, classes, and directives into a string of HTML attributes."""
+        """Converts attributes, classes, and directives into an HTML attribute string."""
         attribute_mapping = {
             "id": self.id,
             "class": " ".join(self.css_classes) if self.css_classes else None,
@@ -114,12 +133,10 @@ class Component:
                 attribute_mapping[attribute] = value
 
         for directive, expression in self.directives.items():
-            attribute_mapping[directive.value] = expression
+            attribute_mapping[directive] = expression
 
         if self.triggers:
-            attribute_mapping["hx-trigger"] = " ".join(
-                trigger.value for trigger in self.triggers
-            )
+            attribute_mapping["hx-trigger"] = " ".join(self.triggers)
 
         attributes = [
             f'{attr}="{value}"'
@@ -129,12 +146,8 @@ class Component:
         return " ".join(attributes)
 
     def render_custom_scripts(self) -> str:
-        """Renders any custom scripts and context data as embedded JavaScript."""
-        custom_scripts = "\n".join(
-            f"<script>{script}</script>" for script in self.custom_scripts
-        )
-        return custom_scripts
+        """Renders any custom scripts as embedded JavaScript."""
+        return "\n".join(f"<script>{script}</script>" for script in self.custom_scripts)
 
     def __str__(self) -> str:
-        """Allows the component to be directly converted to a string (HTML)."""
         return self.render()
