@@ -8,7 +8,7 @@ From the repository root:
 
 ```bash
 uv sync
-uv pip install -e ".[daisy,zbuild,alpine,htmx]"
+uv pip install -e .
 uv run python examples/01_core_basics.py
 ```
 

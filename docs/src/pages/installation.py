@@ -10,12 +10,9 @@ def build():
             anchor="core",
         ),
         Section(
-            "With extras",
-            CodePanel(
-                'uv pip install "trunco[daisy]"\nuv pip install "trunco[zbuild,alpine,htmx]"',
-                language="bash",
-            ),
-            anchor="with-extras",
+            "Development",
+            CodePanel("uv sync\nuv pip install -e .", language="bash"),
+            anchor="development",
         ),
         NextSteps(
             [
@@ -23,11 +20,11 @@ def build():
                 ("Browse", "Kit Reference →", "kits.html"),
             ]
         ),
-        lead="Zero required runtime dependencies. Install only the extras you need.",
+        lead="Zero required runtime dependencies. UI kits and integrations ship in the core package.",
         breadcrumb=[
             ("Documentation", "index.html"),
             ("Guide", None),
             ("Installation", None),
         ],
-        toc=[("core", "Core"), ("with-extras", "With extras")],
+        toc=[("core", "Core"), ("development", "Development")],
     )

@@ -4,7 +4,7 @@ import trunco.zbuild as _zbuild
 
 warnings.warn(
     "trunco.franken is deprecated; Franken UI has rebranded to 0build. "
-    "Use trunco.zbuild instead (pip install trunco[zbuild]).",
+    "Use trunco.zbuild instead.",
     DeprecationWarning,
     stacklevel=2,
 )

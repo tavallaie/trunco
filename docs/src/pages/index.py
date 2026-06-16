@@ -56,7 +56,7 @@ def build():
         Section(
             "Install",
             CodePanel(
-                "uv pip install trunco\nuv pip install \"trunco[daisy,htmx,alpine,zbuild]\"",
+                "uv pip install trunco",
                 language="bash",
             ),
         ),

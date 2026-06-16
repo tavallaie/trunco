@@ -219,7 +219,7 @@ def avatar_demo() -> DemoResult:
 
 def table_demo() -> DemoResult:
     rows = [
-        _row("Trunco", "0.5.1", "Active"),
+        _row("Trunco", "1.0.0", "Active"),
         _row("DaisyUI kit", "—", "Stable"),
         _row("0build kit", "—", "Stable"),
         _row("HTMX helpers", "—", "Optional"),

@@ -22,5 +22,5 @@ class ButtonComponent(Component):
             self.add_directive("x-on:click", on_click)
 
     def add_alpine_directive(self, directive: Union[str, object], expression: str):
-        """Add an Alpine.js directive. Requires trunco[alpine] for typed directives."""
+        """Add an Alpine.js directive with typed helpers."""
         self.add_directive(directive, expression)

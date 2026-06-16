@@ -5,7 +5,7 @@
 ## Features
 
 - **Component-based architecture** — composable Python objects render to HTML
-- **Optional integrations** — Alpine.js, HTMX, UIKit via extras
+- **Optional integrations** — Alpine.js, HTMX, UIKit helpers built in
 - **UI kits** — `trunco.daisy` and `trunco.zbuild` with unified short imports (`Form`, `Button`, `Alert`, …)
 - **Custom themes** — register your own color schemes like DaisyUI/Tailwind
 - **Zero runtime dependencies** — core install is dependency-free
@@ -14,7 +14,6 @@
 
 ```bash
 uv pip install trunco
-uv pip install "trunco[daisy,zbuild,alpine,htmx]"
 ```
 
 ## Quickstart
@@ -41,7 +40,7 @@ import trunco.daisy as ui   # or: import trunco.zbuild as ui
 The docs site is **built with Trunco** and deployed to GitHub Pages.
 
 ```bash
-uv pip install -e ".[daisy]"
+uv pip install -e .
 uv run python docs/serve.py   # preview at http://127.0.0.1:8000
 uv run python docs/build.py   # build only → docs/_site/
 ```
@@ -67,7 +66,7 @@ uv run python examples/07_kit_swap.py
 
 ```bash
 uv sync
-uv pip install -e ".[daisy,zbuild,alpine,htmx]"
+uv pip install -e .
 uv run pytest
 uv run python docs/build.py
 ```

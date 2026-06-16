@@ -17,7 +17,7 @@ docs/
 
 ```bash
 uv sync
-uv pip install -e ".[daisy]"
+uv pip install -e .
 uv run python docs/serve.py
 ```
 

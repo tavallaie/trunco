@@ -7,13 +7,13 @@ def build():
     return DocArticle(
         "Integrations",
         Section(
-            "Install extras",
+            "Install",
             paragraph(
-                "HTMX and Alpine ship as optional Trunco extras — zero runtime "
+                "HTMX and Alpine helpers ship with Trunco — zero runtime "
                 "dependencies, only typed helpers and CDN script tags."
             ),
             CodePanel(
-                'uv pip install "trunco[htmx,alpine]"',
+                "uv pip install trunco",
                 language="bash",
             ),
             anchor="install",
@@ -153,5 +153,5 @@ panel.add_child(body)""",
             ("Guide", None),
             ("Integrations", None),
         ],
-        toc=[("install", "Install extras"), ("htmx", "HTMX"), ("alpine", "Alpine.js")],
+        toc=[("install", "Install"), ("htmx", "HTMX"), ("alpine", "Alpine.js")],
     )

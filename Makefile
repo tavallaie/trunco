@@ -5,7 +5,7 @@ UV ?= uv
 help:
 	@echo "Trunco development targets:"
 	@echo "  make sync          Install/sync dev dependencies (uv)"
-	@echo "  make install       sync + editable install with all kit extras"
+	@echo "  make install       sync + editable install"
 	@echo "  make test          Run pytest"
 	@echo "  make lint          Run ruff linter"
 	@echo "  make format        Format code with ruff"
@@ -18,7 +18,7 @@ sync:
 	$(UV) sync
 
 install: sync
-	$(UV) pip install -e ".[daisy,zbuild,alpine,htmx]"
+	$(UV) pip install -e .
 
 test:
 	$(UV) run pytest
