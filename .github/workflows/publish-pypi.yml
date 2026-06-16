@@ -1,0 +1,32 @@
+name: Publish to PyPI
+
+# Trusted publishing: register this workflow on PyPI under
+# Project → Publishing → Add a new pending publisher
+# (owner, repo, workflow filename, optional environment: pypi).
+
+on:
+  push:
+    tags:
+      - "v*"
+      - "*.*.*"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Build package
+        run: uv build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
